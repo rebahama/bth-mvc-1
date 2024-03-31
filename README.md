@@ -1,1 +1,1 @@
-Kurs MVC 
+Kurs 

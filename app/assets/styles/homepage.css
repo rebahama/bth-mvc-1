@@ -1,0 +1,27 @@
+:root {
+    --primary-color: #007bff;
+}
+
+
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.column {
+    padding: 20px;
+}
+
+.left-column {
+    background-color: #f5f5f5;
+}
+
+.right-column {
+    background-color: #f0f0f0;
+}
+
+.img-style {
+    width: 100%;
+    max-width: 500px;
+}

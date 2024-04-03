@@ -1,7 +1,28 @@
 {% extends "base.html.twig" %}
 
-{% block title %}Home{% endblock %}
+{% block title %}About{% endblock %}
 
 {% block body %}
-    <h1>About</h1>
+<h2>About</h2>
+    <div class="grid-container">
+        <div class="column left-column">
+        <h3> Kursbeskrivning </h3>
+            <p>This is the content of the left column.</p>
+            <p>
+            Kursen Objektorienterade webbteknologier, a.k.a. mvc,
+            fokuserar på objektorienterade programmeringstekniker i programmeringsspråket PHP.
+            Klassiska objektorienterade konstruktioner hanteras tillsammans med objektorienterad programmering i webbaserat ramverk tillsammans med databaser
+            samt enhetstestning.
+        </div>
+        <div class="column right-column">
+            <h3> Länkar till repo</h3>
+            <p>This is the content of the right column.</p>
+            <ul> 
+            <li> <a href="https://github.com/rebahama/bth-mvc-1">Link to personal GitHub Repository</a> </li>
+
+            <li> <a href="https://github.com/dbwebb-se/mvc">Link to GitHub course repo</a> </li>
+            </ul>
+            <img src="{{ asset('img/symfony.jpg') }}" alt="Background Image" class="img-style">
+        </div>
+    </div>
 {% endblock %}

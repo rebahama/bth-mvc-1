@@ -1,3 +1,65 @@
+/* Normalize.css */
+html {
+    line-height: 1.15;
+    /* 1 */
+    -webkit-text-size-adjust: 100%;
+    /* 2 */
+}
+
 body {
-    background-color: skyblue;
+    margin: 0;
+}
+
+/* Correct the font size and margin on `h1` elements within `section` and `article` contexts */
+h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+}
+
+h2 {
+    text-align: center;
+}
+
+body {
+    background-color: #f5f5f5;
+    /* Light Grey */
+
+}
+
+/* Add the correct margin in IE 8 */
+fieldset {
+    margin: 0.35em 0 0.75em;
+    padding: 0.75em 0.625em 0.75em;
+}
+
+/* Define styles for the navbar */
+.navbar {
+    background-color: #333;
+    padding: 10px;
+}
+
+/* Define styles for the navbar list */
+.navbar-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Define styles for the navbar items */
+.navbar-item {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+/* Define styles for the navbar links */
+.navbar-link {
+    text-decoration: none;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+/* Define styles for the hover effect on navbar links */
+.navbar-link:hover {
+    background-color: #555;
 }

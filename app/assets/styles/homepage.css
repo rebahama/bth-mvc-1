@@ -25,7 +25,8 @@
     width: 100%;
     max-width: 500px;
 }
-.header-back{
+
+.header-back {
     background-color: #d52828;
     color: #ffffff;
     text-align: center;
@@ -34,9 +35,15 @@
 .grid-container-dynamic {
     display: grid;
     height: 100%;
-    place-items: center; /* Center the items vertically and horizontally */
+    place-items: center;
 }
 
 .content {
     text-align: center;
+}
+
+.grid-container-homepage {
+    font-weight: bold;
+    color: #008000;
+    background-color: #333;
 }

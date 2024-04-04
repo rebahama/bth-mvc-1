@@ -15,8 +15,9 @@
         {% endblock %}
     </head>
     <body>
-    <header class="site-header" style="background-image: url({{ asset('img/background.jpg') }})">
-    <span class="site-title">My Symfony Site</span>
+    <div class="header-back">
+    <span class="site-title">Welcome to my personal symfony Site</span>
+    </div>
 </header>
 
 <nav class="navbar">
@@ -27,4 +28,14 @@
 </nav>
         {% block body %}{% endblock %}
     </body>
+
+  <footer>
+    <div class="footer-content">
+        <ul class="footer-links">
+            <li><a href="https://github.com/rebahama/bth-mvc-1">Link to personal GitHub Repository</a></li>
+            <li><a href="https://github.com/dbwebb-se/mvc">Link to GitHub course repo</a></li>
+        </ul>
+    </div>
+</footer>
+
 </html>

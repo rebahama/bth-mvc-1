@@ -14,14 +14,19 @@
 }
 
 .left-column {
-    background-color: #f5f5f5;
+    background-color: #a93434;
 }
 
 .right-column {
-    background-color: #f0f0f0;
+    background-color: #ececec;
 }
 
 .img-style {
     width: 100%;
     max-width: 500px;
+}
+.header-back{
+    background-color: #d52828;
+    color: #ffffff;
+    text-align: center;
 }

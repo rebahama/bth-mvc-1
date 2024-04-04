@@ -1,0 +1,20 @@
+
+{% extends "base.html.twig" %}
+
+{% block title %}About{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+{% endblock %}
+
+{% block body %}
+
+<div class="grid-container-dynamic">
+<p> Update untill you get your number above 50 </p>
+    <div class="content">
+        <h1>Your lucky number is {{ number }}</h1>
+        <img src="{{ asset('img/' ~ imageUrl) }}" alt="Background Image" class="img-style">
+    </div>
+</div>
+{% endblock %}

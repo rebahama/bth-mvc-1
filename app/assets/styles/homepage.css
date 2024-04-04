@@ -30,3 +30,13 @@
     color: #ffffff;
     text-align: center;
 }
+
+.grid-container-dynamic {
+    display: grid;
+    height: 100%;
+    place-items: center; /* Center the items vertically and horizontally */
+}
+
+.content {
+    text-align: center;
+}

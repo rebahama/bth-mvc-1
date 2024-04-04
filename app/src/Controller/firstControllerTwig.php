@@ -19,6 +19,31 @@ class firstControllerTwig extends AbstractController
     {
         return $this->render('about.html.twig');
     }
+    #[Route("/report", name: "report")]
+    public function report(): Response
+    {
+        return $this->render('report.html.twig');
+    }
+    #[Route("/lucky", name: "lucky")]
+    public function lucky(): Response
+    {
+        $number = random_int(0, 100);
+    
+        // Determine the image URL based on the value of $number
+        if ($number > 50) {
+            $imageUrl = 'background.jpg';
+        } else {
+            $imageUrl = 'symfony.jpg';
+        }
+    
+        // Add the image URL to the $data array
+        $data = [
+            'number' => $number,
+            'imageUrl' => $imageUrl
+        ];
+    
+        return $this->render('lucky_number.html.twig', $data);
+    }
 
 
 }

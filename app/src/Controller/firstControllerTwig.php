@@ -45,5 +45,11 @@ class firstControllerTwig extends AbstractController
         return $this->render('lucky_number.html.twig', $data);
     }
 
+    #[Route("/api",  name: "api")]
+    public function jsonIndex(): Response
+    {
+        return $this->render('api.html.twig');
+    }
+
 
 }

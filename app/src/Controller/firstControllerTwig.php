@@ -8,7 +8,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class firstControllerTwig extends AbstractController
 {
-
     #[Route("/", name: "home")]
     public function home(): Response
     {
@@ -28,24 +27,24 @@ class firstControllerTwig extends AbstractController
     public function lucky(): Response
     {
         $number = random_int(0, 100);
-    
+
         // Determine the image URL based on the value of $number
         if ($number > 50) {
             $imageUrl = 'background.jpg';
         } else {
             $imageUrl = 'symfony.jpg';
         }
-    
+
         // Add the image URL to the $data array
         $data = [
             'number' => $number,
             'imageUrl' => $imageUrl
         ];
-    
+
         return $this->render('lucky_number.html.twig', $data);
     }
 
-    #[Route("/api",  name: "api")]
+    #[Route("/api", name: "api")]
     public function jsonIndex(): Response
     {
         return $this->render('api.html.twig');

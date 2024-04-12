@@ -12,29 +12,29 @@ class apiData
     public function jsonNumber(): Response
     {
         date_default_timezone_set('Europe/Stockholm');
-   
+
         $quotes = [
             "Jag är stark idag!!",
             "Jag är redo idag!!",
             "Jag är effektiv idag!!"
         ];
-    
+
         $randomQuote = $quotes[array_rand($quotes)];
-    
+
 
         $todayDate = date("Y-m-d");
-    
-     
+
+
         $timestamp = time();
-  
+
         $time = date("H:i:s", $timestamp);
-    
+
         $data = [
             'quote' => $randomQuote,
             'date' => $todayDate,
             'time' => $time
         ];
-    
+
         // Return the JSON response
         return new JsonResponse($data);
     }

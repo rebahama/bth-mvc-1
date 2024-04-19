@@ -5,10 +5,11 @@
 {% block body %}
     <h3>Card Draw</h3>
 
-    {% if deck.cards is not empty %}
-        <p>Drawn Card: {{ deck.cards[0].value }} of {{ deck.cards[0].suit }}</p>
-        <p>Number of cards left in the deck: {{ deck.cards|length }}</p>
+    {% if drawnCard %}
+        <p>Drawn Card: {{ drawnCard.value }} of {{ drawnCard.suit }}</p>
+        <p>Number of cards left in the deck: {{ remainingCards }}</p>
     {% else %}
         <p>No cards left in the deck</p>
     {% endif %}
 {% endblock %}
+

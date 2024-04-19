@@ -7,8 +7,10 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Card\Deck;
+
 class cardController extends AbstractController
 {
+    
     #[Route("/card", name: "card")]
     public function card(): Response
     {
@@ -22,7 +24,7 @@ class cardController extends AbstractController
         $sessionData = $session->all();
         $session->set('test_key', 'test_value');
 
-     
+
         return $this->render('cards/home.html.twig', [
             'sessionData' => $sessionData,
         ]);
@@ -30,7 +32,7 @@ class cardController extends AbstractController
     #[Route("/session/delete", name: "delete_session_item")]
     public function deleteSessionItem(SessionInterface $session): Response
     {
-      
+
         $session->clear();
 
         $this->addFlash('success', 'Sessionen har raderats.');
@@ -48,9 +50,10 @@ class cardController extends AbstractController
         ]);
     }
     #[Route("/card/shuffle", name: "card_shuffle")]
-    public function cardShuffle(): Response
+    public function cardShuffle(SessionInterface $session): Response
     {
         $deck = new Deck();
+        $session->remove('deck'); // Remove the 'deck' key from the session
         $deck->randomCard();
 
         return $this->render('cards/shuffle.html.twig', [
@@ -58,14 +61,36 @@ class cardController extends AbstractController
         ]);
     }
     #[Route("/card/draw", name: "card_draw")]
-    public function cardDraw(): Response
+    public function cardDraw(SessionInterface $session): Response
     {
-        $deck = new Deck();
-        $deck->drawCard();
-
+        $deck = $this->getDeckFromSession($session);
+    
+        if ($deck === null || $deck->getNumberOfCardsLeft() === 0) {
+    
+            $deck = new Deck();
+            $deck->randomCard();
+            $this->saveDeckToSession($deck, $session);
+        }
+    
+        $drawnCard = $deck->drawCard();
+    
+        // Save updated deck to session
+        $this->saveDeckToSession($deck, $session);
+    
         return $this->render('cards/draw.html.twig', [
-            'deck' => $deck,
+            'drawnCard' => $drawnCard,
+            'remainingCards' => $deck->getNumberOfCardsLeft(),
         ]);
     }
-   
+    
+    private function getDeckFromSession(SessionInterface $session): ?Deck
+    {
+        return $session->get('deck');
+    }
+    
+    private function saveDeckToSession(Deck $deck, SessionInterface $session): void
+    {
+        $session->set('deck', $deck);
+    }
+
 }

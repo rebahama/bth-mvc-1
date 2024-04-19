@@ -10,7 +10,7 @@ use App\Card\Deck;
 
 class apiData
 {
-    #[Route("/api/quote")]
+    #[Route("/api/quote", name: "api_name")]
     public function jsonNumber(): Response
     {
         date_default_timezone_set('Europe/Stockholm');

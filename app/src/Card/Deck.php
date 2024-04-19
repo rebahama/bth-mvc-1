@@ -20,8 +20,6 @@ class Deck {
         usort($this->cards, function($a, $b) {
             // Define the order of card values
             $valueOrder = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'JACK:🂫', 'QUEEN:🂭', 'KING:🂮', 'ACE:🃑'];
-    
-            // Get the index of each card value in the order array
             $aIndex = array_search($a->value, $valueOrder);
             $bIndex = array_search($b->value, $valueOrder);
     
@@ -37,5 +35,13 @@ class Deck {
 
     public function randomCard() {
         shuffle($this->cards);
+    }
+
+    public function drawCard() {
+        return array_shift($this->cards);
+    }
+
+    public function getNumberOfCardsLeft() {
+        return count($this->cards);
     }
 }

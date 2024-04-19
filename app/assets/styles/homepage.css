@@ -47,3 +47,20 @@
     color: #008000;
     background-color: #333;
 }
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    grid-gap: 10px;
+    list-style: none;
+    padding: 0;
+}
+
+.card {
+    font-size: 24px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+}

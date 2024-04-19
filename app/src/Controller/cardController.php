@@ -10,7 +10,7 @@ use App\Card\Deck;
 
 class cardController extends AbstractController
 {
-    
+
     #[Route("/card", name: "card")]
     public function card(): Response
     {
@@ -49,7 +49,7 @@ class cardController extends AbstractController
             'deck' => $deck,
         ]);
     }
-    #[Route("/card/shuffle", name: "card_shuffle")]
+    #[Route("/card/deck/shuffle", name: "card_shuffle")]
     public function cardShuffle(SessionInterface $session): Response
     {
         $deck = new Deck();
@@ -60,37 +60,67 @@ class cardController extends AbstractController
             'deck' => $deck,
         ]);
     }
-    #[Route("/card/draw", name: "card_draw")]
+    #[Route("/card/deck/draw", name: "card_draw")]
     public function cardDraw(SessionInterface $session): Response
     {
         $deck = $this->getDeckFromSession($session);
-    
+
         if ($deck === null || $deck->getNumberOfCardsLeft() === 0) {
-    
+
             $deck = new Deck();
             $deck->randomCard();
             $this->saveDeckToSession($deck, $session);
         }
-    
+
         $drawnCard = $deck->drawCard();
-    
+
         // Save updated deck to session
         $this->saveDeckToSession($deck, $session);
-    
+
         return $this->render('cards/draw.html.twig', [
             'drawnCard' => $drawnCard,
             'remainingCards' => $deck->getNumberOfCardsLeft(),
         ]);
     }
-    
+
     private function getDeckFromSession(SessionInterface $session): ?Deck
     {
         return $session->get('deck');
     }
-    
+
     private function saveDeckToSession(Deck $deck, SessionInterface $session): void
     {
         $session->set('deck', $deck);
+    }
+    #[Route("/card/deck/draw/{number}", name: "card_deck_draw")]
+    public function cardDeckDraw(int $number, SessionInterface $session): Response
+    {
+        // Get the deck from session
+        $deck = $this->getDeckFromSession($session);
+
+        // If deck is empty or not in session, create a new one
+        if ($deck === null || $deck->getNumberOfCardsLeft() === 0) {
+            $deck = new Deck();
+            $deck->randomCard();
+            $this->saveDeckToSession($deck, $session);
+        }
+
+        // Draw specified number of cards from the deck
+        $drawnCards = [];
+        for ($i = 0; $i < $number; $i++) {
+            $card = $deck->drawCard();
+            if ($card !== null) {
+                $drawnCards[] = $card;
+            } else {
+                break;
+            }
+        }
+
+        $this->saveDeckToSession($deck, $session);
+        return $this->render('cards/draw_number.html.twig', [
+            'drawnCards' => $drawnCards,
+            'remainingCards' => $deck->getNumberOfCardsLeft(),
+        ]);
     }
 
 }

@@ -10,7 +10,6 @@ use App\Card\Deck;
 
 class cardController extends AbstractController
 {
-
     #[Route("/card", name: "card")]
     public function card(): Response
     {

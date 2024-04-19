@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Card\Deck;
+
 class apiData
 {
     #[Route("/api/quote")]
@@ -45,14 +46,14 @@ class apiData
     {
         $deck = new Deck();
         $deck->sortBySuitAndValue();
-     
+
         return new JsonResponse($deck);
     }
 
     #[Route("/api/deck/shuffle", name: "api_shuffle")]
     public function apiShuffle(): JsonResponse
     {
-        
+
         $deck = new Deck();
         $deck->randomCard();
         // Returnera JSON-responsen med kortleken
@@ -71,7 +72,7 @@ class apiData
 
         // Dra ett kort från kortleken
         $drawnCard = $deck->drawCard();
-        
+
 
         // Hämta antalet kvarvarande kort i kortleken
         $remainingCards = $deck->getNumberOfCardsLeft();
@@ -80,7 +81,7 @@ class apiData
         return new JsonResponse([
             'drawnCard' => $drawnCard,
             'remainingCards' => $remainingCards,
-           
+
         ]);
     }
 

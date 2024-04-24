@@ -1,0 +1,14 @@
+{% extends "base.html.twig" %}
+{% block title %}Card{% endblock %}
+
+{% block body %}
+
+<h3> Card Shuffling </h3>
+ <ul class="card-grid">
+        {% for card in deck.cards %}
+            <li class="card">{{ card.value }} of {{ card.suit }}</li>
+        {% endfor %}
+    </ul>
+
+
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html.twig" %}
+{% block title %}Card{% endblock %}
+
+{% block body %}
+   <h1>Card</h1>
+<div class="grid-container-dynamic">
+<ul>
+<li><a href="{{ path('card_deck') }}" >Card deck </a></li>
+<li><a href="{{ path('card_shuffle') }}" >Card shuffling </a></li>
+<li><a href="{{ path('card_draw') }}" >Card draw </a></li>
+ </ul>
+<p> Jag skapade en klass kalld Card med två egenskaper suit som är ett string värde och value som är ett int värde, sedan skapde jag också
+konstruktor när en ny instans skapas. Jag har också en annan klass som heter Deck där jag anropar Card klassen och skapar en instans med olika värden. I Deck klassen
+har jag också lite olika metoder som exempelvis sortering. </p>
+ <img src="{{ asset('img/class.png') }}" alt="Background Image" class="img-style-class">
+</div>
+{% endblock %}

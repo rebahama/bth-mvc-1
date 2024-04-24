@@ -1,0 +1,23 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+ <h1>My personal page</h1>
+   <div class="grid-container">
+   
+        <div class="column grid-container-homepage">
+    <p>Compiling.................................................. </p>
+    <p>Loading.................................................. </p>
+    <p> 
+    Welcome to my personal page, my name is Rebas and I am 30 years old. Technology is something that I always have been intrested in 
+        and there is so much to learn. I wrote my first line of code 3 years ago and since then I have always felt that this is something that I want to work with
+        I am looking forward this course to learn all there is to learn
+     </p>
+        </div>
+        <div class="column right-column">
+           
+       <img src="{{ asset('img/code.jpg') }}" alt="Background Image" class="img-style">
+        </div>
+    </div>
+{% endblock %}

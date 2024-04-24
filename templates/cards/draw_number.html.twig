@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Draw Multiple Cards{% endblock %}
+
+{% block body %}
+    <h3>Draw Multiple Cards</h3>
+
+    {% if drawnCards is not empty %}
+        <h4>Drawn Cards:</h4>
+        <ul>
+            {% for card in drawnCards %}
+                <li>{{ card.value }} of {{ card.suit }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No cards were drawn.</p>
+    {% endif %}
+
+    <p>Remaining cards in the deck: {{ remainingCards }}</p>
+
+    
+{% endblock %}

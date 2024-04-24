@@ -1,0 +1,75 @@
+{% extends "footer-report.html.twig" %}
+
+{% block title %}Report{% endblock %}
+
+{% block body %}
+<div class="grid-container-report">
+<h3> kmom01 </h3>
+<p><b>Berätta kort om dina förkunskaper och tidigare erfarenheter kring objektorientering. </b></p>
+<p>Jag har tidigare jobbat lite med C# på när det gäller att programmera med fokus på objektorientering, vi fick lära oss att skapa instanser och 
+sedan koppla olika attribut till en person och sedan så fick vi återanvända koden flera gånger för att skapa olika personer med olika attribut. Vi använde
+oss av klasser. Allt detta skedde i konsolen, så att jobba med objektorientering i webbklienten är helt nytt för mig och det ska bli intressant att se
+hur det funkar </p>
+
+<p> <b>Berätta kort om PHPs modell för klasser och objekt. Vilka är de grunder man behöver veta/förstå för att kunna komma igång och skapa sina första klasser? </b><p>
+<p>
+"PHP har något som heter klasser och objekt. En klass är typ som en mall för att göra olika saker, och ett objekt är som en specifik sak som du skapar från den mallen. Till exempel kan du ha en klass som heter "Bil" och skapa olika bilar från den klassen.
+Klasser har saker som heter egenskaper, som är som information om objektet.
+Till exempel kan en egenskap på en bil vara "färg" eller "modell".
+Sen har de också saker som heter metoder, som är som saker klassen kan göra.
+Till exempel kan en metod på en bil vara "starta" eller "stoppa".
+När du skapar en bil från klassen använder du något som heter en konstruktor.
+Den hjälper till att sätta upp bilen och ge den rätt egenskaper.
+Sen kan du använda bilen och göra saker med den, som att starta den eller köra den.
+En annan sak som är viktig är att klasser kan "ärva" från varandra.
+Det betyder att en klass kan få saker från en annan klass och lägga till sina egna saker. 
+Till exempel kan du ha en klass som heter "Sportbil" som ärver från "Bil" och lägger till saker som gör att den kan köra snabbare.
+ </p>
+
+<p> <b> Reflektera kort över den kodbas, koden, strukturen som användes till uppgiften me/report, hur uppfattar du den? </b> </p>
+<p> När man kollar på den första gången så ser man att det är väldigt många filer som finns och alla möjliga kombinatoner. Men när man
+väl börjar skapa sidorna så börjar man inse att det är endast ett fåtal filer man behöver fokusera på för att skapa sidan i webbklienten. Så det 
+är inte jättekomplicerat när man väl kör och skapar sidorna. </p>
+
+<p> <b> Med tanke på artikeln “PHP The Right Way”, vilka delar in den finner du extra intressanta och värdefulla? Är det några särskilda områden som du känner att du vill veta mer om? Lyft fram några delar av artikeln som du känner mer värdefulla. </b> </p>
+<p> En del som jag tyckte var intressant och värdefullt att veta är "Updating your dependencies". Det känns som att allting utvecklas hela tiden och det gäller 
+att man hänger med tekniken speciellt när man installerar en webpack samt olika dependencies till sitt projekt. Om jag inte lär mig hur man uppdaterar mina dependencies samt mitt projekt
+så är det lätt att hamna efter samt så är det viktigt att man gör det på rätt sätt så att saker inte krockar med varandra. Jag kan tycka att just detta är lite svårt när man har 
+massa olika tekniker som samverkar med varandra därför är detta värdefullt för mig att veta. </p>
+
+<p> <b>Vilken är din TIL för detta kmom? </b> <p>
+
+<p> Jag har lärt mig att det är också jätteviktigt att kunna veta hur man uppgraderar sin version av programm som man använder för att hänga med teknologin som utvecklas nästan hela tiden. </p>
+
+<h3> kmom02 </h3>
+<p> <b>Förklara kort de objektorienterade konstruktionerna arv, komposition, interface och trait och hur de används i PHP. </b> </p>
+
+<p>Arv (Inheritance):
+Arv är som att säga att en klass kan "ärva" egenskaper och beteenden från en annan klass. Tänk på det som att ha en släktträd där en klass är barn till en annan. Om klass A är föräldern och klass B är barnet, så kan klass B ärva alla egenskaper och metoder från klass A. Till exempel, om klassen Animal har egenskaper som namn och ålder, kan klassen Dog ärva dessa egenskaper och även ha sina egna specifika egenskaper som ras och favoritmat.
+Komposition (Composition):
+Komposition handlar om att bygga mer komplexa saker genom att kombinera mindre delar. Tänk på det som att sätta ihop en pussel där varje bit representerar en klass eller ett objekt. Istället för att en klass ärver från en annan, kan den ha en relation med en annan klass genom att hålla en instans av den klassen som ett fält. Till exempel, om vi har en klass Car, så kan den innehålla en instans av klassen Engine. På så sätt är Car sammansatt av en Engine.
+Interface (Interface):
+Ett interface definierar ett kontrakt som en klass måste följa. Tänk på det som en checklista för vad en klass måste göra, men det definierar inte hur klassen ska göra det. Interface specificerar bara vilka metoder som måste finnas i en klass som implementerar det. Till exempel, om vi har ett interface Flyable, så måste alla klasser som implementerar detta interface ha en fly() metod, men det är upp till varje klass att bestämma hur den metoden fungerar.
+Trait (Trait):
+Ett trait är som en förpackning med återanvändbara bitar av kod som kan återanvändas i flera klasser. Tänk på det som att ha en låda med verktyg som du kan använda i olika projekt. Du kan inkludera ett trait i en klass för att lägga till vissa metoder eller egenskaper till den klassen, utan att behöva duplicera kod. Till exempel, om du har ett trait Loggable, kan du inkludera det i olika klasser för att lägga till loggningsfunktionalitet utan att behöva skriva samma kod om och om igen. </p>
+
+<p> <b> Berätta om din implementation från uppgiften. Hur löste du uppgiften, är du nöjd/missnöjd,
+vilken förbättringspotential ser du i din koden och dina klasser? </b> </p>
+
+<p> Det första som jag lade märke till är hur viktig grund strukturen är så att det blir rätt ifrån början, jag började med att skapa en mapp
+i src mappen och i den mappen som hade jag två php filer, den första Card.php där skapar jag klassen Card och en konstruktor med två olika värden. Andra filen
+som heter Deck.php där skapades sjäva kortleken och alla funktioner som exemplvis sortering osv, jag instanserar också ett nytt objekt här genom att skapa new Card. Så här använder
+jag mig av klassen. Sedan sker anropningen i cardController filen där klasserna anropas tillsammans med alla funktioner som finns i klasserna. Jag skulle vilja säga 
+att jag är rätt nöjd med uppgiften då jag löste allting på ett smidigt sätt. Jag tycker inte att jag använde för komplicerad kod utan allting verkade logiskt och bra. </p>
+<p> <b>Vilka är dina reflektioner så här långt med att jobb i Symfony med applikationskod enligt MVC? </b> </p>
+<p> Det börjar nu falla på plats, man börjar lära sig att installera och skriva kod utan att behöva kolla på dokumentation när man ska starta upp allting.
+Jag tycker att Symfon påminner om Express som vi hade i databaskursen då det verkar vara samma princip här när vi exemplvis använder oss av routes och sedan
+anropar olika funktioner i src mappen.
+ </p>
+
+<p> <b>Vilken är din TIL för detta kmom? </b></p>
+
+<p> Att det är jättevikitgt att ha rätt struktur ifrån början med alla klasser och att logiken är på rätt sätt, det är inte roligt mitt i projektet att behöva
+ändra om i grundstrukuren av en klass och kod för då går inte logiken åt rätt håll. </p>
+</div>
+{% endblock %}

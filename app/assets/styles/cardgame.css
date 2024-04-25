@@ -1,0 +1,19 @@
+.game-background {
+    background-color: green;
+}
+
+.game-card {
+    width: 60px;
+}
+
+.grid-game {
+    margin-top: 20%;
+}
+
+.card-grid-game {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-gap: 10px;
+    list-style: none;
+    padding: 0;
+}

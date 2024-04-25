@@ -7,6 +7,7 @@
  */
 import './styles/app.css';
 import './styles/homepage.css';
+import './styles/cardgame.css';
 import hello from './js/hello.js';
 
 

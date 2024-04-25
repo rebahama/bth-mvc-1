@@ -1,0 +1,31 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Draw Multiple Cards{% endblock %}
+
+{% block body %}
+    <h3>Draw Multiple Cards</h3>
+ <p>Remaining cards in the deck: {{ remainingCards }}</p>
+    <div class="grid-container-dynamic game-background">
+    {% if drawnCards is not empty %}
+        <h4>Drawn Cards:</h4>
+             <ul class="card-grid-game">
+        {% for card in drawnCards %}
+            <li class="card game-card">{{ card.value }} of {{ card.suit }}</li>
+        {% endfor %}
+    </ul>
+
+
+
+    {% else %}
+        <p>No cards were drawn.</p>
+    {% endif %}
+
+
+  <div class="grid-game">
+<p> Your hand:</p>
+{{sumOfDrawnCards}}
+
+      
+    
+    </div>
+{% endblock %}

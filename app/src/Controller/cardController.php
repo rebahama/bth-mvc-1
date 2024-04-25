@@ -121,5 +121,43 @@ class cardController extends AbstractController
             'remainingCards' => $deck->getNumberOfCardsLeft(),
         ]);
     }
+    #[Route("/card/game/draw/{number}", name: "card_deck_draw_game")]
+public function cardGame(int $number, SessionInterface $session): Response
+{
+    // Get the deck from session
+    $deck = $this->getDeckFromSession($session);
+
+    // If deck is empty or not in session, create a new one
+    if ($deck === null || $deck->getNumberOfCardsLeft() === 0) {
+        $deck = new Deck();
+        $deck->randomCard();
+        $this->saveDeckToSession($deck, $session);
+    }
+
+    // Draw specified number of cards from the deck
+    $drawnCards = [];
+    for ($i = 0; $i < $number; $i++) {
+        $card = $deck->drawCard();
+        if ($card !== null) {
+            $drawnCards[] = $card;
+        } else {
+            break;
+        }
+    }
+
+    // Calculate the sum of values of drawn cards
+    $sumOfDrawnCards = 0;
+    foreach ($drawnCards as $card) {
+        $numericValue = $deck->getNumericValue($card->value);
+        $sumOfDrawnCards += $numericValue;
+    }
+
+    $this->saveDeckToSession($deck, $session);
+    return $this->render('cards/game.html.twig', [
+        'drawnCards' => $drawnCards,
+        'remainingCards' => $deck->getNumberOfCardsLeft(),
+        'sumOfDrawnCards' => $sumOfDrawnCards,
+    ]);
+}
 
 }

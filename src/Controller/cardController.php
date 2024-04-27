@@ -94,8 +94,11 @@ class cardController extends AbstractController
     {
         $session->set('deck', $deck);
     }
-    #[Route("/card/game/draw/", name: "card_deck_draw_game")]
-    public function cardGame(Request $request, SessionInterface $session): Response
+
+
+
+
+    #[Route("/card/game/draw/", name: "card_deck_draw_game")]public function cardGame(Request $request, SessionInterface $session): Response
     {
         // Initialize the number from the session, defaulting to 1 if not set
         $number = $session->get('draw_number', 1);
@@ -113,29 +116,56 @@ class cardController extends AbstractController
         // Retrieve previously drawn cards from session
         $drawnCards = $session->get('drawn_cards', []);
     
-        // Draw one card from the deck
-        $card = $deck->drawCard();
-        if ($card !== null) {
-            // Add newly drawn card to the existing drawn cards
-            $drawnCards[] = $card;
-        }
+        // Initialize opponentDrawnCards as an empty array
+        $opponentDrawnCards = [];
     
-        // Calculate the sum of values of all drawn cards
-        $sumOfDrawnCards = 0;
-        foreach ($drawnCards as $card) {
-            $numericValue = $deck->getNumericValue($card->value);
-            $sumOfDrawnCards += $numericValue;
-        }
+        // Initialize opponentSum to zero
+        $opponentSum = 0;
     
-        // Save the updated drawn cards to session
-        $session->set('drawn_cards', $drawnCards);
+        // Initialize the result
+        $result = '';
     
-        // Form for drawing cards
-        $form = $this->createFormBuilder()
+        // Form for player to draw a card
+        $playerDrawForm = $this->createFormBuilder()
             ->add('drawButton', SubmitType::class, ['label' => 'Draw Card'])
             ->getForm();
     
-        $form->handleRequest($request);
+        $playerDrawForm->handleRequest($request);
+    
+        // Handle player's draw action
+        if ($playerDrawForm->isSubmitted() && $playerDrawForm->isValid()) {
+            // Draw a card for the player
+            $playerCard = $deck->drawCard();
+            if ($playerCard !== null) {
+                // Add the player's newly drawn card to the existing drawn cards
+                $drawnCards[] = $playerCard;
+                // Recalculate the sum of the player's cards
+                $sumOfPlayerCards = 0;
+                foreach ($drawnCards as $card) {
+                    $numericValue = $deck->getNumericValue($card->value);
+                    $sumOfPlayerCards += $numericValue;
+                }
+                // Check if the player busts
+                $isPlayerBust = $sumOfPlayerCards > 21;
+                if ($isPlayerBust) {
+                    $result = 'You lose!';
+                    // Simulate opponent's moves even if player goes bust
+                    while ($opponentSum < 17) {
+                        $opponentCard = $deck->drawCard();
+                        if ($opponentCard !== null) {
+                            $opponentDrawnCards[] = $opponentCard;
+                            $opponentSum += $deck->getNumericValue($opponentCard->value);
+                        } else {
+                            break;
+                        }
+                    }
+                    // Determine if opponent has gone bust
+                    $isOpponentBust = $opponentSum > 21;
+                }
+            }
+            // Save the updated drawn cards to session
+            $session->set('drawn_cards', $drawnCards);
+        }
     
         // Form to clear the session
         $clearSessionForm = $this->createFormBuilder()
@@ -150,25 +180,32 @@ class cardController extends AbstractController
             // Redirect or render a response after clearing the session
             return $this->redirectToRoute('card_deck_draw_game'); // Redirect back to the same page
         }
-        // Determine the result based on the sum of drawn cards
-    $result = '';
-    if ($sumOfDrawnCards > 21) {
-        $result = 'Loser';
-    } elseif ($sumOfDrawnCards === 21) {
-        $result = 'Winner';
-    } else {
-        $result = 'Continue';
-    }
     
-        // Render the template with the forms
+        // Render the template with the forms and results
         return $this->render('cards/game.html.twig', [
-            'drawnCards' => $drawnCards,
+            'playerDrawnCards' => $drawnCards,
+            'opponentDrawnCards' => $opponentDrawnCards,
             'remainingCards' => $deck->getNumberOfCardsLeft(),
             'result' => $result,
-            'sumOfDrawnCards' => $sumOfDrawnCards,
-            'form' => $form->createView(),
+            'sumOfPlayerCards' => $sumOfPlayerCards ?? 0,
+            'opponentSum' => $opponentSum,
+            'playerDrawForm' => $playerDrawForm->createView(),
             'clearSessionForm' => $clearSessionForm->createView(),
+            'isPlayerBust' => $isPlayerBust ?? false,
+            'isOpponentBust' => $isOpponentBust ?? false,
         ]);
     }
+
+
+
+
+    
+    #[Route("/game", name: "game")]
+    public function game(): Response
+    {
+        return $this->render('cards/play_game.html.twig', [
+        ]);
+    }
+    
 
 }

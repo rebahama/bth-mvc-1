@@ -7,29 +7,42 @@
     <p>Remaining cards in the deck: {{ remainingCards }}</p>
     <div class="grid-container-dynamic game-background">
         <div class="grid-game">
-            {{ form_start(form) }}
-            {{ form_row(form.drawButton) }}
-            {{ form_end(form) }}
+            {{ form_start(playerDrawForm) }}
+                {{ form_row(playerDrawForm.drawButton) }}
+            {{ form_end(playerDrawForm) }}
+
             {{ form_start(clearSessionForm) }}
-{{ form_row(clearSessionForm.clearSessionButton) }}
-{{ form_end(clearSessionForm) }}
-            <h4>Drawn Cards:</h4>
+                {{ form_row(clearSessionForm.clearSessionButton) }}
+            {{ form_end(clearSessionForm) }}
+
+            <h4>Player's Drawn Cards:</h4>
             <ul class="card-grid-game">
-                {% for card in drawnCards %}
+                {% for card in playerDrawnCards %}
                     <li class="card game-card">{{ card.value }} of {{ card.suit }}</li>
                 {% endfor %}
             </ul>
-            {% if drawnCards is empty %}
+            {% if playerDrawnCards is empty %}
                 <p>No cards were drawn.</p>
             {% endif %}
-           <p>Total Sum of Drawn Cards: <span id="sumOfDrawnCards">{{ sumOfDrawnCards }}</span></p>
-        {% if result == 'Loser' %}
-            <p>You lose!</p>
-        {% elseif result == 'Winner' %}
-            <p>You win!</p>
-        {% else %}
-            <p>Keep playing...</p>
-        {% endif %}
+
+            <p>Total Sum of Player's Drawn Cards: <span id="sumOfPlayerCards">{{ sumOfPlayerCards }}</span></p>
+
+            {% if isPlayerBust %}
+                <p>You have gone bust!</p>
+                {% if opponentDrawnCards is defined and opponentDrawnCards is not empty %}
+                    <h4>Opponent's Drawn Cards:</h4>
+                    <ul class="card-grid-game">
+                        {% for card in opponentDrawnCards %}
+                            <li class="card game-card">{{ card.value }} of {{ card.suit }}</li>
+                        {% endfor %}
+                    </ul>
+                    <p>Total Sum of Opponent's Drawn Cards: <span id="opponentSum">{{ opponentSum }}</span></p>
+                {% endif %}
+            {% elseif isOpponentBust %}
+                <p>Opponent has gone bust! You win!</p>
+            {% else %}
+                <p>Result: {{ result }}</p>
+            {% endif %}
         </div>
     </div>
 {% endblock %}

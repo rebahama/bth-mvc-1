@@ -6,6 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use App\Card\Deck;
 
 class cardController extends AbstractController
@@ -59,6 +61,7 @@ class cardController extends AbstractController
             'deck' => $deck,
         ]);
     }
+
     #[Route("/card/deck/draw", name: "card_draw")]
     public function cardDraw(SessionInterface $session): Response
     {
@@ -91,73 +94,81 @@ class cardController extends AbstractController
     {
         $session->set('deck', $deck);
     }
-    #[Route("/card/deck/draw/{number}", name: "card_deck_draw")]
-    public function cardDeckDraw(int $number, SessionInterface $session): Response
+    #[Route("/card/game/draw/", name: "card_deck_draw_game")]
+    public function cardGame(Request $request, SessionInterface $session): Response
     {
+        // Initialize the number from the session, defaulting to 1 if not set
+        $number = $session->get('draw_number', 1);
+    
         // Get the deck from session
         $deck = $this->getDeckFromSession($session);
-
+    
         // If deck is empty or not in session, create a new one
         if ($deck === null || $deck->getNumberOfCardsLeft() === 0) {
             $deck = new Deck();
             $deck->randomCard();
             $this->saveDeckToSession($deck, $session);
         }
-
-        // Draw specified number of cards from the deck
-        $drawnCards = [];
-        for ($i = 0; $i < $number; $i++) {
-            $card = $deck->drawCard();
-            if ($card !== null) {
-                $drawnCards[] = $card;
-            } else {
-                break;
-            }
-        }
-
-        $this->saveDeckToSession($deck, $session);
-        return $this->render('cards/draw_number.html.twig', [
-            'drawnCards' => $drawnCards,
-            'remainingCards' => $deck->getNumberOfCardsLeft(),
-        ]);
-    }
-    #[Route("/card/game/draw/{number}", name: "card_deck_draw_game")]
-public function cardGame(int $number, SessionInterface $session): Response
-{
-    // Get the deck from session
-    $deck = $this->getDeckFromSession($session);
-
-    // If deck is empty or not in session, create a new one
-    if ($deck === null || $deck->getNumberOfCardsLeft() === 0) {
-        $deck = new Deck();
-        $deck->randomCard();
-        $this->saveDeckToSession($deck, $session);
-    }
-
-    // Draw specified number of cards from the deck
-    $drawnCards = [];
-    for ($i = 0; $i < $number; $i++) {
+    
+        // Retrieve previously drawn cards from session
+        $drawnCards = $session->get('drawn_cards', []);
+    
+        // Draw one card from the deck
         $card = $deck->drawCard();
         if ($card !== null) {
+            // Add newly drawn card to the existing drawn cards
             $drawnCards[] = $card;
-        } else {
-            break;
         }
+    
+        // Calculate the sum of values of all drawn cards
+        $sumOfDrawnCards = 0;
+        foreach ($drawnCards as $card) {
+            $numericValue = $deck->getNumericValue($card->value);
+            $sumOfDrawnCards += $numericValue;
+        }
+    
+        // Save the updated drawn cards to session
+        $session->set('drawn_cards', $drawnCards);
+    
+        // Form for drawing cards
+        $form = $this->createFormBuilder()
+            ->add('drawButton', SubmitType::class, ['label' => 'Draw Card'])
+            ->getForm();
+    
+        $form->handleRequest($request);
+    
+        // Form to clear the session
+        $clearSessionForm = $this->createFormBuilder()
+            ->add('clearSessionButton', SubmitType::class, ['label' => 'Clear Session'])
+            ->getForm();
+    
+        $clearSessionForm->handleRequest($request);
+    
+        if ($clearSessionForm->isSubmitted() && $clearSessionForm->isValid()) {
+            // Clear session
+            $session->clear();
+            // Redirect or render a response after clearing the session
+            return $this->redirectToRoute('card_deck_draw_game'); // Redirect back to the same page
+        }
+        // Determine the result based on the sum of drawn cards
+    $result = '';
+    if ($sumOfDrawnCards > 21) {
+        $result = 'Loser';
+    } elseif ($sumOfDrawnCards === 21) {
+        $result = 'Winner';
+    } else {
+        $result = 'Continue';
     }
-
-    // Calculate the sum of values of drawn cards
-    $sumOfDrawnCards = 0;
-    foreach ($drawnCards as $card) {
-        $numericValue = $deck->getNumericValue($card->value);
-        $sumOfDrawnCards += $numericValue;
+    
+        // Render the template with the forms
+        return $this->render('cards/game.html.twig', [
+            'drawnCards' => $drawnCards,
+            'remainingCards' => $deck->getNumberOfCardsLeft(),
+            'result' => $result,
+            'sumOfDrawnCards' => $sumOfDrawnCards,
+            'form' => $form->createView(),
+            'clearSessionForm' => $clearSessionForm->createView(),
+        ]);
     }
-
-    $this->saveDeckToSession($deck, $session);
-    return $this->render('cards/game.html.twig', [
-        'drawnCards' => $drawnCards,
-        'remainingCards' => $deck->getNumberOfCardsLeft(),
-        'sumOfDrawnCards' => $sumOfDrawnCards,
-    ]);
-}
 
 }

@@ -10,22 +10,18 @@ use App\Card\Hand;
 
 class CardController extends AbstractController
 {
-    #[Route('/card/draw', name: 'card_draw')]
-    public function draw(): Response
+    #[Route('/card/deck', name: 'card_deck')]
+    public function deck(): Response
     {
         $deck = new DeckOfCards(true);
         $deck->shuffle();
 
-        $hand = new Hand();
-        foreach ($deck->draw(5) as $card) {
-            $hand->add($card);
-        }
-
-        $cards = array_map(fn($c) => (string) $c, $hand->getCards());
-
-        return $this->json([
-            'hand' => $cards
+        $deck->sortByColorAndNumber();
+    
+        $cards = $deck->getCards();
+    
+        return $this->render('card/deck.html.twig', [
+            'cards' => $cards
         ]);
     }
 }
-

@@ -50,5 +50,11 @@ class firstControllerTwig extends AbstractController
         return $this->render('api.html.twig');
     }
 
+    #[Route("/card", name: "card_main")]
+    public function card_main(): Response
+    {
+        return $this->render('card/card_main.html.twig');
+    }
+
 
 }

@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Card;
 
 class DeckOfCards
@@ -33,5 +34,40 @@ class DeckOfCards
     public function getCards(): array
     {
         return $this->cards;
+    }
+
+
+    public function sortByColorAndNumber(): void
+    {
+        usort($this->cards, function ($a, $b) {
+            $colorOrder = [
+                'Clubs' => 'black',
+                'Spades' => 'black',
+                'Hearts' => 'red',
+                'Diamonds' => 'red'
+            ];
+            
+            $suitsOrder = ['Clubs', 'Spades', 'Hearts', 'Diamonds'];
+            $valuesOrder = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
+
+            $aColor = $colorOrder[$a->getSuit()];
+            $bColor = $colorOrder[$b->getSuit()];
+
+            if ($aColor === $bColor) {
+                $aSuitIndex = array_search($a->getSuit(), $suitsOrder);
+                $bSuitIndex = array_search($b->getSuit(), $suitsOrder);
+                $aValueIndex = array_search($a->getValue(), $valuesOrder);
+                $bValueIndex = array_search($b->getValue(), $valuesOrder);
+
+                if ($aSuitIndex === $bSuitIndex) {
+                    return $aValueIndex - $bValueIndex;
+                }
+
+                return $aSuitIndex - $bSuitIndex;
+            }
+
+
+            return ($aColor === 'red') ? -1 : 1;
+        });
     }
 }

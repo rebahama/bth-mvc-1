@@ -1,0 +1,15 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Card{% endblock %}
+
+{% block body %}
+    <h3>Card Deck</h3>
+
+    <ul class="card-grid">
+        {% for card in cards %}
+            <li class="card game-card {% if card.suit == 'Hearts' or card.suit == 'Diamonds' %}red{% else %}black{% endif %}">
+                {{ card.value }}{% if card.suit == 'Hearts' %}♥{% elseif card.suit == 'Diamonds' %}♦{% elseif card.suit == 'Clubs' %}♣{% else %}♠{% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

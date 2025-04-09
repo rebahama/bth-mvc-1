@@ -4,16 +4,50 @@
 
 .game-card {
     width: 60px;
+    height: 80px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    text-align: center;
+    line-height: 80px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: white;
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .grid-game {
     margin-top: 5%;
 }
 
-.card-grid-game {
+
+
+.card-grid {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    grid-template-columns: repeat(13, minmax(0, 1fr));
     grid-gap: 10px;
     list-style: none;
     padding: 0;
 }
+
+.red {
+    color: red !important;
+}
+
+.black {
+    color: black;
+}
+
+
+.card {
+    font-size: 24px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+}
+

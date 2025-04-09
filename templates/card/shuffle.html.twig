@@ -1,0 +1,26 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Shuffled Card Deck{% endblock %}
+
+{% block body %}
+    <h3>Shuffled Card Deck</h3>
+
+    {% set suitSymbols = {
+        'Clubs': '♣',
+        'Spades': '♠',
+        'Hearts': '♥',
+        'Diamonds': '♦'
+    } %}
+
+    <ul class="card-grid">
+        {% for card in cards %}
+            {% set suit = card.suit %}
+            {% set symbol = suitSymbols[suit] %}
+            {% set colorClass = (suit == 'Hearts' or suit == 'Diamonds') ? 'red' : 'black' %}
+
+            <li class="card game-card {{ colorClass }}">
+                {{ card.value }}{{ symbol }}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

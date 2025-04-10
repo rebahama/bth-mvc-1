@@ -56,16 +56,21 @@ class apiData
     }
 
     #[Route("/api/deck/shuffle", name: "api_shuffle")]
-    public function jsonShuffle(SessionInterface $session): Response
+    public function jsonShuffle(SessionInterface $session): JsonResponse
     {
         $deck = new DeckOfCards(true);
         $deck->shuffle();
 
         $session->set('deck', $deck);
 
+        $message = "Session has been cleared!";
+
         $cards = $deck->getCards();
 
-        return new JsonResponse($cards);
+        return new JsonResponse([
+            'message' => $message,
+            'cards' => $cards
+        ]);
     }
 
     #[Route("/api/deck/draw/{number}", name: "api_draw_number")]
@@ -91,6 +96,25 @@ class apiData
         ];
 
         return new JsonResponse($data);
+    }
+
+    #[Route("/api/deck/draw", name: "api_draw")]
+    public function drawCard(SessionInterface $session): JsonResponse
+    {
+
+        $deck = $session->get('deck', new DeckOfCards(true));
+
+        $drawnCard = $deck->draw(1);
+
+
+        $remaining = count($deck->getCards());
+
+        $session->set('deck', $deck);
+
+        return new JsonResponse([
+            'card' => $drawnCard,
+            'remaining' => $remaining
+        ]);
     }
 
 }

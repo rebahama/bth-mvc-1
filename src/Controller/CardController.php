@@ -18,9 +18,9 @@ class CardController extends AbstractController
         $deck->shuffle();
 
         $deck->sortByColorAndNumber();
-    
+
         $cards = $deck->getCards();
-    
+
         return $this->render('card/deck.html.twig', [
             'cards' => $cards
         ]);
@@ -31,12 +31,12 @@ class CardController extends AbstractController
     {
         $session->clear();
         $this->addFlash('success', 'Session have been cleared');
-        
+
         $deck = new DeckOfCards(true);
         $deck->shuffle();
         $session->set('deck', $deck);
         $cards = $deck->getCards();
-        
+
         return $this->render('card/shuffle.html.twig', [
             'cards' => $cards
         ]);

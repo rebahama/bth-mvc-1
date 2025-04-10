@@ -46,7 +46,7 @@ class DeckOfCards
                 'Hearts' => 'red',
                 'Diamonds' => 'red'
             ];
-            
+
             $suitsOrder = ['Clubs', 'Spades', 'Hearts', 'Diamonds'];
             $valuesOrder = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
 

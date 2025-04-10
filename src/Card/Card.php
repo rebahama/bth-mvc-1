@@ -29,11 +29,11 @@ class Card implements \JsonSerializable
     }
 
 
-     public function jsonSerialize(): mixed
-     {
-         return [
-             'suit' => $this->suit,
-             'value' => $this->value
-         ];
-     }
+    public function jsonSerialize(): mixed
+    {
+        return [
+            'suit' => $this->suit,
+            'value' => $this->value
+        ];
+    }
 }

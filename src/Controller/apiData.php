@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
+use App\Card\DeckOfCards;
 use Symfony\Component\Routing\Annotation\Route;
 
 class apiData
@@ -35,7 +36,22 @@ class apiData
             'time' => $time
         ];
 
-        // Return the JSON response
+        return new JsonResponse($data);
+    }
+
+
+    #[Route("/api/deck", name: "api_deck")]
+    public function jsonDeck(): Response
+    {
+        $deck = new DeckOfCards(true);
+        $deck->shuffle();
+
+        $deck->sortByColorAndNumber();
+
+        $cards = $deck->getCards();
+
+        $data = $cards;
+
         return new JsonResponse($data);
     }
 

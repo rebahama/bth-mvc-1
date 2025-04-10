@@ -2,7 +2,7 @@
 
 namespace App\Card;
 
-class Card
+class Card implements \JsonSerializable
 {
     protected string $suit;
     protected string $value;
@@ -27,4 +27,13 @@ class Card
     {
         return "{$this->value} of {$this->suit}";
     }
+
+
+     public function jsonSerialize(): mixed
+     {
+         return [
+             'suit' => $this->suit,
+             'value' => $this->value
+         ];
+     }
 }

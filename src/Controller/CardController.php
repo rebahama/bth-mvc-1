@@ -30,17 +30,18 @@ class CardController extends AbstractController
     public function shuffle(SessionInterface $session): Response
     {
         $session->clear();
+        $this->addFlash('success', 'Session have been cleared');
+        
         $deck = new DeckOfCards(true);
         $deck->shuffle();
-    
         $session->set('deck', $deck);
-
         $cards = $deck->getCards();
-    
+        
         return $this->render('card/shuffle.html.twig', [
             'cards' => $cards
         ]);
     }
+
 
     #[Route('/card/deck/draw', name: 'card_draw')]
     public function draw(SessionInterface $session): Response
@@ -87,6 +88,23 @@ class CardController extends AbstractController
             'cards' => $drawnCards,
             'remaining' => $remaining,
             'requested' => $number
+        ]);
+    }
+
+    #[Route('/session/delete', name: 'session_delete')]
+    public function delete(SessionInterface $session): Response
+    {
+        $session->clear();
+
+        return $this->redirectToRoute('card_deck');
+    }
+
+    #[Route('/session', name: 'session_debug')]
+    public function sessionDebug(SessionInterface $session): Response
+    {
+        $sessionData = $session->all();
+        return $this->render('card/session_show.html.twig', [
+            'sessionData' => $sessionData
         ]);
     }
 

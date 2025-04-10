@@ -1,0 +1,23 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Draw Card{% endblock %}
+
+{% block body %}
+    <div class="grid-container-dynamic">
+<h3>Drawn Card</h3>
+    {% if cards is not empty %}
+        <ul class="card-grid">
+            {% for card in cards %}
+                {% set colorClass = (card.suit == 'Hearts' or card.suit == 'Diamonds') ? 'red' : 'black' %}
+                <li class="card game-card {{ colorClass }}">
+                    {{ card.unicode }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No cards drawn.</p>
+    {% endif %}
+
+    <p><strong>Cards remaining in deck:</strong> {{ remaining }}</p>
+    </div>
+{% endblock %}

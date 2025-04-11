@@ -5,27 +5,17 @@
 {% block body %}
     <h3>Shuffled Card Deck</h3>
 
-    {% set suitSymbols = {
-        'Clubs': '♣',
-        'Spades': '♠',
-        'Hearts': '♥',
-        'Diamonds': '♦'
-    } %}
-
     {% for message in app.flashes('success') %}
-    <div class="alert alert-success">
-        {{ message }}
-    </div>
-{% endfor %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
 
     <ul class="card-grid">
         {% for card in cards %}
-            {% set suit = card.suit %}
-            {% set symbol = suitSymbols[suit] %}
-            {% set colorClass = (suit == 'Hearts' or suit == 'Diamonds') ? 'red' : 'black' %}
-
+            {% set colorClass = (card.suit == 'Hearts' or card.suit == 'Diamonds') ? 'red' : 'black' %}
             <li class="card game-card {{ colorClass }}">
-                {{ card.value }}{{ symbol }}
+                {{ card.unicode }}
             </li>
         {% endfor %}
     </ul>

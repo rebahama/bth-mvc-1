@@ -10,6 +10,19 @@ use App\Card\DeckOfCards;
 
 class CardController extends AbstractController
 {
+
+
+    #[Route('/game', name: 'card_game')]
+    public function startgame(): Response
+    {
+        
+
+        return $this->render('card/game.html.twig', [
+    
+        ]);
+    }
+
+
     #[Route('/card/deck', name: 'card_deck')]
     public function deck(): Response
     {

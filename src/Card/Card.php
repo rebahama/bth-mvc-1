@@ -50,4 +50,23 @@ class Card implements \JsonSerializable
 
         return (int) $this->value;
     }
+
+    public static function drawForBank(array $cards): int
+    {
+        $bankPoints = 0;
+        foreach ($cards as $card) {
+            $bankPoints += $card->getPoints();
+        }
+
+        return $bankPoints;
+    }
+
+    public static function shouldBankStop(array $cards): bool
+    {
+    $bankPoints = self::drawForBank($cards);
+
+    return $bankPoints >= 17 && $bankPoints <= 21 || $bankPoints > 21;
+    }
+
+    
 }

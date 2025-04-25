@@ -8,16 +8,19 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Card\DeckOfCards;
+use App\Card\Card;
 
 class CardController extends AbstractController
 {
+
+
     #[Route('/start/game', name: 'card_game')]
     public function startgame(): Response
     {
-
+        
 
         return $this->render('card/game.html.twig', [
-
+    
         ]);
     }
 
@@ -78,20 +81,34 @@ class CardController extends AbstractController
     public function stopGame(SessionInterface $session): Response
     {
         $session->set('game_stopped', true);
-
         $deck = $session->get('deck');
-        $bankCards = $deck->draw(3);
+        $bankCards = $deck->draw(2);
+        $maxDraws = 10;
+        $draws = 0;
 
-        $bankPoints = 0;
-        foreach ($bankCards as $card) {
-            $bankPoints += $card->getPoints();
+        while (!Card::shouldBankStop($bankCards) && $draws < $maxDraws) {
+            $newCard = $deck->drawCard();
+            if ($newCard !== null) {
+                $bankCards[] = $newCard;
+                $draws++;
+
+                if (Card::drawForBank($bankCards) > 21) {
+                    break;
+                }
+            }
         }
+
+        $bankPoints = Card::drawForBank($bankCards);
+
         $session->set('bank_cards', $bankCards);
         $session->set('bank_points', $bankPoints);
 
         return $this->redirectToRoute('card_play');
     }
 
+
+    
+    
 
     #[Route('/card/deck', name: 'card_deck')]
     public function deck(): Response

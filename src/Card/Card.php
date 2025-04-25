@@ -63,10 +63,29 @@ class Card implements \JsonSerializable
 
     public static function shouldBankStop(array $cards): bool
     {
-    $bankPoints = self::drawForBank($cards);
+        $bankPoints = self::drawForBank($cards);
 
-    return $bankPoints >= 17 && $bankPoints <= 21 || $bankPoints > 21;
+        return $bankPoints >= 17 && $bankPoints <= 21 || $bankPoints > 21;
     }
 
-    
+    public static function determineWinner(int $bankPoints, int $playerPoints): string
+    {
+        if ($playerPoints > 21) {
+            return "Bank is winner! (Player got over 21)";
+        }
+
+        if ($bankPoints > 21) {
+            return "Player wins! (Bank got over 21)";
+        }
+
+        if ($bankPoints >= $playerPoints) {
+            return "Bank is winner!";
+        }
+
+        return "Player is winner!";
+    }
+
+
+
+
 }

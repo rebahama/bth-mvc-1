@@ -38,16 +38,13 @@
         {% endfor %}
     </ul>
     <p><strong>Bank's Total Points:</strong> {{ bank_points }}</p>
-{% else %}
-    <p>The bank hasn't drawn any cards yet.</p>
+    {% else %}
+        <p>The bank hasn't drawn any cards yet.</p>
+    {% endif %}
 
-    
+
+    {% if winner is defined %}
+    <h3>{{ winner }}</h3>
 {% endif %}
 </div>
 {% endblock %}
-
-
-
-
-
-

@@ -27,7 +27,18 @@ class CardController extends AbstractController
     #[Route('/game', name: 'card_play')]
     public function startplay(Request $request, SessionInterface $session): Response
     {
+
         $deck = $session->get('deck', null);
+        $gameStopped = $session->get('game_stopped', false);
+
+        if (!$deck || $gameStopped) {
+            $remaining = count($deck->getCards() ?? []);
+            return $this->render('card/game_play.html.twig', [
+                'cards' => $session->get('drawn_cards', []),
+                'remaining' => $remaining,
+                'bank_cards' => $session->get('bank_cards', []),
+            ]);
+        }
 
         if (!$deck) {
             $deck = new DeckOfCards(true);
@@ -36,20 +47,32 @@ class CardController extends AbstractController
             $session->set('drawn_cards', []);
         }
 
-        // Draw a card
         $drawnCard = $deck->drawCard();
-
         $drawnCards = $session->get('drawn_cards', []);
+
         if ($drawnCard) {
             $drawnCards[] = $drawnCard;
             $session->set('drawn_cards', $drawnCards);
         }
 
         $remaining = count($deck->getCards());
+
         return $this->render('card/game_play.html.twig', [
             'cards' => $drawnCards,
             'remaining' => $remaining,
+            'bank_cards' => $session->get('bank_cards', []),
         ]);
+    }
+
+    #[Route('/game/stop', name: 'card_stop')]
+    public function stopGame(SessionInterface $session): Response
+    {
+
+        $session->set('game_stopped', true);
+        $deck = $session->get('deck');
+        $bankCards = $deck->draw(3);
+        $session->set('bank_cards', $bankCards);
+        return $this->redirectToRoute('card_play');
     }
 
 

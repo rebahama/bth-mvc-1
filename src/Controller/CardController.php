@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Card\DeckOfCards;
@@ -24,14 +25,33 @@ class CardController extends AbstractController
 
 
     #[Route('/game', name: 'card_play')]
-    public function startplay(): Response
+    public function startplay(Request $request, SessionInterface $session): Response
     {
-        
+        $deck = $session->get('deck', null);
 
+        if (!$deck) {
+            $deck = new DeckOfCards(true);
+            $deck->shuffle();
+            $session->set('deck', $deck);
+            $session->set('drawn_cards', []);
+        }
+
+        // Draw a card
+        $drawnCard = $deck->drawCard();
+
+        $drawnCards = $session->get('drawn_cards', []);
+        if ($drawnCard) {
+            $drawnCards[] = $drawnCard;
+            $session->set('drawn_cards', $drawnCards);
+        }
+
+        $remaining = count($deck->getCards());
         return $this->render('card/game_play.html.twig', [
-    
+            'cards' => $drawnCards,
+            'remaining' => $remaining,
         ]);
     }
+
 
 
     #[Route('/card/deck', name: 'card_deck')]

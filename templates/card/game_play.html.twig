@@ -1,16 +1,35 @@
 {% extends "base.html.twig" %}
 
-{% block title %}Card{% endblock %}
+{% block title %}Card Game{% endblock %}
 
 {% block body %}
-<div class="grid-container-dynamic">
-    <h3>Game</h3>
-<h3> The bank </h3>
+    <div class="grid-container-dynamic">
+        <h3>Card Game</h3>
 
+        <!-- Player's Drawn Cards -->
+        <h3>Player's Cards</h3>
+        <ul class="card-grid">
+            {% if cards is not empty %}
+                {% for card in cards %}
+                    {% set colorClass = (card.suit == 'Hearts' or card.suit == 'Diamonds') ? 'red' : 'black' %}
+                    <li class="card game-card {{ colorClass }}">
+                        {{ card.getUnicode() }}
+                    </li>
+                {% endfor %}
+            {% else %}
+                <p>No cards drawn yet.</p>
+            {% endif %}
+        </ul>
 
+        <!-- Remaining cards in deck -->
+        <p><strong>Cards remaining in deck:</strong> {{ remaining }}</p>
 
-<h3> Player </h3>
-
-
-</div>
+        <!-- Button to draw more cards (increases the number each time it's clicked) -->
+        <a href="{{ path('card_play') }}" class="custom-btn">Take Card</a>
+    </div>
 {% endblock %}
+
+
+
+
+

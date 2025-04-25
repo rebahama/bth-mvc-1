@@ -36,13 +36,13 @@ class DeckOfCards
         return $this->cards;
     }
 
-     public function drawCard(): ?Card
-     {
-         if (count($this->cards) > 0) {
-             return array_shift($this->cards);
-         }
- 
-         return null;
+    public function drawCard(): ?Card
+    {
+        if (count($this->cards) > 0) {
+            return array_shift($this->cards);
+        }
+
+        return null;
     }
 
 

@@ -11,15 +11,13 @@ use App\Card\DeckOfCards;
 
 class CardController extends AbstractController
 {
-
-
     #[Route('/start/game', name: 'card_game')]
     public function startgame(): Response
     {
-        
+
 
         return $this->render('card/game.html.twig', [
-    
+
         ]);
     }
 
@@ -27,16 +25,24 @@ class CardController extends AbstractController
     #[Route('/game', name: 'card_play')]
     public function startplay(Request $request, SessionInterface $session): Response
     {
-
         $deck = $session->get('deck', null);
         $gameStopped = $session->get('game_stopped', false);
+        $drawnCards = $session->get('drawn_cards', []);
+        $bankCards = $session->get('bank_cards', []);
+        $totalPoints = 0;
+        foreach ($drawnCards as $card) {
+            $totalPoints += $card->getPoints();
+        }
 
         if (!$deck || $gameStopped) {
-            $remaining = count($deck->getCards() ?? []);
+            $remaining = count($deck?->getCards() ?? []);
             return $this->render('card/game_play.html.twig', [
-                'cards' => $session->get('drawn_cards', []),
+                'cards' => $drawnCards,
+                'points' => $totalPoints,
                 'remaining' => $remaining,
-                'bank_cards' => $session->get('bank_cards', []),
+                'bank_cards' => $bankCards,
+                'bank_points' => $session->get('bank_points', 0),
+                'game_stopped' => $gameStopped,
             ]);
         }
 
@@ -48,33 +54,43 @@ class CardController extends AbstractController
         }
 
         $drawnCard = $deck->drawCard();
-        $drawnCards = $session->get('drawn_cards', []);
 
         if ($drawnCard) {
             $drawnCards[] = $drawnCard;
             $session->set('drawn_cards', $drawnCards);
+            $totalPoints += $drawnCard->getPoints();
         }
 
         $remaining = count($deck->getCards());
 
         return $this->render('card/game_play.html.twig', [
             'cards' => $drawnCards,
+            'points' => $totalPoints,
             'remaining' => $remaining,
-            'bank_cards' => $session->get('bank_cards', []),
+            'bank_cards' => $bankCards,
+            'bank_points' => $session->get('bank_points', 0),
+            'game_stopped' => $gameStopped,
         ]);
     }
+
 
     #[Route('/game/stop', name: 'card_stop')]
     public function stopGame(SessionInterface $session): Response
     {
-
         $session->set('game_stopped', true);
+
         $deck = $session->get('deck');
         $bankCards = $deck->draw(3);
+
+        $bankPoints = 0;
+        foreach ($bankCards as $card) {
+            $bankPoints += $card->getPoints();
+        }
         $session->set('bank_cards', $bankCards);
+        $session->set('bank_points', $bankPoints);
+
         return $this->redirectToRoute('card_play');
     }
-
 
 
     #[Route('/card/deck', name: 'card_deck')]

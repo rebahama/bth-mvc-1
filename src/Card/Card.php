@@ -36,4 +36,18 @@ class Card implements \JsonSerializable
             'value' => $this->value
         ];
     }
+
+    public function getPoints(): int
+    {
+        $faceCards = ['J', 'Q', 'K'];
+        if (in_array($this->value, $faceCards)) {
+            return 10;
+        }
+
+        if ($this->value === 'A') {
+            return 14;
+        }
+
+        return (int) $this->value;
+    }
 }

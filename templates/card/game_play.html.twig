@@ -20,6 +20,7 @@
     {% endif %}
 
     <p><strong>Cards remaining in deck:</strong> {{ remaining }}</p>
+    <p><strong>Total Points:</strong> {{ points }}</p>
 
     <a href="{{ path('card_play') }}" class="btn btn-primary">Take Another Card</a>
 
@@ -27,18 +28,19 @@
     <a href="{{ path('card_stop') }}" class="btn btn-danger">Stop</a>
 
     {% if bank_cards is not empty %}
-        <h3>Bank's Cards</h3>
-        <ul class="card-grid">
-            {% for card in bank_cards %}
-                {% set colorClass = (card.suit == 'Hearts' or card.suit == 'Diamonds') ? 'red' : 'black' %}
-                <li class="card game-card {{ colorClass }}">
-                    {{ card.getUnicode() }}
-                </li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>The bank hasn't drawn any cards yet.</p>
-    {% endif %}
+    <h3>Bank's Cards</h3>
+    <ul class="card-grid">
+        {% for card in bank_cards %}
+            {% set colorClass = (card.suit == 'Hearts' or card.suit == 'Diamonds') ? 'red' : 'black' %}
+            <li class="card game-card {{ colorClass }}">
+                {{ card.getUnicode() }}
+            </li>
+        {% endfor %}
+    </ul>
+    <p><strong>Bank's Total Points:</strong> {{ bank_points }}</p>
+{% else %}
+    <p>The bank hasn't drawn any cards yet.</p>
+{% endif %}
 </div>
 {% endblock %}
 

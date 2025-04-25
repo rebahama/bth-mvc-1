@@ -3,7 +3,10 @@
 {% block title %}Card{% endblock %}
 
 {% block body %}
-    <h3>Game</h3>
+<div class="grid-container-dynamic">
+    <h3>Welcome to 21 </h3>
+<p> Press the play button to start a game </p>
 
-   
+<li class="navbar-item"><a href="{{ path('card_play') }}" class="navbar-link">Game </a></li>
+</div>
 {% endblock %}

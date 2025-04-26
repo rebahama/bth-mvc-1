@@ -39,13 +39,15 @@
     </ul>
     <p><strong>Bank's Total Points:</strong> {{ bank_points }}</p>
     {% else %}
-        <p>The bank hasn't drawn any cards yet.</p>
+        <p>The bank hasn't drawn any cards</p>
     {% endif %}
 
 
     {% if winner is defined %}
     <h3>{{ winner }}</h3>
     <a href="{{ path('card_restart') }}" class="custom-btn-stop">Restart game</a>
+
+    
 {% endif %}
 </div>
 {% endblock %}

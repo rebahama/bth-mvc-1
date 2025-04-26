@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\HttpFoundation\Response;
 use App\Card\DeckOfCards;
+use App\Card\Card;
 use Symfony\Component\Routing\Annotation\Route;
 
 class apiData
@@ -115,6 +116,29 @@ class apiData
             'card' => $drawnCard,
             'remaining' => $remaining
         ]);
+    }
+
+    #[Route("/api/game", name: "api_game", methods: ["GET"])]
+    public function jsonGame(SessionInterface $session): JsonResponse
+    {
+        $deck = $session->get('deck', new DeckOfCards(true));
+        $drawnCards = $session->get('drawn_cards', []);
+        $bankCards = $session->get('bank_cards', []);
+        $bankPoints = $session->get('bank_points', 0);
+        $winner = $session->get('winner', null);
+        $gameStopped = $session->get('game_stopped', false);
+
+        $data = [
+            'drawn_cards' => $drawnCards,
+            'player_points' => Card::calculateTotalPoints($drawnCards),
+            'bank_cards' => $bankCards,
+            'bank_points' => $bankPoints,
+            'game_stopped' => $gameStopped,
+            'winner' => $winner,
+            'remaining' => Card::getRemainingCards($deck)
+        ];
+
+        return new JsonResponse($data);
     }
 
 }

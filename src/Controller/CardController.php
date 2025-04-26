@@ -80,13 +80,15 @@ class CardController extends AbstractController
 
         $playerPoints = Card::calculateTotalPoints($playerCards);
         $bankCards = $deck->draw(2);
+        $bankPoints = Card::calculateTotalPoints($bankCards);
         $maxDraws = 10;
         $draws = 0;
-        while (!Card::BankStop($bankCards) && $draws < $maxDraws) {
+        while ($bankPoints < 17 && $draws < $maxDraws) {
             $newCard = $deck->drawCard();
             if ($newCard !== null) {
                 $bankCards[] = $newCard;
                 $draws++;
+                $bankPoints = Card::calculateTotalPoints($bankCards);
             }
         }
 

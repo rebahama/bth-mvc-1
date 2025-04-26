@@ -88,26 +88,26 @@ class Card implements \JsonSerializable
         return "Player is winner!";
     }
 
-    public static function calculateAce(array $cards, int $totalPoints): int
-    {
-        foreach ($cards as $card) {
-            if ($card->getValue() === "Ace") {
-                if ($totalPoints <= 11) {
-                    $totalPoints += 10;
-                }
-            }
-        }
-        return $totalPoints;
-    }
 
     public static function calculateTotalPoints(array $cards): int
     {
         $totalPoints = 0;
+        $aces = 0;
         foreach ($cards as $card) {
-            $totalPoints += $card->getPoints();
+            if ($card->getValue() === 'A') {
+                $aces++;
+                $totalPoints += 1;
+            } else {
+                $totalPoints += $card->getPoints();
+            }
         }
 
-        return self::calculateAce($cards, $totalPoints);
+        while ($aces > 0 && $totalPoints + 13 <= 21) {
+            $totalPoints += 13;
+            $aces--;
+        }
+
+        return $totalPoints;
     }
 
     public static function getRemainingCards(DeckOfCards $deck): int

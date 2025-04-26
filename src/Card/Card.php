@@ -37,7 +37,7 @@ class Card implements \JsonSerializable
         ];
     }
 
-    public function getPoints(): int
+    public function getPoints(bool $preferHighAce = true): int
     {
         $faceCards = ['J', 'Q', 'K'];
         if (in_array($this->value, $faceCards)) {
@@ -47,7 +47,9 @@ class Card implements \JsonSerializable
         if ($this->value === 'A') {
             return 14;
         }
-
+        if ($this->value === 'A') {
+            return $preferHighAce ? 14 : 1;
+        }
         return (int) $this->value;
     }
 
@@ -85,6 +87,40 @@ class Card implements \JsonSerializable
 
         return "Player is winner!";
     }
+
+    public static function calculateAce(array $cards, int $totalPoints): int
+    {
+        foreach ($cards as $card) {
+            if ($card->getValue() === 'Ace') {
+                if ($totalPoints <= 11) {
+                    $totalPoints += 10;
+                }
+            }
+        }
+        return $totalPoints;
+    }
+
+    public static function calculateTotalPoints(array $cards): int
+    {
+        $totalPoints = 0;
+        foreach ($cards as $card) {
+            $totalPoints += $card->getPoints();
+        }
+
+        return self::calculateAce($cards, $totalPoints);
+    }
+
+
+    public static function getRemainingCards(DeckOfCards $deck): int
+    {
+        return count($deck->getCards());
+    }
+
+    public static function drawCardFromDeck(DeckOfCards $deck): ?Card
+    {
+        return $deck->drawCard();
+    }
+
 
 
 

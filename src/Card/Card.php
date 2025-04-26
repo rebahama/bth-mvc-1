@@ -28,26 +28,25 @@ class Card implements \JsonSerializable
         return "{$this->value} of {$this->suit}";
     }
 
-
     public function jsonSerialize(): mixed
     {
         return [
-            'suit' => $this->suit,
-            'value' => $this->value
+            "suit" => $this->suit,
+            "value" => $this->value,
         ];
     }
 
     public function getPoints(bool $preferHighAce = true): int
     {
-        $faceCards = ['J', 'Q', 'K'];
+        $faceCards = ["J", "Q", "K"];
         if (in_array($this->value, $faceCards)) {
             return 10;
         }
 
-        if ($this->value === 'A') {
+        if ($this->value === "A") {
             return 14;
         }
-        if ($this->value === 'A') {
+        if ($this->value === "A") {
             return $preferHighAce ? 14 : 1;
         }
         return (int) $this->value;
@@ -67,11 +66,13 @@ class Card implements \JsonSerializable
     {
         $bankPoints = self::drawForBank($cards);
 
-        return $bankPoints >= 17 && $bankPoints <= 21 || $bankPoints > 21;
+        return ($bankPoints >= 17 && $bankPoints <= 21) || $bankPoints > 21;
     }
 
-    public static function determineWinner(int $bankPoints, int $playerPoints): string
-    {
+    public static function determineWinner(
+        int $bankPoints,
+        int $playerPoints
+    ): string {
         if ($playerPoints > 21) {
             return "Bank is winner! (Player got over 21)";
         }
@@ -84,14 +85,13 @@ class Card implements \JsonSerializable
             return "Bank is winner!";
         }
 
-
         return "Player is winner!";
     }
 
     public static function calculateAce(array $cards, int $totalPoints): int
     {
         foreach ($cards as $card) {
-            if ($card->getValue() === 'Ace') {
+            if ($card->getValue() === "Ace") {
                 if ($totalPoints <= 11) {
                     $totalPoints += 10;
                 }
@@ -110,7 +110,6 @@ class Card implements \JsonSerializable
         return self::calculateAce($cards, $totalPoints);
     }
 
-
     public static function getRemainingCards(DeckOfCards $deck): int
     {
         return count($deck->getCards());
@@ -120,9 +119,4 @@ class Card implements \JsonSerializable
     {
         return $deck->drawCard();
     }
-
-
-
-
-
 }

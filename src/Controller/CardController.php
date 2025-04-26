@@ -102,7 +102,7 @@ class CardController extends AbstractController
         $bankCards = $deck->draw(2);
         $maxDraws = 10;
         $draws = 0;
-        while (!Card::shouldBankStop($bankCards) && $draws < $maxDraws) {
+        while (!Card::BankStop($bankCards) && $draws < $maxDraws) {
             $newCard = $deck->drawCard();
             if ($newCard !== null) {
                 $bankCards[] = $newCard;
@@ -203,6 +203,19 @@ class CardController extends AbstractController
             'requested' => $number
         ]);
     }
+
+    #[Route('/restart', name: 'card_restart')]
+    public function restartGame(SessionInterface $session): Response
+    {
+        $session->clear();
+        $deck = new DeckOfCards(true);
+        $deck->shuffle();
+        $session->set('deck', $deck);
+
+        return $this->redirectToRoute('card_game');
+    }
+
+
 
     #[Route('/session/delete', name: 'session_delete')]
     public function delete(SessionInterface $session): Response

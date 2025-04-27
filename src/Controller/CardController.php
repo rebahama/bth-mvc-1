@@ -12,13 +12,19 @@ use App\Card\Card;
 
 class CardController extends AbstractController
 {
-    #[Route("/start/game", name: "card_game")]
+    #[Route("/game/doc", name: "card_doc")]
+    public function gamedoc(): Response
+    {
+        return $this->render("card/game_doc.html.twig", []);
+    }
+
+    #[Route("/game", name: "card_game")]
     public function startgame(): Response
     {
         return $this->render("card/game.html.twig", []);
     }
 
-    #[Route("/game", name: "card_play")]
+    #[Route("/game/start", name: "card_play")]
     public function startplay(
         Request $request,
         SessionInterface $session

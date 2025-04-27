@@ -1,0 +1,42 @@
+{% extends "footer-report.html.twig" %}
+
+{% block title %}Draw Card{% endblock %}
+
+{% block body %}
+<div class="grid-container-dynamic">
+<p> Documentation for the 21 game </p>
+<h2> Bild på flödesschema </h2>
+ <img src="{{ asset('img/flow.png') }}" alt="flow image" class="img-style-class">
+ <h2> Psuedokod </h2>
+ <p> Starta spelet </p>
+ <p> Visa spelet och visa kort som är kvar samt spelarens poäng </p>
+ <p> Fråga spelaren om ett till kort skall dras </p>
+ <p> Om spelaren tar ett till kort: </p>
+ <p> Lägg till poäng på spelarens hand och upppdatera poängen </p>
+ <p> Om spelaren stannar </p>
+ <p> Banken börjar ta minst 2 kort och spelar tills 17 uppnås </p>
+ <p> När 17 uppnås stannar banken och då jämförs poängen </p>
+
+ <p> Om spelaren > banken och <= 21 - Spelaren vinner </p>
+
+ <p> Om banken > spelaren och <= 21 - Banken vinner </p>
+
+ <p> Om banken > 21 - Spelaren vinner </p>
+
+ <p> Om spelaren > 21 - Banken vinner </p>
+
+
+ <p> Avsluta spelet </p>
+
+ <h2> Klasser och metoder </h2>
+
+ <p> Klasserna som skall användas kommer att vara Card, Cardgraphic och DeckOfCards </p>
+ <p> Majoriten av alla metoder kommer att ingå i card classen och det är här som metoder: drawForBank som drar korten för banken,
+  BankStop som bestämmer att banken skall stanna vid minst 17 och forsätta upp till 21. Sedan har vi determineWinner som bestämmer vem som 
+  är vinnnaren av spelet, calculateTotalPoints som räknar ut total summan av båda handerna.  getRemainingCards som displayr hur många kort som finns kvar 
+  och drawCardFromDeck som drar korten ifrån själva kortleken.
+  </p>
+
+  <p> Card använder arv ifrån Cardgraphic när korten skall skapas och displaya upp symbolerna för att visa upp riktiga grafiska kortlek. DeckOfCards använder cards för kompostion. </p>
+</div>
+{% endblock %}

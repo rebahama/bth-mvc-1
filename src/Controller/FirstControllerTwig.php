@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class firstControllerTwig extends AbstractController
+class FirstControllerTwig extends AbstractController
 {
     #[Route("/", name: "home")]
     public function home(): Response
@@ -28,14 +28,8 @@ class firstControllerTwig extends AbstractController
     {
         $number = random_int(0, 100);
 
-        // Determine the image URL based on the value of $number
-        if ($number > 50) {
-            $imageUrl = 'background.jpg';
-        } else {
-            $imageUrl = 'symfony.jpg';
-        }
+        $imageUrl = $number > 50 ? 'background.jpg' : 'symfony.jpg';
 
-        // Add the image URL to the $data array
         $data = [
             'number' => $number,
             'imageUrl' => $imageUrl
@@ -51,7 +45,7 @@ class firstControllerTwig extends AbstractController
     }
 
     #[Route("/card", name: "card_main")]
-    public function card_main(): Response
+    public function cardMain(): Response
     {
         return $this->render('card/card_main.html.twig');
     }

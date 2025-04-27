@@ -9,7 +9,7 @@ use App\Card\DeckOfCards;
 use App\Card\Card;
 use Symfony\Component\Routing\Annotation\Route;
 
-class apiData
+class ApiData
 {
     #[Route("/api/quote", name: "api_name")]
     public function jsonNumber(): Response

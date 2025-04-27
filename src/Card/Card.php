@@ -36,7 +36,7 @@ class Card implements \JsonSerializable
         ];
     }
 
-    public function getPoints(bool $preferHighAce = true): int
+    public function getPoints(): int
     {
         $faceCards = ["J", "Q", "K"];
         if (in_array($this->value, $faceCards)) {
@@ -44,11 +44,9 @@ class Card implements \JsonSerializable
         }
 
         if ($this->value === "A") {
-            return 14;
+            return 1; //
         }
-        if ($this->value === "A") {
-            return $preferHighAce ? 14 : 1;
-        }
+
         return (int) $this->value;
     }
 
@@ -62,7 +60,7 @@ class Card implements \JsonSerializable
         return $bankPoints;
     }
 
-    public static function BankStop(array $cards): bool
+    public static function bankStop(array $cards): bool
     {
         $bankPoints = self::drawForBank($cards);
 
@@ -93,13 +91,15 @@ class Card implements \JsonSerializable
     {
         $totalPoints = 0;
         $aces = 0;
+
         foreach ($cards as $card) {
             if ($card->getValue() === 'A') {
                 $aces++;
                 $totalPoints += 1;
-            } else {
-                $totalPoints += $card->getPoints();
+                continue;
             }
+
+            $totalPoints += $card->getPoints();
         }
 
         while ($aces > 0 && $totalPoints + 13 <= 21) {

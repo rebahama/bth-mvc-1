@@ -48,7 +48,7 @@ class DeckOfCards
 
     public function sortByColorAndNumber(): void
     {
-        usort($this->cards, function ($a, $b) {
+        usort($this->cards, function ($firstCard, $secondCard) {
             $colorOrder = [
                 'Clubs' => 'black',
                 'Spades' => 'black',
@@ -59,24 +59,23 @@ class DeckOfCards
             $suitsOrder = ['Clubs', 'Spades', 'Hearts', 'Diamonds'];
             $valuesOrder = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
 
-            $aColor = $colorOrder[$a->getSuit()];
-            $bColor = $colorOrder[$b->getSuit()];
+            $firstColor = $colorOrder[$firstCard->getSuit()];
+            $secondColor = $colorOrder[$secondCard->getSuit()];
 
-            if ($aColor === $bColor) {
-                $aSuitIndex = array_search($a->getSuit(), $suitsOrder);
-                $bSuitIndex = array_search($b->getSuit(), $suitsOrder);
-                $aValueIndex = array_search($a->getValue(), $valuesOrder);
-                $bValueIndex = array_search($b->getValue(), $valuesOrder);
+            if ($firstColor === $secondColor) {
+                $firstSuitIndex = array_search($firstCard->getSuit(), $suitsOrder);
+                $secondSuitIndex = array_search($secondCard->getSuit(), $suitsOrder);
+                $firstValueIndex = array_search($firstCard->getValue(), $valuesOrder);
+                $secondValueIndex = array_search($secondCard->getValue(), $valuesOrder);
 
-                if ($aSuitIndex === $bSuitIndex) {
-                    return $aValueIndex - $bValueIndex;
+                if ($firstSuitIndex === $secondSuitIndex) {
+                    return $firstValueIndex - $secondValueIndex;
                 }
 
-                return $aSuitIndex - $bSuitIndex;
+                return $firstSuitIndex - $secondSuitIndex;
             }
 
-
-            return ($aColor === 'red') ? -1 : 1;
+            return ($firstColor === 'red') ? -1 : 1;
         });
     }
 }

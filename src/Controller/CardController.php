@@ -31,10 +31,12 @@ class CardController extends AbstractController
         $gameStopped = $session->get("game_stopped", false);
         $drawnCards = $session->get("drawn_cards", []);
         $bankCards = $session->get("bank_cards", []);
-        $totalPoints = Card::calculateTotalPoints($drawnCards);
+        $card = new Card('', '');
+        $totalPoints = $card->calculateTotalPoints($drawnCards);
+
 
         if (!$deck || $gameStopped) {
-            $remaining = Card::getRemainingCards($deck);
+            $remaining = $card->getRemainingCards($deck);
             $bankPoints = $session->get("bank_points", 0);
             $winner = $session->get("winner", null);
             return $this->render("card/game_play.html.twig", [
@@ -54,14 +56,13 @@ class CardController extends AbstractController
             $session->set("deck", $deck);
             $session->set("drawn_cards", []);
         }
-
-        $drawnCard = Card::drawCardFromDeck($deck);
+        $drawnCard = $card->drawCardFromDeck($deck);
         if ($drawnCard) {
             $drawnCards[] = $drawnCard;
             $session->set("drawn_cards", $drawnCards);
-            $totalPoints = Card::calculateTotalPoints($drawnCards);
+            $totalPoints = $card->calculateTotalPoints($drawnCards);
         }
-        $remaining = Card::getRemainingCards($deck);
+        $remaining = $card->getRemainingCards($deck);
 
         return $this->render("card/game_play.html.twig", [
             "cards" => $drawnCards,
@@ -81,10 +82,11 @@ class CardController extends AbstractController
 
         $deck = $session->get("deck");
         $playerCards = $session->get("drawn_cards", []);
+        $card = new Card('', '');
 
-        $playerPoints = Card::calculateTotalPoints($playerCards);
+        $playerPoints = $card->calculateTotalPoints($playerCards);
         $bankCards = $deck->draw(2);
-        $bankPoints = Card::calculateTotalPoints($bankCards);
+        $bankPoints = $card->calculateTotalPoints($bankCards);
         $maxDraws = 10;
         $draws = 0;
         while ($bankPoints < 17 && $draws < $maxDraws) {
@@ -92,13 +94,13 @@ class CardController extends AbstractController
             if ($newCard !== null) {
                 $bankCards[] = $newCard;
                 $draws++;
-                $bankPoints = Card::calculateTotalPoints($bankCards);
+                $bankPoints = $card->calculateTotalPoints($bankCards);
             }
         }
 
-        $bankPoints = Card::calculateTotalPoints($bankCards);
+        $bankPoints = $card->calculateTotalPoints($bankCards);
 
-        $winner = Card::determineWinner($bankPoints, $playerPoints);
+        $winner = $card->determineWinner($bankPoints, $playerPoints);
 
         $session->set("bank_cards", $bankCards);
         $session->set("bank_points", $bankPoints);
@@ -200,12 +202,4 @@ class CardController extends AbstractController
         return $this->redirectToRoute("card_deck");
     }
 
-    #[Route("/session", name: "session_debug")]
-    public function sessionDebug(SessionInterface $session): Response
-    {
-        $sessionData = $session->all();
-        return $this->render("card/session_show.html.twig", [
-            "sessionData" => $sessionData,
-        ]);
-    }
 }

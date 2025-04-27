@@ -122,20 +122,23 @@ class ApiData
     public function jsonGame(SessionInterface $session): JsonResponse
     {
         $deck = $session->get('deck', new DeckOfCards(true));
+        $card = new Card('', '');
         $drawnCards = $session->get('drawn_cards', []);
         $bankCards = $session->get('bank_cards', []);
         $bankPoints = $session->get('bank_points', 0);
         $winner = $session->get('winner', null);
         $gameStopped = $session->get('game_stopped', false);
+        $totalPoints = $card->calculateTotalPoints($drawnCards);
+        $reamaining = $card->getRemainingCards($deck);
 
         $data = [
             'drawn_cards' => $drawnCards,
-            'player_points' => Card::calculateTotalPoints($drawnCards),
+            'player_points' => $totalPoints,
             'bank_cards' => $bankCards,
             'bank_points' => $bankPoints,
             'game_stopped' => $gameStopped,
             'winner' => $winner,
-            'remaining' => Card::getRemainingCards($deck)
+            'remaining' => $reamaining
         ];
 
         return new JsonResponse($data);

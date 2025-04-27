@@ -44,7 +44,7 @@ class Card implements \JsonSerializable
         }
 
         if ($this->value === "A") {
-            return 1; //
+            return 1;
         }
 
         return (int) $this->value;
@@ -60,12 +60,6 @@ class Card implements \JsonSerializable
         return $bankPoints;
     }
 
-    public static function bankStop(array $cards): bool
-    {
-        $bankPoints = self::drawForBank($cards);
-
-        return ($bankPoints >= 17 && $bankPoints <= 21) || $bankPoints > 21;
-    }
 
     public function determineWinner(int $bankPoints, int $playerPoints): string
     {

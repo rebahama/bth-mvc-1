@@ -67,10 +67,8 @@ class Card implements \JsonSerializable
         return ($bankPoints >= 17 && $bankPoints <= 21) || $bankPoints > 21;
     }
 
-    public function determineWinner(
-        int $bankPoints,
-        int $playerPoints
-    ): string {
+    public function determineWinner(int $bankPoints, int $playerPoints): string
+    {
         if ($playerPoints > 21) {
             return "Bank is winner! (Player got over 21)";
         }
@@ -86,14 +84,13 @@ class Card implements \JsonSerializable
         return "Player is winner!";
     }
 
-
     public function calculateTotalPoints(array $cards): int
     {
         $totalPoints = 0;
         $aces = 0;
 
         foreach ($cards as $card) {
-            if ($card->getValue() === 'A') {
+            if ($card->getValue() === "A") {
                 $aces++;
                 $totalPoints += 1;
                 continue;
@@ -118,5 +115,26 @@ class Card implements \JsonSerializable
     public function drawCardFromDeck(DeckOfCards $deck): ?Card
     {
         return $deck->drawCard();
+    }
+
+    public function bankDraw(
+        DeckOfCards $deck,
+        array &$bankCards,
+        int $maxDraws = 10,
+        int $minPoints = 17
+    ): array {
+        $draws = 0;
+        $bankPoints = $this->calculateTotalPoints($bankCards);
+
+        while ($bankPoints < $minPoints && $draws < $maxDraws) {
+            $newCard = $deck->drawCard();
+            if ($newCard !== null) {
+                $bankCards[] = $newCard;
+                $draws++;
+                $bankPoints = $this->calculateTotalPoints($bankCards);
+            }
+        }
+
+        return $bankCards;
     }
 }

@@ -21,11 +21,13 @@
         <p>No cards drawn yet.</p>
     {% endif %}
 
+    {% if not game_stopped %}
+        <form method="post">
+            <button type="submit" name="take_card" value="1" class="custom-btn">Take Card</button>
+             <a href="{{ path('card_stop') }}" class="custom-btn-stop">Stop</a>
+        </form>
+    {% endif %}
 
-    <a href="{{ path('card_play') }}" class="custom-btn">Take Another Card</a>
-
-
-    <a href="{{ path('card_stop') }}" class="custom-btn-stop">Stop</a>
 
     {% if bank_cards is not empty %}
     <h3>Bank's Cards</h3>
@@ -42,12 +44,9 @@
         <p>The bank hasn't drawn any cards</p>
     {% endif %}
 
-
     {% if winner is defined %}
     <h3>{{ winner }}</h3>
     <a href="{{ path('card_restart') }}" class="custom-btn-stop">Restart game</a>
-
-    
-{% endif %}
+    {% endif %}
 </div>
 {% endblock %}

@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Card\DeckOfCards;
@@ -14,26 +15,34 @@ class CardController extends AbstractController
     #[Route("/game/doc", name: "card_doc")]
     public function gamedoc(): Response
     {
-        return $this->render("card/game_doc.html.twig", []);
+        return $this->render("card/game_doc.html.twig");
     }
 
     #[Route("/game", name: "card_game")]
-    public function startgame(): Response
+    public function startgame(SessionInterface $session): Response
     {
-        return $this->render("card/game.html.twig", []);
+        if (!$session->has("deck")) {
+            $deck = new DeckOfCards(true);
+            $deck->shuffle();
+            $session->set("deck", $deck);
+            $session->set("drawn_cards", []);
+            $session->set("game_stopped", false);
+        }
+
+        return $this->render("card/game.html.twig");
     }
 
-    #[Route("/game/start", name: "card_play")]
-    public function startplay(
-        SessionInterface $session
+    #[Route("/game/play", name: "card_play")]
+    public function gameplay(
+        SessionInterface $session,
+        Request $request
     ): Response {
         $deck = $session->get("deck", null);
         $gameStopped = $session->get("game_stopped", false);
         $drawnCards = $session->get("drawn_cards", []);
         $bankCards = $session->get("bank_cards", []);
-        $card = new Card('', '');
+        $card = new Card("", "");
         $totalPoints = $card->calculateTotalPoints($drawnCards);
-
 
         if (!$deck || $gameStopped) {
             $remaining = $card->getRemainingCards($deck);
@@ -50,18 +59,15 @@ class CardController extends AbstractController
             ]);
         }
 
-        if (!$deck) {
-            $deck = new DeckOfCards(true);
-            $deck->shuffle();
-            $session->set("deck", $deck);
-            $session->set("drawn_cards", []);
+        if ($request->get("take_card")) {
+            $drawnCard = $card->drawCardFromDeck($deck);
+            if ($drawnCard) {
+                $drawnCards[] = $drawnCard;
+                $session->set("drawn_cards", $drawnCards);
+                $totalPoints = $card->calculateTotalPoints($drawnCards);
+            }
         }
-        $drawnCard = $card->drawCardFromDeck($deck);
-        if ($drawnCard) {
-            $drawnCards[] = $drawnCard;
-            $session->set("drawn_cards", $drawnCards);
-            $totalPoints = $card->calculateTotalPoints($drawnCards);
-        }
+
         $remaining = $card->getRemainingCards($deck);
 
         return $this->render("card/game_play.html.twig", [
@@ -82,21 +88,12 @@ class CardController extends AbstractController
 
         $deck = $session->get("deck");
         $playerCards = $session->get("drawn_cards", []);
-        $card = new Card('', '');
+        $card = new Card("", "");
 
         $playerPoints = $card->calculateTotalPoints($playerCards);
         $bankCards = $deck->draw(2);
         $bankPoints = $card->calculateTotalPoints($bankCards);
-        $maxDraws = 10;
-        $draws = 0;
-        while ($bankPoints < 17 && $draws < $maxDraws) {
-            $newCard = $deck->drawCard();
-            if ($newCard !== null) {
-                $bankCards[] = $newCard;
-                $draws++;
-                $bankPoints = $card->calculateTotalPoints($bankCards);
-            }
-        }
+        $bankCards = $card->bankDraw($deck, $bankCards);
 
         $bankPoints = $card->calculateTotalPoints($bankCards);
 
@@ -201,5 +198,4 @@ class CardController extends AbstractController
 
         return $this->redirectToRoute("card_deck");
     }
-
 }

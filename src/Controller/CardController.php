@@ -41,23 +41,10 @@ class CardController extends AbstractController
         $gameStopped = $session->get("game_stopped", false);
         $drawnCards = $session->get("drawn_cards", []);
         $bankCards = $session->get("bank_cards", []);
+        $winnerBankOrPlayer = $session->get("winner", null);
         $card = new Card("", "");
         $totalPoints = $card->calculateTotalPoints($drawnCards);
 
-        if (!$deck || $gameStopped) {
-            $remaining = $card->getRemainingCards($deck);
-            $bankPoints = $session->get("bank_points", 0);
-            $winner = $session->get("winner", null);
-            return $this->render("card/game_play.html.twig", [
-                "cards" => $drawnCards,
-                "points" => $totalPoints,
-                "remaining" => $remaining,
-                "bank_cards" => $bankCards,
-                "bank_points" => $bankPoints,
-                "game_stopped" => $gameStopped,
-                "winner" => $winner,
-            ]);
-        }
 
         if ($request->get("take_card")) {
             $drawnCard = $card->drawCardFromDeck($deck);
@@ -77,7 +64,8 @@ class CardController extends AbstractController
             "bank_cards" => $bankCards,
             "bank_points" => $session->get("bank_points", 0),
             "game_stopped" => $gameStopped,
-            "winner" => $session->get("winner", null),
+            "winner" => $winnerBankOrPlayer
+
         ]);
     }
 

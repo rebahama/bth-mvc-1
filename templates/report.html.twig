@@ -4,7 +4,13 @@
 
 {% block body %}
 <div class="grid-container-report">
-<h3> kmom01 </h3>
+
+<ul class="kmom-area"> 
+<li> <a href="#kmom01">Kmom01</a> </li>
+<li> <a href="#kmom02">Kmom02</a> </li>
+<li> <a href="#kmom03">Kmom03</a> </li>
+</ul>
+<h3 id="kmom01"> kmom01 </h3>
 <p><b>Berätta kort om dina förkunskaper och tidigare erfarenheter kring objektorientering. </b></p>
 <p>Jag har tidigare jobbat lite med C# på när det gäller att programmera med fokus på objektorientering, vi fick lära oss att skapa instanser och 
 sedan koppla olika attribut till en person och sedan så fick vi återanvända koden flera gånger för att skapa olika personer med olika attribut. Vi använde
@@ -41,7 +47,7 @@ massa olika tekniker som samverkar med varandra därför är detta värdefullt f
 
 <p> Jag har lärt mig att det är också jätteviktigt att kunna veta hur man uppgraderar sin version av programm som man använder för att hänga med teknologin som utvecklas nästan hela tiden. </p>
 
-<h3> kmom02 </h3>
+<h3 id="kmom02"> kmom02 </h3>
 <p> <b>Förklara kort de objektorienterade konstruktionerna arv, komposition, interface och trait och hur de används i PHP. </b> </p>
 
 <p>Arv (Inheritance):
@@ -73,6 +79,57 @@ anropar olika funktioner i src mappen.
 
 <p> Att det är jättevikitgt att ha rätt struktur ifrån början med alla klasser och att logiken är på rätt sätt, det är inte roligt mitt i projektet att behöva
 ändra om i grundstrukuren av en klass och kod för då går inte logiken åt rätt håll. </p>
+
+
+<h3 id="kmom03"> kmom03 </h3>
+
+<p> <b> Berätta hur det kändes att modellera ett kortspel med flödesdiagram och psuedokod.
+Var det något som du tror stödjer dig i din problemlösning och tankearbete för att strukturera koden kring en applikation?
+ </b> </p>
+
+ <p> Jag tyckte att det var lite svårt att börja med flödesdiagrammet för att jag inte riktigt visste vad som 
+ skulle hända ifrån första början, kanske kommer det att bli lättare med tiden när man har gjort det ett par gånger 
+ men jag lyckades sen att få till en någorlunda bra diagram som fick mig att börja på rätt spår. Psuedokod däremot var något som kändes 
+ mycket bättre, när jag skrev psuedokoden så började allting falla på plats och jag visste nästan direkt hur jag skulle strukturera och 
+ vart jag skall börja någonstans. </p>
+
+<p> Sammanfattningen för mig var att psuedokoden var mycket mer till hjälp än flödesdiagrammet i det här sammanhanget och som 
+hjälpte mig enormt mycket att komma in i en tankebane och börja visualisera olika idér på hur man kan börja och avsluta applikationen. </p>
+
+
+<p> <b> Berätta om din implementation från uppgiften. Hur löste du uppgiften, är du nöjd/missnöjd,
+vilken förbättringspotential ser du i din koden, dina klasser och applikationen som helhet? </p> </b>
+
+<p> Jag tycker att jag har löst uppgiften relativt bra, jag har använd mig av objektorienterad metod. Jag har skapat olika klasser och 
+vissa klasser använder sig av kompositon och ärver ifrån varandra samt olika klassmetoder. I controller routerna så instanserar jag klasserna och sedan 
+använder jag mig av klassmetoder för att utföra beräkningar och olika saker som jag vill uppnå. </p>
+
+<p> En sak som jag är missnöjd med är att jag borde ha skapat en egen gameController fil och separerat koden för själva spelet och dess regler 
+istället för att fortsätta använda mig av cardController. Jag hade också kunnat skapa en ny klass för själva spel reglerna, nu skapade jag istället klassmetoder 
+som användes i nuvarande klasser.   </p>
+
+<p> Jag är nöjd med att jag använder mig av objektorienterad metod i controller, jag tycker inte att jag har så mycket kod och det var det som var 
+målet. Man kan se hur jag instanserar klassen och sedan använder mig av olika klassmetoder för att utföra olika beräkningar. Även applikationen fungerar 
+som den skall. Men till nästa gång har jag lärt mig att dela upp koden och klasserna var för sig, detta underlättar när man skall debugga samt ser 
+mycket snyggare ut. </p>
+
+<p> <b>Vilken är din känsla för att koda i ett ramverk som Symfony, så här långt in i kursen? </b> </p>
+
+<p> Det var väldigt svårt i början och det kändes som att man behöver få många bitar att falla på plats till man kan starta upp
+servern och se en text som man har skrivit. Men nu när man har gjort det ett par gånger så börjar det kännas bra än så länge iallafall, 
+det är viktigt också att man förstår grunderna i programmering för att man skall kunna använda sig av Symfony så att man kan uppskatta
+vad som sker bakom kulisserna när man använder sig av ramverket.</p>
+
+
+
+<p> <b> Vilken är din TIL för detta kmom? </b> </p>
+
+<p> Jag har lärt mig att nästa gång separera koden mer och dela upp allting, exempel klasser och controller skall struktureras på ett bättre sätt 
+ så att koden ser snyggare och är lättare att debugga.
+ </p>
+
 </div>
+
+
 </div>
 {% endblock %}

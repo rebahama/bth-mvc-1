@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1746588131">
-  <project timestamp="1746588131">
+<coverage generated="1746662113">
+  <project timestamp="1746662113">
     <file name="/home/rebas/dbwebb-kurser/mvc/me/report/src/Card/Card.php">
       <class name="App\Card\Card" namespace="global">
         <metrics complexity="25" methods="12" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="49" coveredstatements="39" elements="61" coveredelements="47"/>
       </class>
-      <line num="10" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="11"/>
-      <line num="12" type="stmt" count="11"/>
-      <line num="13" type="stmt" count="11"/>
+      <line num="10" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="12"/>
+      <line num="12" type="stmt" count="12"/>
+      <line num="13" type="stmt" count="12"/>
       <line num="16" type="method" name="getSuit" visibility="public" complexity="1" crap="1" count="2"/>
       <line num="18" type="stmt" count="2"/>
       <line num="21" type="method" name="getValue" visibility="public" complexity="1" crap="1" count="4"/>
@@ -22,7 +22,7 @@
       <line num="39" type="method" name="getPoints" visibility="public" complexity="3" crap="3" count="3"/>
       <line num="41" type="stmt" count="3"/>
       <line num="42" type="stmt" count="3"/>
-      <line num="43" type="stmt" count="1"/>
+      <line num="43" type="stmt" count="2"/>
       <line num="46" type="stmt" count="3"/>
       <line num="47" type="stmt" count="1"/>
       <line num="50" type="stmt" count="3"/>
@@ -70,17 +70,17 @@
     </file>
     <file name="/home/rebas/dbwebb-kurser/mvc/me/report/src/Card/CardGraphic.php">
       <class name="App\Card\CardGraphic" namespace="global">
-        <metrics complexity="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" elements="8" coveredelements="0"/>
+        <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="8" coveredelements="8"/>
       </class>
-      <line num="7" type="method" name="getUnicode" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="9" type="stmt" count="0"/>
-      <line num="10" type="stmt" count="0"/>
-      <line num="11" type="stmt" count="0"/>
-      <line num="12" type="stmt" count="0"/>
-      <line num="13" type="stmt" count="0"/>
-      <line num="14" type="stmt" count="0"/>
-      <line num="16" type="stmt" count="0"/>
-      <metrics loc="19" ncloc="19" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" elements="8" coveredelements="0"/>
+      <line num="7" type="method" name="getUnicode" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="9" type="stmt" count="1"/>
+      <line num="10" type="stmt" count="1"/>
+      <line num="11" type="stmt" count="1"/>
+      <line num="12" type="stmt" count="1"/>
+      <line num="13" type="stmt" count="1"/>
+      <line num="14" type="stmt" count="1"/>
+      <line num="16" type="stmt" count="1"/>
+      <metrics loc="19" ncloc="19" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="8" coveredelements="8"/>
     </file>
     <file name="/home/rebas/dbwebb-kurser/mvc/me/report/src/Card/DeckOfCards.php">
       <class name="App\Card\DeckOfCards" namespace="global">
@@ -347,6 +347,6 @@
       </class>
       <metrics loc="12" ncloc="12" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
     </file>
-    <metrics files="7" loc="642" ncloc="641" classes="6" methods="41" coveredmethods="13" conditionals="0" coveredconditionals="0" statements="263" coveredstatements="72" elements="304" coveredelements="85"/>
+    <metrics files="7" loc="642" ncloc="641" classes="6" methods="41" coveredmethods="14" conditionals="0" coveredconditionals="0" statements="263" coveredstatements="79" elements="304" coveredelements="93"/>
   </project>
 </coverage>

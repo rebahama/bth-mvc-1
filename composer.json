@@ -78,10 +78,12 @@
         "phpmd": "tools/phpmd/vendor/bin/phpmd . text tools/phpmd/phpmd.xml || true",
         "phpstan": "tools/phpstan/vendor/bin/phpstan analyse -c tools/phpstan/phpstan.neon || true",
         "csfix": "tools/php-cs-fixer/vendor/bin/php-cs-fixer fix src",
+        "phpdoc": "tools/phpdoc/phpdoc --config=tools/phpdoc/phpdoc.xml",
         "lint": [
             "@phpmd",
             "@phpstan",
-            "@csfix"
+            "@csfix",
+            "@phpdoc"
         ],
         "auto-scripts": {
             "cache:clear": "symfony-cmd",

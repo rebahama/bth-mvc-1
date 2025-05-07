@@ -78,4 +78,5 @@ class DeckOfCards
             return ($firstColor === 'red') ? -1 : 1;
         });
     }
+
 }

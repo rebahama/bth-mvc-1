@@ -107,5 +107,6 @@ class CardTest extends TestCase
             $this->assertInstanceOf(Card::class, $card);
         }
     }
+
    
 }

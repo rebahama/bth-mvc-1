@@ -2,6 +2,11 @@
 
 namespace App\Card;
 
+/**
+ * Class for the Card
+ * Diffrent methods when playing 21, all the methods have description of their functionality.
+ *
+ */
 class Card implements \JsonSerializable
 {
     protected string $suit;
@@ -12,12 +17,19 @@ class Card implements \JsonSerializable
         $this->suit = $suit;
         $this->value = $value;
     }
-
+    /**
+     * Get the suit of the card.
+     * The suit of the card (e.g., "Hearts", "Spades", "Clubs", "Diamonds").
+     */
     public function getSuit(): string
     {
         return $this->suit;
     }
-
+    /**
+     * Get the value of card
+     *
+     * @return string The suit of the card (e.g. "1", "3", "5").
+     */
     public function getValue(): string
     {
         return $this->value;
@@ -27,7 +39,10 @@ class Card implements \JsonSerializable
     {
         return "{$this->value} of {$this->suit}";
     }
-
+    /**
+     * Get the array value of the serialized suit and value
+     * Will display array and show the suit and value in the api page
+     */
     public function jsonSerialize(): mixed
     {
         return [
@@ -35,7 +50,6 @@ class Card implements \JsonSerializable
             "value" => $this->value,
         ];
     }
-
     public function getPoints(): int
     {
         $faceCards = ["J", "Q", "K"];
@@ -60,7 +74,11 @@ class Card implements \JsonSerializable
         return $bankPoints;
     }
 
-
+    /**
+     * Determines who the winner is based on the points
+     * If the player scores higher then bank then a message will be outputed
+     * If bank scores higher then player then another message will be shown.
+     */
     public function determineWinner(int $bankPoints, int $playerPoints): string
     {
         if ($playerPoints > 21) {
@@ -77,7 +95,10 @@ class Card implements \JsonSerializable
 
         return "Player is winner!";
     }
-
+    /**
+     * Calculates ace to be 14 or 1
+     * Depending on the score of the player or bank ace will be either 1 or 14,
+     */
     public function calculateTotalPoints(array $cards): int
     {
         $totalPoints = 0;
@@ -100,17 +121,26 @@ class Card implements \JsonSerializable
 
         return $totalPoints;
     }
-
+    /**
+     * Shows the remaining cards number
+     * Will display the number of reamaning cards left from the deck.
+     */
     public function getRemainingCards(DeckOfCards $deck): int
     {
         return count($deck->getCards());
     }
-
+    /**
+     * Draws the card from the deck
+     *
+     */
     public function drawCardFromDeck(DeckOfCards $deck): ?Card
     {
         return $deck->drawCard();
     }
-
+    /**
+     * Draws card for the bank untill 17
+     * Bank will draw card untill atleast the number 17 is meet.
+     */
     public function bankDraw(
         DeckOfCards $deck,
         array &$bankCards,

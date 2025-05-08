@@ -3,7 +3,7 @@ Search.appendIndex(
                 {
             "fqsen": "\\App\\Card\\Card",
             "name": "Card",
-            "summary": "",
+            "summary": "Class\u0020for\u0020the\u0020Card\nDiffrent\u0020methods\u0020when\u0020playing\u002021,\u0020all\u0020the\u0020methods\u0020have\u0020description\u0020of\u0020their\u0020functionality.",
             "url": "classes/App-Card-Card.html"
         },                {
             "fqsen": "\\App\\Card\\Card\u003A\u003A__construct\u0028\u0029",
@@ -13,12 +13,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Card\\Card\u003A\u003AgetSuit\u0028\u0029",
             "name": "getSuit",
-            "summary": "",
+            "summary": "Get\u0020the\u0020suit\u0020of\u0020the\u0020card.",
             "url": "classes/App-Card-Card.html#method_getSuit"
         },                {
             "fqsen": "\\App\\Card\\Card\u003A\u003AgetValue\u0028\u0029",
             "name": "getValue",
-            "summary": "",
+            "summary": "Get\u0020the\u0020value\u0020of\u0020card",
             "url": "classes/App-Card-Card.html#method_getValue"
         },                {
             "fqsen": "\\App\\Card\\Card\u003A\u003A__toString\u0028\u0029",
@@ -28,7 +28,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Card\\Card\u003A\u003AjsonSerialize\u0028\u0029",
             "name": "jsonSerialize",
-            "summary": "",
+            "summary": "Get\u0020the\u0020array\u0020value\u0020of\u0020the\u0020serialized\u0020suit\u0020and\u0020value\nWill\u0020display\u0020array\u0020and\u0020show\u0020the\u0020suit\u0020and\u0020value\u0020in\u0020the\u0020api\u0020page",
             "url": "classes/App-Card-Card.html#method_jsonSerialize"
         },                {
             "fqsen": "\\App\\Card\\Card\u003A\u003AgetPoints\u0028\u0029",
@@ -43,27 +43,27 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Card\\Card\u003A\u003AdetermineWinner\u0028\u0029",
             "name": "determineWinner",
-            "summary": "",
+            "summary": "Determines\u0020who\u0020the\u0020winner\u0020is\u0020based\u0020on\u0020the\u0020points\nIf\u0020the\u0020player\u0020scores\u0020higher\u0020then\u0020bank\u0020then\u0020a\u0020message\u0020will\u0020be\u0020outputed\nIf\u0020bank\u0020scores\u0020higher\u0020then\u0020player\u0020then\u0020another\u0020message\u0020will\u0020be\u0020shown.",
             "url": "classes/App-Card-Card.html#method_determineWinner"
         },                {
             "fqsen": "\\App\\Card\\Card\u003A\u003AcalculateTotalPoints\u0028\u0029",
             "name": "calculateTotalPoints",
-            "summary": "",
+            "summary": "Calculates\u0020ace\u0020to\u0020be\u002014\u0020or\u00201\nDepending\u0020on\u0020the\u0020score\u0020of\u0020the\u0020player\u0020or\u0020bank\u0020ace\u0020will\u0020be\u0020either\u00201\u0020or\u002014,",
             "url": "classes/App-Card-Card.html#method_calculateTotalPoints"
         },                {
             "fqsen": "\\App\\Card\\Card\u003A\u003AgetRemainingCards\u0028\u0029",
             "name": "getRemainingCards",
-            "summary": "",
+            "summary": "Shows\u0020the\u0020remaining\u0020cards\u0020number\nWill\u0020display\u0020the\u0020number\u0020of\u0020reamaning\u0020cards\u0020left\u0020from\u0020the\u0020deck.",
             "url": "classes/App-Card-Card.html#method_getRemainingCards"
         },                {
             "fqsen": "\\App\\Card\\Card\u003A\u003AdrawCardFromDeck\u0028\u0029",
             "name": "drawCardFromDeck",
-            "summary": "",
+            "summary": "Draws\u0020the\u0020card\u0020from\u0020the\u0020deck",
             "url": "classes/App-Card-Card.html#method_drawCardFromDeck"
         },                {
             "fqsen": "\\App\\Card\\Card\u003A\u003AbankDraw\u0028\u0029",
             "name": "bankDraw",
-            "summary": "",
+            "summary": "Draws\u0020card\u0020for\u0020the\u0020bank\u0020untill\u002017\nBank\u0020will\u0020draw\u0020card\u0020untill\u0020atleast\u0020the\u0020number\u002017\u0020is\u0020meet.",
             "url": "classes/App-Card-Card.html#method_bankDraw"
         },                {
             "fqsen": "\\App\\Card\\Card\u003A\u003A\u0024suit",
@@ -78,7 +78,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Card\\CardGraphic",
             "name": "CardGraphic",
-            "summary": "",
+            "summary": "Class\u0020for\u0020the\u0020Card\nDiffrent\u0020methods\u0020when\u0020playing\u002021,\u0020all\u0020the\u0020methods\u0020have\u0020description\u0020of\u0020their\u0020functionality.",
             "url": "classes/App-Card-CardGraphic.html"
         },                {
             "fqsen": "\\App\\Card\\CardGraphic\u003A\u003AgetUnicode\u0028\u0029",

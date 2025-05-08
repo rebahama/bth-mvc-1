@@ -49,7 +49,9 @@ class CardTest extends TestCase
         $this->assertEquals("Bank is winner!", $winnerMessage);
 
     }
-
+    /**
+     * Testing the bank points matches the expected outcome when plyaer wins
+     */
     public function testWinnerPlayer(): void{
 
         $card = new Card("", "");

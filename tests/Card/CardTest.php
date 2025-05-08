@@ -49,6 +49,17 @@ class CardTest extends TestCase
         $this->assertEquals("Bank is winner!", $winnerMessage);
 
     }
+
+    public function testWinnerPlayer(): void{
+
+        $card = new Card("", "");
+        $bankPoints = 17;
+        $playerPoints = 20;
+
+        $winnerMessage = $card->determineWinner($bankPoints, $playerPoints);
+        $this->assertEquals("Player is winner!", $winnerMessage);
+
+    }
     /**
      * Test that ace outputs 1 when points goes over 21, if not ace is 14
      */
@@ -106,6 +117,32 @@ class CardTest extends TestCase
         foreach ($resultCards as $card) {
             $this->assertInstanceOf(Card::class, $card);
         }
+    }
+    /**
+     * Testing the return response of the json seralizer api
+     * 
+     */
+    public function testCardJson(): void {
+
+        $card = new Card('Hearts', '10');
+        $expected = [
+            "suit" => "Hearts",
+            "value" => "10"
+        ];
+
+        $this->assertEquals($expected, $card->jsonSerialize());
+        $this->assertEquals(json_encode($expected), json_encode($card));
+
+
+    }
+    /**
+     * Testing the string response of the returend response.
+     * 
+     */
+    public function testToString(): void
+    {
+        $card = new Card('Spades', 'A');
+        $this->assertEquals('A of Spades', (string)$card);
     }
 
    

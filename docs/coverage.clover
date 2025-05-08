@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1746662113">
-  <project timestamp="1746662113">
+<coverage generated="1746662835">
+  <project timestamp="1746662835">
     <file name="/home/rebas/dbwebb-kurser/mvc/me/report/src/Card/Card.php">
       <class name="App\Card\Card" namespace="global">
-        <metrics complexity="25" methods="12" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="49" coveredstatements="39" elements="61" coveredelements="47"/>
+        <metrics complexity="25" methods="12" coveredmethods="10" conditionals="0" coveredconditionals="0" statements="49" coveredstatements="45" elements="61" coveredelements="55"/>
       </class>
-      <line num="10" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="12"/>
-      <line num="12" type="stmt" count="12"/>
-      <line num="13" type="stmt" count="12"/>
+      <line num="10" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="15"/>
+      <line num="12" type="stmt" count="15"/>
+      <line num="13" type="stmt" count="15"/>
       <line num="16" type="method" name="getSuit" visibility="public" complexity="1" crap="1" count="2"/>
       <line num="18" type="stmt" count="2"/>
       <line num="21" type="method" name="getValue" visibility="public" complexity="1" crap="1" count="4"/>
       <line num="23" type="stmt" count="4"/>
-      <line num="26" type="method" name="__toString" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="28" type="stmt" count="0"/>
-      <line num="31" type="method" name="jsonSerialize" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="33" type="stmt" count="0"/>
-      <line num="34" type="stmt" count="0"/>
-      <line num="35" type="stmt" count="0"/>
-      <line num="36" type="stmt" count="0"/>
+      <line num="26" type="method" name="__toString" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="28" type="stmt" count="1"/>
+      <line num="31" type="method" name="jsonSerialize" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="33" type="stmt" count="1"/>
+      <line num="34" type="stmt" count="1"/>
+      <line num="35" type="stmt" count="1"/>
+      <line num="36" type="stmt" count="1"/>
       <line num="39" type="method" name="getPoints" visibility="public" complexity="3" crap="3" count="3"/>
       <line num="41" type="stmt" count="3"/>
       <line num="42" type="stmt" count="3"/>
-      <line num="43" type="stmt" count="2"/>
+      <line num="43" type="stmt" count="1"/>
       <line num="46" type="stmt" count="3"/>
       <line num="47" type="stmt" count="1"/>
       <line num="50" type="stmt" count="3"/>
@@ -31,22 +31,22 @@
       <line num="56" type="stmt" count="1"/>
       <line num="57" type="stmt" count="1"/>
       <line num="60" type="stmt" count="1"/>
-      <line num="64" type="method" name="determineWinner" visibility="public" complexity="4" crap="5.26" count="1"/>
-      <line num="66" type="stmt" count="1"/>
+      <line num="64" type="method" name="determineWinner" visibility="public" complexity="4" crap="4.37" count="2"/>
+      <line num="66" type="stmt" count="2"/>
       <line num="67" type="stmt" count="0"/>
-      <line num="70" type="stmt" count="1"/>
+      <line num="70" type="stmt" count="2"/>
       <line num="71" type="stmt" count="0"/>
-      <line num="74" type="stmt" count="1"/>
+      <line num="74" type="stmt" count="2"/>
       <line num="75" type="stmt" count="1"/>
-      <line num="78" type="stmt" count="0"/>
+      <line num="78" type="stmt" count="1"/>
       <line num="81" type="method" name="calculateTotalPoints" visibility="public" complexity="5" crap="5.12" count="2"/>
       <line num="83" type="stmt" count="2"/>
       <line num="84" type="stmt" count="2"/>
       <line num="86" type="stmt" count="2"/>
       <line num="87" type="stmt" count="2"/>
-      <line num="88" type="stmt" count="1"/>
-      <line num="89" type="stmt" count="1"/>
-      <line num="90" type="stmt" count="1"/>
+      <line num="88" type="stmt" count="2"/>
+      <line num="89" type="stmt" count="2"/>
+      <line num="90" type="stmt" count="2"/>
       <line num="93" type="stmt" count="2"/>
       <line num="96" type="stmt" count="2"/>
       <line num="97" type="stmt" count="0"/>
@@ -66,7 +66,7 @@
       <line num="127" type="stmt" count="1"/>
       <line num="128" type="stmt" count="1"/>
       <line num="132" type="stmt" count="1"/>
-      <metrics loc="135" ncloc="135" classes="1" methods="12" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="49" coveredstatements="39" elements="61" coveredelements="47"/>
+      <metrics loc="135" ncloc="135" classes="1" methods="12" coveredmethods="10" conditionals="0" coveredconditionals="0" statements="49" coveredstatements="45" elements="61" coveredelements="55"/>
     </file>
     <file name="/home/rebas/dbwebb-kurser/mvc/me/report/src/Card/CardGraphic.php">
       <class name="App\Card\CardGraphic" namespace="global">
@@ -347,6 +347,6 @@
       </class>
       <metrics loc="12" ncloc="12" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
     </file>
-    <metrics files="7" loc="642" ncloc="641" classes="6" methods="41" coveredmethods="14" conditionals="0" coveredconditionals="0" statements="263" coveredstatements="79" elements="304" coveredelements="93"/>
+    <metrics files="7" loc="642" ncloc="641" classes="6" methods="41" coveredmethods="16" conditionals="0" coveredconditionals="0" statements="263" coveredstatements="85" elements="304" coveredelements="101"/>
   </project>
 </coverage>

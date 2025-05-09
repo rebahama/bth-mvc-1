@@ -56,4 +56,20 @@ final class LibraryController extends AbstractController
 
         return $this->render('library/view.html.twig', $data);
     }
+
+    #[Route('/library/view/{id}', name: 'library_view_one')]
+    public function viewOneLibrary(
+        int $id,
+        LibraryRepository $libraryRepository
+    ): Response {
+        $library = $libraryRepository->findLibrary($id);
+
+        if (!$library) {
+            throw $this->createNotFoundException("Book with ID $id not found.");
+        }
+
+        return $this->render('library/detail-view.html.twig', [
+            'library' => $library
+        ]);
+    }
 }

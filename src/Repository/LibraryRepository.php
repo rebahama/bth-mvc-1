@@ -27,13 +27,12 @@ class LibraryRepository extends ServiceEntityRepository
 
         $sql = '
             SELECT * FROM library
-            WHERE id >= :id
-            ORDER BY id ASC
+            WHERE id = :id
         ';
 
         $resultSet = $conn->executeQuery($sql, ['id' => $id]);
 
-        return $resultSet->fetchAllAssociative();
+        return $resultSet->fetchAssociative(); // fetch single row as array
     }
 
     //    /**

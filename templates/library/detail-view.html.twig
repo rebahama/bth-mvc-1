@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Book Details{% endblock %}
+
+{% block body %}
+    <h1>Book Details</h1>
+<div class="grid-container-dynamic">
+    <div style="border: 1px solid #ccc; padding: 20px; max-width: 400px;">
+        <h2>{{ library.title }}</h2>
+        <p><strong>Author:</strong> {{ library.author }}</p>
+        <p><strong>ISBN:</strong> {{ library.isbn }}</p>
+
+        {% if library.image_path %}
+            <img src="{{ asset(library.image_path) }}" alt="Book image" style="width: 100%;">
+        {% else %}
+            <p>No image available.</p>
+        {% endif %}
+    </div>
+        <a href="{{ path('library_view_all') }}">Back to all books</a>
+    </div>
+{% endblock %}

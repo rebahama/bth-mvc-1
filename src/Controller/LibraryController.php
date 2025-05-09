@@ -21,20 +21,28 @@ final class LibraryController extends AbstractController
     }
 
     #[Route('/library/create', name: 'library_create')]
-    public function createLibrary(ManagerRegistry $doctrine): Response
+    public function createLibrary(Request $request, ManagerRegistry $doctrine): Response
     {
-        $entityManager = $doctrine->getManager();
-
-        $library = new Library();
-        $library->setTitle('Sample Book ' . rand(1, 100));
-        $library->setIsbn('978-3-' . rand(1000000, 9999999));
-        $library->setAuthor('Author ' . rand(1, 5));
-        $library->setImagePath('img/symfony.jpg'); // Set image path here
-
-        $entityManager->persist($library);
-        $entityManager->flush();
-
-        return new Response('Saved new library entry with id ' . $library->getId());
+        if ($request->isMethod('POST')) {
+            $title = $request->request->get('title');
+            $isbn = $request->request->get('isbn');
+            $author = $request->request->get('author');
+            $imagePath = $request->request->get('image_path');
+    
+            $library = new Library();
+            $library->setTitle($title);
+            $library->setIsbn($isbn);
+            $library->setAuthor($author);
+            $library->setImagePath($imagePath ?: 'img/default.jpg');
+    
+            $entityManager = $doctrine->getManager();
+            $entityManager->persist($library);
+            $entityManager->flush();
+    
+            return $this->redirectToRoute('library_view_all');
+        }
+    
+        return $this->render('library/forms/create-book-form.html.twig');
     }
 
     #[Route('/library/show', name: 'library_show_all')]

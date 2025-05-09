@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Attribute\Route;
 use App\Entity\Library;
 use Doctrine\Persistence\ManagerRegistry;
@@ -28,7 +29,7 @@ final class LibraryController extends AbstractController
         $library->setTitle('Sample Book ' . rand(1, 100));
         $library->setIsbn('978-3-' . rand(1000000, 9999999));
         $library->setAuthor('Author ' . rand(1, 5));
-        $library->setImagePath('uploads/sample.jpg');
+        $library->setImagePath('img/symfony.jpg'); // Set image path here
 
         $entityManager->persist($library);
         $entityManager->flush();
@@ -71,5 +72,30 @@ final class LibraryController extends AbstractController
         return $this->render('library/detail-view.html.twig', [
             'library' => $library
         ]);
+    }
+
+    #[Route('/library/delete/{id}', name: 'library_delete_by_id', methods: ['POST'])]
+    public function deleteLibraryById(
+        Request $request,
+        LibraryRepository $libraryRepository,
+        ManagerRegistry $doctrine,
+        int $id
+    ): Response {
+        $entityManager = $doctrine->getManager();
+        $library = $entityManager->getRepository(Library::class)->find($id);
+    
+        if (!$library) {
+            throw $this->createNotFoundException('No library found for id '.$id);
+        }
+    
+        $submittedToken = $request->request->get('_token');
+        if (!$this->isCsrfTokenValid('delete' . $library->getId(), $submittedToken)) {
+            throw $this->createAccessDeniedException('Invalid CSRF token.');
+        }
+    
+        $entityManager->remove($library);
+        $entityManager->flush();
+    
+        return $this->redirectToRoute('library_view_all');
     }
 }

@@ -32,8 +32,9 @@ class LibraryRepository extends ServiceEntityRepository
 
         $resultSet = $conn->executeQuery($sql, ['id' => $id]);
 
-        return $resultSet->fetchAssociative(); // fetch single row as array
+        return $resultSet->fetchAssociative();
     }
+
 
     //    /**
     //     * @return Library[] Returns an array of Library objects

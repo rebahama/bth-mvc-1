@@ -1,0 +1,6 @@
+   <form action="{{ path('library_delete_by_id', { id: library.id }) }}" method="post" style="display:inline;">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ library.id) }}">
+    <button class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this book?');">
+        Delete
+    </button>
+</form>

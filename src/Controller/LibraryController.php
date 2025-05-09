@@ -43,4 +43,17 @@ final class LibraryController extends AbstractController
 
         return $this->json($libraries);
     }
+
+    #[Route('/library/view', name: 'library_view_all')]
+    public function viewAllLibrary(
+        LibraryRepository $libraryRepository
+    ): Response {
+        $libraries = $libraryRepository->findAll();
+
+        $data = [
+            'libraries' => $libraries
+        ];
+
+        return $this->render('library/view.html.twig', $data);
+    }
 }

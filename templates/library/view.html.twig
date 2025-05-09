@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Library Collection{% endblock %}
+
+{% block body %}
+    <h1>Library Collection</h1>
+<div class="grid-container-dynamic">
+    <div style="display: flex; flex-wrap: wrap; gap: 20px;">
+        {% for book in libraries %}
+            <div style="border: 1px solid #ccc; padding: 10px; width: 200px;">
+                <h3>{{ book.title }}</h3>
+                <p><strong>Author:</strong> {{ book.author }}</p>
+                <p><strong>ISBN:</strong> {{ book.isbn }}</p>
+                {% if book.imagePath %}
+                    <img src="{{ asset(book.imagePath) }}" alt="Book image" style="width: 100%;">
+                {% else %}
+                    <p>No image available</p>
+                {% endif %}
+            </div>
+        {% else %}
+            <p>No books found in the library.</p>
+        {% endfor %}
+    </div>
+    </div>
+{% endblock %}

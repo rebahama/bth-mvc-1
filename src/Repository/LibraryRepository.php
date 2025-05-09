@@ -16,6 +16,26 @@ class LibraryRepository extends ServiceEntityRepository
         parent::__construct($registry, Library::class);
     }
 
+    /**
+ * Find all libraries having an ID greater than or equal to the specified value.
+ * 
+ * @return array[] Returns an array of arrays (i.e. a raw data set)
+ */
+    public function findLibrary(int $id): array
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = '
+            SELECT * FROM library
+            WHERE id >= :id
+            ORDER BY id ASC
+        ';
+
+        $resultSet = $conn->executeQuery($sql, ['id' => $id]);
+
+        return $resultSet->fetchAllAssociative();
+    }
+
     //    /**
     //     * @return Library[] Returns an array of Library objects
     //     */

@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use App\Entity\Library;
 use Doctrine\Persistence\ManagerRegistry;
+use App\Repository\LibraryRepository;
 
 final class LibraryController extends AbstractController
 {
@@ -33,5 +34,13 @@ final class LibraryController extends AbstractController
         $entityManager->flush();
 
         return new Response('Saved new library entry with id ' . $library->getId());
+    }
+
+    #[Route('/library/show', name: 'library_show_all')]
+    public function showAllLibrary(LibraryRepository $libraryRepository): Response
+    {
+        $libraries = $libraryRepository->findAll();
+
+        return $this->json($libraries);
     }
 }

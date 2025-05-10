@@ -5,21 +5,21 @@
 {% block body %}
     <h1>Create a New Book</h1>
 <div class="grid-container-dynamic">
-    <form action="{{ path('library_create') }}" method="post">
-        <label for="title">Title:</label><br>
-        <input type="text" id="title" name="title" required><br><br>
+    <form action="{{ path('library_create') }}" method="post" enctype="multipart/form-data">
+    <label for="title">Title:</label><br>
+    <input type="text" id="title" name="title" required><br><br>
 
-        <label for="isbn">ISBN:</label><br>
-        <input type="text" id="isbn" name="isbn" required><br><br>
+    <label for="isbn">ISBN:</label><br>
+    <input type="text" id="isbn" name="isbn" required><br><br>
 
-        <label for="author">Author:</label><br>
-        <input type="text" id="author" name="author" required><br><br>
+    <label for="author">Author:</label><br>
+    <input type="text" id="author" name="author" required><br><br>
 
-        <label for="image_path">Image Path (e.g., img/book.jpg):</label><br>
-        <input type="text" id="image_path" name="image_path"><br><br>
+    <label for="image">Book Cover Image:</label><br>
+    <input type="file" id="image" name="image"><br><br>
 
-        <button type="submit">Save Book</button>
-    </form>
+    <button type="submit">Save Book</button>
+</form>
     <a href="{{ path('library_view_all') }}">Back to Library</a>
 </div>
 {% endblock %}

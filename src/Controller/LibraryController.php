@@ -27,21 +27,33 @@ final class LibraryController extends AbstractController
             $title = $request->request->get('title');
             $isbn = $request->request->get('isbn');
             $author = $request->request->get('author');
-            $imagePath = $request->request->get('image_path');
-    
+
+       
+            $imageFile = $request->files->get('image');
+            $imagePath = null;
+
+            if ($imageFile) {
+                $newFilename = uniqid() . '.' . $imageFile->guessExtension();
+                $imageFile->move(
+                    $this->getParameter('kernel.project_dir') . '/public/uploads',
+                    $newFilename
+                );
+                $imagePath = 'uploads/' . $newFilename;
+            }
+
             $library = new Library();
             $library->setTitle($title);
             $library->setIsbn($isbn);
             $library->setAuthor($author);
-            $library->setImagePath($imagePath ?: 'img/default.jpg');
-    
+            $library->setImagePath($imagePath ?? 'uploads/default.jpg');
+
             $entityManager = $doctrine->getManager();
             $entityManager->persist($library);
             $entityManager->flush();
-    
+
             return $this->redirectToRoute('library_view_all');
         }
-    
+
         return $this->render('library/forms/create-book-form.html.twig');
     }
 

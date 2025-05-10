@@ -6,7 +6,7 @@
     <h1>Book Details</h1>
 
     <div class="grid-container-dynamic">
-        <div style="border: 1px solid #ccc; padding: 20px; max-width: 400px;">
+        <div class="detail-book-page">
             <h2>{{ library.title }}</h2>
             <p><strong>Author:</strong> {{ library.author }}</p>
             <p><strong>ISBN:</strong> {{ library.isbn }}</p>
@@ -17,7 +17,7 @@
                 <p>No image available.</p>
             {% endif %}
         </div>
-        <a href="{{ path('library_view_all') }}">Back to all books</a>
+        <a href="{{ path('library_view_all') }}" class="custom-btn" >Back to all books</a>
           {% include 'library/forms/delete-form.html.twig' with { id: library.id } %}
     </div>
 {% endblock %}

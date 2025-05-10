@@ -5,17 +5,17 @@
 {% block body %}
     <h1>Library Collection</h1>
 <div class="grid-container-dynamic">
-    <div style="display: flex; flex-wrap: wrap; gap: 20px;">
+    <div>
         {% for book in libraries %}
-            <div style="border: 1px solid #ccc; padding: 10px; width: 200px;">
+            <div class="book-style">
                 <h3>{{ book.title }}</h3>
                 {% if book.imagePath %}
                     <img src="{{ asset(book.imagePath) }}" alt="Book image" style="width: 100%;">
                 {% else %}
                     <p>No image available</p>
                 {% endif %}
-                <a href="{{ path('library_view_one', { id: book.id }) }}">
-                    Show more details
+                <a href="{{ path('library_view_one', { id: book.id }) }}" class="custom-btn">
+                    Show details
                 </a>
             </div>
         {% else %}

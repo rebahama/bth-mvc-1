@@ -18,7 +18,7 @@ class LibraryRepository extends ServiceEntityRepository
 
     /**
  * Find all libraries having an ID greater than or equal to the specified value.
- * 
+ *
  * @return array[] Returns an array of arrays (i.e. a raw data set)
  */
     public function findLibrary(int $id): array

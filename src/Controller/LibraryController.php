@@ -28,7 +28,7 @@ final class LibraryController extends AbstractController
             $isbn = $request->request->get('isbn');
             $author = $request->request->get('author');
 
-       
+
             $imageFile = $request->files->get('image');
             $imagePath = null;
 
@@ -103,19 +103,19 @@ final class LibraryController extends AbstractController
     ): Response {
         $entityManager = $doctrine->getManager();
         $library = $entityManager->getRepository(Library::class)->find($id);
-    
+
         if (!$library) {
             throw $this->createNotFoundException('No library found for id '.$id);
         }
-    
+
         $submittedToken = $request->request->get('_token');
         if (!$this->isCsrfTokenValid('delete' . $library->getId(), $submittedToken)) {
             throw $this->createAccessDeniedException('Invalid CSRF token.');
         }
-    
+
         $entityManager->remove($library);
         $entityManager->flush();
-    
+
         return $this->redirectToRoute('library_view_all');
     }
 
@@ -127,18 +127,18 @@ final class LibraryController extends AbstractController
     ): Response {
         $entityManager = $doctrine->getManager();
         $library = $entityManager->getRepository(Library::class)->find($id);
-    
+
         if (!$library) {
             throw $this->createNotFoundException("Library item with ID $id not found.");
         }
-    
+
         if ($request->isMethod('POST')) {
             $library->setTitle($request->request->get('title'));
             $library->setAuthor($request->request->get('author'));
             $library->setIsbn($request->request->get('isbn'));
-    
+
             $imageFile = $request->files->get('image');
-    
+
             if ($imageFile) {
                 $newFilename = uniqid() . '.' . $imageFile->guessExtension();
                 $imageFile->move(
@@ -148,15 +148,15 @@ final class LibraryController extends AbstractController
                 $imagePath = 'uploads/' . $newFilename;
                 $library->setImagePath($imagePath);
             }
-    
+
             $entityManager->flush();
-    
+
             return $this->redirectToRoute('library_view_all');
         }
-    
+
         return $this->render('library/forms/update-book-form.html.twig', [
             'library' => $library
         ]);
     }
-    
+
 }

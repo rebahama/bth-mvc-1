@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controller;
+
 use App\Entity\Product;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -133,13 +134,9 @@ final class ProductController extends AbstractController
         int $value
     ): Response {
         $products = $productRepository->findByMinimumValue2($value);
-    
+
         return $this->json($products);
     }
 
-    
+
 }
-
-
-
-

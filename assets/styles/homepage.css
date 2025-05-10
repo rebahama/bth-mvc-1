@@ -82,3 +82,13 @@
     padding: 20px;
     width: 400px;
 }
+
+.view-page {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.crud-btn-container {
+    margin: 20px;
+}

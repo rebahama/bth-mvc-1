@@ -17,7 +17,11 @@
                 <p>No image available.</p>
             {% endif %}
         </div>
+        <div class="crud-btn-container">
         <a href="{{ path('library_view_all') }}" class="custom-btn" >Back to all books</a>
+
+        <a href="{{ path('library_update', { id: library.id }) }}" class="custom-btn">Update book</a>
           {% include 'library/forms/delete-form.html.twig' with { id: library.id } %}
+          </div>
     </div>
 {% endblock %}

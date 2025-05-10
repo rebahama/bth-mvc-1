@@ -5,7 +5,7 @@
 {% block body %}
     <h1>Library Collection</h1>
 <div class="grid-container-dynamic">
-    <div>
+    <div class="view-page">
         {% for book in libraries %}
             <div class="book-style">
                 <h3>{{ book.title }}</h3>
@@ -15,7 +15,7 @@
                     <p>No image available</p>
                 {% endif %}
                 <a href="{{ path('library_view_one', { id: book.id }) }}" class="custom-btn">
-                    Show details
+                    Show more details
                 </a>
             </div>
         {% else %}

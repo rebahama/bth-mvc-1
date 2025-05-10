@@ -118,4 +118,45 @@ final class LibraryController extends AbstractController
     
         return $this->redirectToRoute('library_view_all');
     }
+
+    #[Route('/library/update/{id}', name: 'library_update')]
+    public function updateLibrary(
+        ManagerRegistry $doctrine,
+        Request $request,
+        int $id
+    ): Response {
+        $entityManager = $doctrine->getManager();
+        $library = $entityManager->getRepository(Library::class)->find($id);
+    
+        if (!$library) {
+            throw $this->createNotFoundException("Library item with ID $id not found.");
+        }
+    
+        if ($request->isMethod('POST')) {
+            $library->setTitle($request->request->get('title'));
+            $library->setAuthor($request->request->get('author'));
+            $library->setIsbn($request->request->get('isbn'));
+    
+            $imageFile = $request->files->get('image');
+    
+            if ($imageFile) {
+                $newFilename = uniqid() . '.' . $imageFile->guessExtension();
+                $imageFile->move(
+                    $this->getParameter('kernel.project_dir') . '/public/uploads',
+                    $newFilename
+                );
+                $imagePath = 'uploads/' . $newFilename;
+                $library->setImagePath($imagePath);
+            }
+    
+            $entityManager->flush();
+    
+            return $this->redirectToRoute('library_view_all');
+        }
+    
+        return $this->render('library/forms/update-book-form.html.twig', [
+            'library' => $library
+        ]);
+    }
+    
 }

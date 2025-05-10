@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Update Book{% endblock %}
+
+{% block body %}
+    <h1>Update Book</h1>
+<div class="grid-container-dynamic">
+    <form method="POST" enctype="multipart/form-data">
+        <label>Title:</label>
+        <input type="text" name="title" value="{{ library.title }}" required><br>
+
+        <label>Author:</label>
+        <input type="text" name="author" value="{{ library.author }}" required><br>
+
+        <label>ISBN:</label>
+        <input type="text" name="isbn" value="{{ library.isbn }}" required><br>
+
+        <label>Change Image:</label>
+        <input type="file" name="image"><br>
+
+        {% if library.imagePath %}
+            <p>Current image:</p>
+            <img src="{{ asset(library.imagePath) }}" alt="Current image" width="150">
+        {% endif %}
+        <button type="submit" class="custom-btn">Update</button>
+        <a href="{{ path('library_view_all') }}" class="custom-btn" >Back to all books</a>
+    </div>
+    
+    </form>
+{% endblock %}

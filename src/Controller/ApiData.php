@@ -5,11 +5,13 @@ namespace App\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\HttpFoundation\Response;
+use App\Repository\LibraryRepository;
 use App\Card\DeckOfCards;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Card\Card;
 use Symfony\Component\Routing\Annotation\Route;
 
-class ApiData
+class ApiData extends AbstractController
 {
     #[Route("/api/quote", name: "api_name")]
     public function jsonNumber(): Response
@@ -142,6 +144,26 @@ class ApiData
         ];
 
         return new JsonResponse($data);
+    }
+
+    #[Route("/api/library/books", name: "api_bok_view", methods: ["GET"])]
+    public function jsonBooks(LibraryRepository $libraryRepository): JsonResponse
+    {
+        $libraries = $libraryRepository->findAll();
+
+        $data = [];
+
+        foreach ($libraries as $library) {
+            $data[] = [
+                'id' => $library->getId(),
+                'title' => $library->getTitle(),
+                'isbn' => $library->getIsbn(),
+                'author' => $library->getAuthor(),
+                'image_path' => $library->getImagePath(),
+            ];
+        }
+
+        return $this->json($data);
     }
 
 }

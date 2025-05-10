@@ -92,3 +92,62 @@
 .crud-btn-container {
     margin: 20px;
 }
+
+.book-form-container {
+    max-width: 500px;
+    margin: 30px auto;
+    padding: 25px;
+    background-color: #fefefe;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.book-form-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.book-form-container label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #444;
+}
+
+.book-form-container input[type="text"],
+.book-form-container input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.book-form-container button {
+    display: inline-block;
+    padding: 14px 30px;
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.book-form-container button:hover {
+    background-color: #1a4f1c;
+}
+
+.book-form-container .current-image {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.create-book-btn {
+    text-align: center;
+    margin-top: 15px;
+}

@@ -97,7 +97,6 @@ final class LibraryController extends AbstractController
     #[Route('/library/delete/{id}', name: 'library_delete_by_id', methods: ['POST'])]
     public function deleteLibraryById(
         Request $request,
-        LibraryRepository $libraryRepository,
         ManagerRegistry $doctrine,
         int $id
     ): Response {

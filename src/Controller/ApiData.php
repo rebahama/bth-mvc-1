@@ -166,24 +166,24 @@ class ApiData extends AbstractController
         return $this->json($data);
     }
 
-   #[Route("/api/library/book/{isbn}", name: "api_book_view_isbn", methods: ["GET"])]
-   public function jsonBook(LibraryRepository $libraryRepository, string $isbn): JsonResponse
-   {
-       $library = $libraryRepository->findOneByIsbn($isbn);
+    #[Route("/api/library/book/{isbn}", name: "api_book_view_isbn", methods: ["GET"])]
+    public function jsonBook(LibraryRepository $libraryRepository, string $isbn): JsonResponse
+    {
+        $library = $libraryRepository->findOneByIsbn($isbn);
 
-       if (!$library) {
-           return $this->json(['error' => 'Book not found'], 404);
-       }
+        if (!$library) {
+            return $this->json(['error' => 'Book not found'], 404);
+        }
 
-       $data = [
-           'id' => $library->getId(),
-           'title' => $library->getTitle(),
-           'isbn' => $library->getIsbn(),
-           'author' => $library->getAuthor(),
-           'image_path' => $library->getImagePath(),
-       ];
+        $data = [
+            'id' => $library->getId(),
+            'title' => $library->getTitle(),
+            'isbn' => $library->getIsbn(),
+            'author' => $library->getAuthor(),
+            'image_path' => $library->getImagePath(),
+        ];
 
-       return $this->json($data);
-   }
+        return $this->json($data);
+    }
 
 }

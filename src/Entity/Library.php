@@ -23,7 +23,7 @@ class Library
     private ?string $author = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $image_path = null;
+    private ?string $imagePath = null;
 
     public function getId(): ?int
     {
@@ -68,12 +68,12 @@ class Library
 
     public function getImagePath(): ?string
     {
-        return $this->image_path;
+        return $this->imagePath;
     }
 
-    public function setImagePath(string $image_path): static
+    public function setImagePath(string $imagePath): static
     {
-        $this->image_path = $image_path;
+        $this->imagePath = $imagePath;
 
         return $this;
     }

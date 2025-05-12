@@ -4,12 +4,13 @@
 
 {% block body %}
 <div class="grid-container-report">
-
+<h2> Report </h2>
 <ul class="kmom-area"> 
 <li> <a href="#kmom01">Kmom01</a> </li>
 <li> <a href="#kmom02">Kmom02</a> </li>
 <li> <a href="#kmom03">Kmom03</a> </li>
 <li> <a href="#kmom04">Kmom04</a> </li>
+<li> <a href="#kmom05">Kmom05</a> </li>
 </ul>
 <h3 id="kmom01"> kmom01 </h3>
 <p><b>Berätta kort om dina förkunskaper och tidigare erfarenheter kring objektorientering. </b></p>
@@ -163,6 +164,47 @@ och jag behövde då inte ändra om något i källkoden. </p>
 <p> <b> Vilken är din TIL för detta kmom? </b> <p>
 <p> Att inte behöva klicka manuellt samt vänta tills ett väntad resultat kändes bra, det är väldigt tidseffektivt att kunna skriva bra tester som producerar
 önskat resultat. </p>
+
+
+
+<h3 id="kmom05"> kmom05 </h3>
+
+<p> <b> Gick det bra att jobba igenom övningen med Symfony och Doctrine. Något särskilt du tänkte/reagerade på under övningen? </b> </p>
+<p> Jag tycker att det gick smidigt och det var lätt att följa intrukstionerna som stod med, allting fanns med tydligt. När jag jobbade genom övningen
+och höll på med att utveckla CRUD funktionerna så tänkte jag på hur allting är byggd på klasser och metoder. Jag la märke till att de flesta kod som man skriver 
+är i princip, deklaration av variabler, loopar, if satser inuti i en klass och en metod inuti en klass. Sedan anropar man dessa ifrån en annan fil. </p>
+
+<p> <b> Berätta om din applikation och hur du tänkte när du byggde upp den. Tänkte du något speciellt på användargränssnittet? </b> <p>
+
+<p> Jag ville göra tydligt för användaren att när man vill göra en ändrining i databasen så skall detta markeras med en tydlig och 
+färgglad knapp, exemplvis delete skall vara markerad med röd och när man sparar något skall det finnas en stor knapp med exemplvis grön färg. 
+Det är viktigt att alla uppdateringar i databasen markeras, eventuellt även kompleteras med olika meddleanden som bekräftar detta för användaren. </p>
+
+
+<p> <b> Gick det bra att jobba med ORM i CRUD eller vad anser du om det, jämför gärna med andra sätt att jobba med databaser? </b> <p>
+
+<p> Jag tycker att det gick bra med att jobba i CRUD, jag kollade på exemplet som vi kunde hitta i doctrine övningen och utgick ifrån den. Jag testade också 
+att köra en raw sql kommand i reposotory filen för att jämföra hur det är att jobba med dessa två och vad som kändes bäst. Jag insåg när man använder sig av Doctrines
+färdiga lösingar för ORM så är det objektorienterat och anropar man metoder i olika klasser. Det kändes mycket lättare att jobba objektorienterad än att använda en sql kommand 
+och behöva komma ihåg hela sql kommandot när man vill utföra något med databasen. </p>
+
+<p> <b> Vad är din uppfattning om ORM så här långt och relatera gärna till andra sätt att jobba med applikationskod mot databaser? </b> </p>
+
+<p> Jag tycker att jobba med ORM kändes mycket bättre än att jobba med raw sql kommandon, fördelen är att ens kod ser snyggare ut och 
+man kan använda sig av objektorientering för att utföra sql kommandon. Men en nackdel kan vara att man inte ser koden ifrån grunden 
+och kanske inte kan problemlösa och debugga lika lätt än om det hade varit en raw sql kommando. Men för generella simpla och allmäna saker 
+som exemplvis CRUD kommandon så tycker jag att det är mycket lättare och bättre att använda sig av ORM och utföra dessa kommandon med objektorienterade metoder.
+Däremot för lite mer komplexa och mer personligt anpassade sql kommandon som man vill göra väldigt personligt så kanske det är bättre att jobba med raw sql kommandon. </p>
+
+
+</p>
+
+<p> <b> Vilken är din TIL för detta kmom? </b> </p>
+
+<p> Det var kul att göra denna övning och komma igång med databaser, jag lärde mig väldigt mycket. Jag lärde mig hur objektorienterade metoder kan ävan användas 
+för databas kommandon, och att beronde på vad för önskemål som man har så kan man även använda sig av rena sql kommandon. Det känns alltid bra att veta om flera olika 
+metoder för att kunna lösa olika problem. Det är alltid bra att kunna ha flera verktyg i sin verktygslåda och att ha vetskapen om att man kan använda sig av flera olika verktyg, kände 
+att denna kmom bidrog till just detta. </p>
 </div>
 
 

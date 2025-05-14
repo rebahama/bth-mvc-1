@@ -80,6 +80,7 @@
         "csfix": "tools/php-cs-fixer/vendor/bin/php-cs-fixer fix src",
         "phpdoc": "tools/phpdoc/phpdoc --config=tools/phpdoc/phpdoc.xml",
         "phpunit": "XDEBUG_MODE=coverage vendor/bin/phpunit",
+        "phpmetrics": "tools/phpmetrics/vendor/bin/phpmetrics --config=tools/phpmetrics/phpmetrics.json",
         "lint": [
             "@phpmd",
             "@phpstan",

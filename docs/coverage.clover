@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1747088224">
-  <project timestamp="1747088224">
+<coverage generated="1747181127">
+  <project timestamp="1747181127">
     <file name="/home/rebas/dbwebb-kurser/mvc/me/report/src/Card/Card.php">
       <class name="App\Card\Card" namespace="global">
-        <metrics complexity="25" methods="12" coveredmethods="10" conditionals="0" coveredconditionals="0" statements="49" coveredstatements="45" elements="61" coveredelements="55"/>
+        <metrics complexity="25" methods="12" coveredmethods="11" conditionals="0" coveredconditionals="0" statements="49" coveredstatements="47" elements="61" coveredelements="58"/>
       </class>
       <line num="15" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="15"/>
       <line num="17" type="stmt" count="15"/>
@@ -22,7 +22,7 @@
       <line num="53" type="method" name="getPoints" visibility="public" complexity="3" crap="3" count="3"/>
       <line num="55" type="stmt" count="3"/>
       <line num="56" type="stmt" count="3"/>
-      <line num="57" type="stmt" count="2"/>
+      <line num="57" type="stmt" count="1"/>
       <line num="60" type="stmt" count="3"/>
       <line num="61" type="stmt" count="1"/>
       <line num="64" type="stmt" count="3"/>
@@ -39,18 +39,18 @@
       <line num="92" type="stmt" count="2"/>
       <line num="93" type="stmt" count="1"/>
       <line num="96" type="stmt" count="1"/>
-      <line num="102" type="method" name="calculateTotalPoints" visibility="public" complexity="5" crap="5.12" count="2"/>
+      <line num="102" type="method" name="calculateTotalPoints" visibility="public" complexity="5" crap="5" count="2"/>
       <line num="104" type="stmt" count="2"/>
       <line num="105" type="stmt" count="2"/>
       <line num="107" type="stmt" count="2"/>
       <line num="108" type="stmt" count="2"/>
-      <line num="109" type="stmt" count="1"/>
-      <line num="110" type="stmt" count="1"/>
-      <line num="111" type="stmt" count="1"/>
+      <line num="109" type="stmt" count="2"/>
+      <line num="110" type="stmt" count="2"/>
+      <line num="111" type="stmt" count="2"/>
       <line num="114" type="stmt" count="2"/>
       <line num="117" type="stmt" count="2"/>
-      <line num="118" type="stmt" count="0"/>
-      <line num="119" type="stmt" count="0"/>
+      <line num="118" type="stmt" count="1"/>
+      <line num="119" type="stmt" count="1"/>
       <line num="122" type="stmt" count="2"/>
       <line num="128" type="method" name="getRemainingCards" visibility="public" complexity="1" crap="1" count="1"/>
       <line num="130" type="stmt" count="1"/>
@@ -66,7 +66,7 @@
       <line num="157" type="stmt" count="1"/>
       <line num="158" type="stmt" count="1"/>
       <line num="162" type="stmt" count="1"/>
-      <metrics loc="165" ncloc="126" classes="1" methods="12" coveredmethods="10" conditionals="0" coveredconditionals="0" statements="49" coveredstatements="45" elements="61" coveredelements="55"/>
+      <metrics loc="165" ncloc="126" classes="1" methods="12" coveredmethods="11" conditionals="0" coveredconditionals="0" statements="49" coveredstatements="47" elements="61" coveredelements="58"/>
     </file>
     <file name="/home/rebas/dbwebb-kurser/mvc/me/report/src/Card/CardGraphic.php">
       <class name="App\Card\CardGraphic" namespace="global">
@@ -503,6 +503,6 @@
       <line num="44" type="stmt" count="0"/>
       <metrics loc="73" ncloc="42" classes="1" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="0" elements="14" coveredelements="0"/>
     </file>
-    <metrics files="10" loc="1030" ncloc="959" classes="9" methods="62" coveredmethods="16" conditionals="0" coveredconditionals="0" statements="380" coveredstatements="85" elements="442" coveredelements="101"/>
+    <metrics files="10" loc="1030" ncloc="959" classes="9" methods="62" coveredmethods="17" conditionals="0" coveredconditionals="0" statements="380" coveredstatements="87" elements="442" coveredelements="104"/>
   </project>
 </coverage>

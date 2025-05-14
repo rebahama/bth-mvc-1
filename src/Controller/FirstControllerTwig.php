@@ -50,5 +50,11 @@ class FirstControllerTwig extends AbstractController
         return $this->render('card/card_main.html.twig');
     }
 
+    #[Route("/metrics", name: "metrics_page")]
+    public function metricsPage(): Response
+    {
+        return $this->render('metrics.html.twig');
+    }
+
 
 }

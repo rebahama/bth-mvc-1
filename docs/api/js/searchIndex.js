@@ -136,31 +136,6 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-ApiData.html#method_jsonNumber"
         },                {
-            "fqsen": "\\App\\Controller\\ApiData\u003A\u003AjsonDeck\u0028\u0029",
-            "name": "jsonDeck",
-            "summary": "",
-            "url": "classes/App-Controller-ApiData.html#method_jsonDeck"
-        },                {
-            "fqsen": "\\App\\Controller\\ApiData\u003A\u003AjsonShuffle\u0028\u0029",
-            "name": "jsonShuffle",
-            "summary": "",
-            "url": "classes/App-Controller-ApiData.html#method_jsonShuffle"
-        },                {
-            "fqsen": "\\App\\Controller\\ApiData\u003A\u003Adraw\u0028\u0029",
-            "name": "draw",
-            "summary": "",
-            "url": "classes/App-Controller-ApiData.html#method_draw"
-        },                {
-            "fqsen": "\\App\\Controller\\ApiData\u003A\u003AdrawCard\u0028\u0029",
-            "name": "drawCard",
-            "summary": "",
-            "url": "classes/App-Controller-ApiData.html#method_drawCard"
-        },                {
-            "fqsen": "\\App\\Controller\\ApiData\u003A\u003AjsonGame\u0028\u0029",
-            "name": "jsonGame",
-            "summary": "",
-            "url": "classes/App-Controller-ApiData.html#method_jsonGame"
-        },                {
             "fqsen": "\\App\\Controller\\ApiData\u003A\u003AjsonBooks\u0028\u0029",
             "name": "jsonBooks",
             "summary": "",
@@ -170,6 +145,36 @@ Search.appendIndex(
             "name": "jsonBook",
             "summary": "",
             "url": "classes/App-Controller-ApiData.html#method_jsonBook"
+        },                {
+            "fqsen": "\\App\\Controller\\ApiGameData",
+            "name": "ApiGameData",
+            "summary": "",
+            "url": "classes/App-Controller-ApiGameData.html"
+        },                {
+            "fqsen": "\\App\\Controller\\ApiGameData\u003A\u003AjsonDeck\u0028\u0029",
+            "name": "jsonDeck",
+            "summary": "",
+            "url": "classes/App-Controller-ApiGameData.html#method_jsonDeck"
+        },                {
+            "fqsen": "\\App\\Controller\\ApiGameData\u003A\u003AjsonShuffle\u0028\u0029",
+            "name": "jsonShuffle",
+            "summary": "",
+            "url": "classes/App-Controller-ApiGameData.html#method_jsonShuffle"
+        },                {
+            "fqsen": "\\App\\Controller\\ApiGameData\u003A\u003Adraw\u0028\u0029",
+            "name": "draw",
+            "summary": "",
+            "url": "classes/App-Controller-ApiGameData.html#method_draw"
+        },                {
+            "fqsen": "\\App\\Controller\\ApiGameData\u003A\u003AdrawCard\u0028\u0029",
+            "name": "drawCard",
+            "summary": "",
+            "url": "classes/App-Controller-ApiGameData.html#method_drawCard"
+        },                {
+            "fqsen": "\\App\\Controller\\ApiGameData\u003A\u003AjsonGame\u0028\u0029",
+            "name": "jsonGame",
+            "summary": "",
+            "url": "classes/App-Controller-ApiGameData.html#method_jsonGame"
         },                {
             "fqsen": "\\App\\Controller\\CardController",
             "name": "CardController",
@@ -260,6 +265,11 @@ Search.appendIndex(
             "name": "cardMain",
             "summary": "",
             "url": "classes/App-Controller-FirstControllerTwig.html#method_cardMain"
+        },                {
+            "fqsen": "\\App\\Controller\\FirstControllerTwig\u003A\u003AmetricsPage\u0028\u0029",
+            "name": "metricsPage",
+            "summary": "",
+            "url": "classes/App-Controller-FirstControllerTwig.html#method_metricsPage"
         },                {
             "fqsen": "\\App\\Controller\\LibraryController",
             "name": "LibraryController",

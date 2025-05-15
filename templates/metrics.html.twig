@@ -1,11 +1,92 @@
-{% extends "base.html.twig" %}
+{% extends "footer-report.html.twig" %}
 
 {% block title %}Metrics{% endblock %}
 
 {% block body %}
- <h1>Metrics analysis page</h1>
-   <div class="grid-container">
-   
+<h2> Metrics analys sida </h2>
     
-    
+<div class="grid-container-report">
+<h3> Introduktion till " sex C:na"   </h3>
+
+<h3> Code size & Volume </h3>
+   <p> Detta innebär hur stor  är mina funktioner och klasser? Finns det kanske något 
+   som jag kan göra för att göra koden mindre? Ett bra exempel på detta är att man inte har 
+   endast en klass med massa klass metoder i. Det finns situationer där man kan dela upp sin kod och 
+   strukturera upp filerna, exempel på det kan vara att man har en bil som ett objekt. Man skapar klassen med bil och dess egenskaper, sedan så vill 
+   man skapa något som kanske har med motorn att göra. Istället för att lägga in motorn i klassen med bilar så är det bättre om man skapar en klass som 
+   är separat för motor samt egenskaper som är relevant till motorn. På detta sätt blir det mindre volym i filerna. </p>
+
+<h3> Code coverage </h3>
+<p> Detta handlar om hur mycket som ens unit testing behandlar, testar man alla metoder? Testar man alla klasser? Nedan syns ett exempel
+där php units används för att fastställa hur mycket av en klass och metod testas: </p>
+<img src="{{ asset('img/coverage.png') }}" alt="Background Image">
+<p> Här kan man se att 94.4 procent av klasser och metoder testas och nedan finns det även en guide på hur många procent som anses bra att testas. </p>
+<p> På nästa exempelbild så kan man se att jag inte har gjort några tester alls för controller filerna, här ser man hur allting är rött och detta är inte rekommenderat om man vill 
+ha bra kod kvalitet.  </p>
+
+<img src="{{ asset('img/controllercover.png') }}" alt="Background Image">
+
+<h3> Cyclomatic complexity </h3>
+<p>Ju högre värde man får på detta desto svårare kan det bli att "underhålla" koden, hur får man ett högt värde på detta?
+Detta är kopplat till bland annat hur många testar som man har på filen. Även storleken på filen samt hur många många linjer kod som man har kan påverka poängen. Nedan syns exempel på en fil där jag inte har några tester alls:</p> 
+<img src="{{ asset('img/complex.png') }}" alt="Background Image">
+
+
+<h3> Cohesion </h3>
+<p> Detta innebär, hur relevanta är mina metoder i mina klasser? Om man exempelvis tar bilen och motorn som exempel igen. Om jag är inne i bil klassen 
+så känns det naturligt då att jag kommer använda en metod som är relevant till bilen som exempelvis en metod och egenskaper som behandlar färgen på bilen,
+eller däcken på bilen. Om jag sedan går över till motorklassen, så känns det då naturligt att jag tar hästkrafter och varvtal som behandlar detta i motorklassen. Hade 
+jag gjort tvärtom så hade jag kunnat få en lägre score på "Cohesion". </p>
+
+
+<h3> Coupling </h3>
+
+<p> Detta innbeär hur många klasser som är kopplade till varandra, det är viktigt att man har en balans och inte använder sig av exempelvis för många klasser 
+som är kopplade till varandra. Risken finns då att koden inte blir "underhållbar" och att buggar kan skapas som resultat av detta. Man skall inte ha en klass där massa andra klasser 
+förlitar sig på, utan försök hitta en balans och analysera sin kod för att kunna få bra kvalitet på koden.</p>
+
+<h3> CRAP </h3>
+
+<p> Om jag skapar en metod som är komplex och inte har några tester alls för detta, då kan jag få ett högt CRAP metod som drar ner kodkvalitet för detta. 
+Det kan vara okej att skapa komplexa metoder ibland om man inte har något annat val, men då är det viktigt också att jag verkligen testar koden ifrån alla 
+vinklar. Gör jag detta då kan CRAP värdet gå ner på koden och då blir kodkvaliteten bättre.</p>
+
+
+
+<h3> Phpmetrics </h3>
+<p> Jag fick följande värden på min Phpmetrics analys: </p>
+
+<img src="{{ asset('img/metrics.png') }}" alt="Background Image">
+
+
+<p> Om jag använder mig av de olika "sex C:na" så kan jag använda mig av dessa för att förbätrra min kod. LibraryController klassen har inte några tester här kommer:
+Cyclomatic complexity och Coverage  </p>
+<p> Nedan följer alla "violations" på min kod:</p>
+
+<img src="{{ asset('img/improve.png') }}" alt="Background Image">
+
+
+<p> Nedan visar min api contoller fil som behandlar api responsen i klassen, här finns potential att genom att dela upp filen och göra den mindre till att 
+få bättre score på Code and volume.  </p>
+<img src="{{ asset('img/apicontroller.png') }}" alt="Background Image">
+
+<h3> Scrutinizer </h3>
+<p> Jag fick väldigt bra betyg och värden på min analys som man kan se nedan, det enda som jag fick lite dåligt på var "code coverage". Här kan jag förbättra genom
+att skriva fler unit tester för min kod. Jag använder mig av "Code coverage" för att förbätrra min score på coverage delen. </p>
+
+<img src="{{ asset('img/scrut.png') }}" alt="Background Image">
+
+<p> Nedan följer mina badges som jag fick för min app: </p>
+
+<a href="https://scrutinizer-ci.com/g/rebahama/bth-mvc-1/?branch=main"> <img src="https://scrutinizer-ci.com/g/rebahama/bth-mvc-1/badges/quality-score.png?b=main"></a>
+
+<a href="https://scrutinizer-ci.com/g/rebahama/bth-mvc-1/inspections/0a3bd35a-1d54-4524-b75a-4d0e62123afc/log"><img src="https://scrutinizer-ci.com/g/rebahama/bth-mvc-1/badges/build.png?b=main" alt="Build Status"></a>
+
+<a href="https://scrutinizer-ci.com/g/rebahama/bth-mvc-1/?branch=main"> <img src="https://scrutinizer-ci.com/g/rebahama/bth-mvc-1/badges/coverage.png?b=main"> </a>
+
+<h3> Förbättringar </h3>
+
+
+</div>
+
 {% endblock %}

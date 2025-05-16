@@ -12,7 +12,6 @@ use Doctrine\Persistence\ManagerRegistry;
 use App\Repository\LibraryRepository;
 
 class LibraryController extends AbstractController
-
 {
     #[Route('/library', name: 'app_library')]
     public function index(): Response
@@ -65,7 +64,7 @@ class LibraryController extends AbstractController
         $libraries = $libraryRepository->findAll();
 
         return new JsonResponse($libraries);
-        
+
     }
 
     #[Route('/library/view', name: 'library_view_all')]

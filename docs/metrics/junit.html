@@ -49,7 +49,7 @@
 <div class="page">
     <div class="content content-first">
         <div class="report-details">
-            Created at 2025-05-16 02:33:57        , with PHPMetrics v2.8.2 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
+            Created at 2025-05-16 20:59:29        , with PHPMetrics v2.8.2 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
         </div>
 
         
@@ -60,24 +60,24 @@
         <div class="bloc bloc-number">
             <div class="label">Test suites</div>
             <div class="number">
-                4            </div>
+                5            </div>
         </div>
     </div>
     <div class="column">
         <div class="bloc bloc-number">
             <div class="label">Assertions</div>
             <div class="number">
-                37            </div>
+                60            </div>
         </div>
     </div>
     <div class="column">
         <div class="bloc bloc-number">
             <div class="label">
                 classes never called by tests
-                <small>(63.64 %)</small>
+                <small>(54.55 %)</small>
             </div>
             <div class="number">
-                7            </div>
+                6            </div>
         </div>
     </div>
 </div>
@@ -111,17 +111,6 @@
                                                                     <td>
                                         <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.03);">
                                         0.03                                        </span>
-                                    </td>
-                                                            </tr>
-                                                        <tr>
-                                <td><span class="path">App\Controller\ApiGameData</span></td>
-                                                                    <td>
-                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.08);">
-                                        2                                        </span>
-                                    </td>
-                                                                    <td>
-                                        <span class="badge"  style="background-color: hsla(203, 82%, 76%, 0.26);">
-                                        0.26                                        </span>
                                     </td>
                                                             </tr>
                                                         <tr>
@@ -213,6 +202,20 @@
                         </tr>
                         </thead>
                         <tbody id="contentAreaJunitCalled" class="clusterize-content">
+                                                    <tr>
+                                <td valign="top"><span class="path">App\Controller\ApiDatControllerTest</span></td>
+                                <td style="padding-bottom: 1em;">
+                                                                                                                    <span class="badge" title="Cyclomatic complexity of class">
+                                            -                                        </span>
+                                        <span class="path">PHPUnit\Framework\TestCase</span>
+                                                                            <br>                                        <span class="badge" title="Cyclomatic complexity of class">
+                                            2                                        </span>
+                                        <span class="path">App\Controller\ApiGameData</span>
+                                                                            <br>                                        <span class="badge" title="Cyclomatic complexity of class">
+                                            8                                        </span>
+                                        <span class="path">App\Card\DeckOfCards</span>
+                                                                    </td>
+                            </tr>
                                                     <tr>
                                 <td valign="top"><span class="path">App\CardGraphic\CardGraphicTest</span></td>
                                 <td style="padding-bottom: 1em;">
@@ -507,7 +510,7 @@
 
 
             
-            var json = {"name":"Execution time","children":[{"name":"App\\CardGraphic\\CardGraphicTest","time":0.006148},{"name":"App\\Card\\CardTest","time":0.007371},{"name":"App\\DeckOfCards\\DeckOfCardsTest","time":0.004325},{"name":"App\\Tests\\Controller\\LibraryControllerTest","time":0.026665}]};
+            var json = {"name":"Execution time","children":[{"name":"App\\Controller\\ApiDatControllerTest","time":0.03808},{"name":"App\\CardGraphic\\CardGraphicTest","time":0.000273},{"name":"App\\Card\\CardTest","time":0.005154},{"name":"App\\DeckOfCards\\DeckOfCardsTest","time":0.00358},{"name":"App\\Tests\\Controller\\LibraryControllerTest","time":0.006927}]};
             root = json;
             var nodes = treemap.nodes(json)
                 .filter(function (d) {

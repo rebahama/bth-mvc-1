@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1747362130">
-  <project timestamp="1747362130">
+<coverage generated="1747362796">
+  <project timestamp="1747362796">
     <file name="/home/rebas/dbwebb-kurser/mvc/me/report/src/Card/Card.php">
       <class name="App\Card\Card" namespace="global">
         <metrics complexity="25" methods="12" coveredmethods="10" conditionals="0" coveredconditionals="0" statements="49" coveredstatements="45" elements="61" coveredelements="55"/>
@@ -22,7 +22,7 @@
       <line num="53" type="method" name="getPoints" visibility="public" complexity="3" crap="3" count="3"/>
       <line num="55" type="stmt" count="3"/>
       <line num="56" type="stmt" count="3"/>
-      <line num="57" type="stmt" count="2"/>
+      <line num="57" type="stmt" count="1"/>
       <line num="60" type="stmt" count="3"/>
       <line num="61" type="stmt" count="1"/>
       <line num="64" type="stmt" count="3"/>
@@ -375,12 +375,12 @@
     </file>
     <file name="/home/rebas/dbwebb-kurser/mvc/me/report/src/Controller/LibraryController.php">
       <class name="App\Controller\LibraryController" namespace="global">
-        <metrics complexity="15" methods="7" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="71" coveredstatements="10" elements="78" coveredelements="13"/>
+        <metrics complexity="15" methods="7" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="71" coveredstatements="7" elements="78" coveredelements="9"/>
       </class>
-      <line num="16" type="method" name="index" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="19" type="stmt" count="1"/>
-      <line num="20" type="stmt" count="1"/>
-      <line num="21" type="stmt" count="1"/>
+      <line num="16" type="method" name="index" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="19" type="stmt" count="0"/>
+      <line num="20" type="stmt" count="0"/>
+      <line num="21" type="stmt" count="0"/>
       <line num="24" type="method" name="createLibrary" visibility="public" complexity="3" crap="12" count="0"/>
       <line num="27" type="stmt" count="0"/>
       <line num="28" type="stmt" count="0"/>
@@ -455,7 +455,7 @@
       <line num="158" type="stmt" count="0"/>
       <line num="159" type="stmt" count="0"/>
       <line num="160" type="stmt" count="0"/>
-      <metrics loc="164" ncloc="164" classes="1" methods="7" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="71" coveredstatements="10" elements="78" coveredelements="13"/>
+      <metrics loc="164" ncloc="164" classes="1" methods="7" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="71" coveredstatements="7" elements="78" coveredelements="9"/>
     </file>
     <file name="/home/rebas/dbwebb-kurser/mvc/me/report/src/Entity/Library.php">
       <class name="App\Entity\Library" namespace="global">
@@ -511,6 +511,6 @@
       <line num="44" type="stmt" count="0"/>
       <metrics loc="73" ncloc="42" classes="1" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="0" elements="14" coveredelements="0"/>
     </file>
-    <metrics files="11" loc="1051" ncloc="980" classes="10" methods="63" coveredmethods="19" conditionals="0" coveredconditionals="0" statements="381" coveredstatements="95" elements="444" coveredelements="114"/>
+    <metrics files="11" loc="1051" ncloc="980" classes="10" methods="63" coveredmethods="18" conditionals="0" coveredconditionals="0" statements="381" coveredstatements="92" elements="444" coveredelements="110"/>
   </project>
 </coverage>

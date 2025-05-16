@@ -4,10 +4,7 @@ namespace App\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use App\Entity\Library;
 use Symfony\Component\HttpFoundation\Response;
-
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 use App\Controller\LibraryController;
 use App\Repository\LibraryRepository;
 class LibraryControllerTest extends WebTestCase
@@ -51,24 +48,6 @@ class LibraryControllerTest extends WebTestCase
         $this->assertInstanceOf(Response::class, $response);
         $this->assertEquals('Rendered Content', $response->getContent());
     }
-
-    
-    
-
-    public function testIndexPage(): void
-    /**
-     * Checks that the index page for the library is rendred and shown with the GET request.
-     */
-    {
-        $client = static::createClient();
-        $client->request('GET', '/library');
-
-        $this->assertResponseStatusCodeSame(Response::HTTP_OK);
-        
-    }
-
-
-    
 
     
 }

@@ -14,41 +14,41 @@ use PHPUnit\Framework\TestCase;
 class CardControllerTest extends TestCase
 {
 
-     public function testStartGame(): void
-     /**
-      * Testing and mocking the start of the game.
-      */
+    public function testStartGame(): void
     {
-        $session = $this->createMock(SessionInterface::class);
+    $session = $this->createMock(SessionInterface::class);
 
-        $session->expects($this->once())
-            ->method('has')
-            ->with('deck')
-            ->willReturn(false);
+    $session->expects($this->once())
+        ->method('has')
+        ->with('deck')
+        ->willReturn(false);
 
-        $session->expects($this->exactly(3))
-            ->method('set')
-            ->withConsecutive(
-                [$this->equalTo('deck'), $this->isInstanceOf(DeckOfCards::class)],
-                ['drawn_cards', []],
-                ['game_stopped', false]
-            );
+    $calls = [];
 
-        $controller = $this->getMockBuilder(CardController::class)
-            ->onlyMethods(['render'])
-            ->getMock();
+    $session->method('set')->willReturnCallback(function ($key, $value) use (&$calls) {
+        $calls[$key] = $value;
+    });
 
-        $controller->expects($this->once())
-            ->method('render')
-            ->with('card/game.html.twig')
-            ->willReturn(new Response('rendered content'));
+    $controller = $this->getMockBuilder(CardController::class)
+        ->onlyMethods(['render'])
+        ->getMock();
 
-        $response = $controller->startgame($session);
+    $controller->expects($this->once())
+        ->method('render')
+        ->with('card/game.html.twig')
+        ->willReturn(new Response('rendered content'));
 
-        $this->assertInstanceOf(Response::class, $response);
-        $this->assertEquals('rendered content', $response->getContent());
+    $response = $controller->startgame($session);
+
+    $this->assertInstanceOf(Response::class, $response);
+    $this->assertEquals('rendered content', $response->getContent());
+
+    $this->assertArrayHasKey('deck', $calls);
+    $this->assertInstanceOf(DeckOfCards::class, $calls['deck']);
+    $this->assertEquals([], $calls['drawn_cards']);
+    $this->assertFalse($calls['game_stopped']);
     }
-    
+
      public function testRestartGameClearsSessionAndRedirects(): void
      /**
       * Testing to se if the route clears and redirects.

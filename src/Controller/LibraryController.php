@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Attribute\Route;
@@ -10,7 +11,8 @@ use App\Entity\Library;
 use Doctrine\Persistence\ManagerRegistry;
 use App\Repository\LibraryRepository;
 
-final class LibraryController extends AbstractController
+class LibraryController extends AbstractController
+
 {
     #[Route('/library', name: 'app_library')]
     public function index(): Response
@@ -62,7 +64,8 @@ final class LibraryController extends AbstractController
     {
         $libraries = $libraryRepository->findAll();
 
-        return $this->json($libraries);
+        return new JsonResponse($libraries);
+        
     }
 
     #[Route('/library/view', name: 'library_view_all')]

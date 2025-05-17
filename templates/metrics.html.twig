@@ -14,21 +14,22 @@
    endast en klass med massa klass metoder i. Det finns situationer där man kan dela upp sin kod och 
    strukturera upp filerna, exempel på det kan vara att man har en bil som ett objekt. Man skapar klassen med bil och dess egenskaper, sedan så vill 
    man skapa något som kanske har med motorn att göra. Istället för att lägga in motorn i klassen med bilar så är det bättre om man skapar en klass som 
-   är separat för motor samt egenskaper som är relevant till motorn. På detta sätt blir det mindre volym i filerna. </p>
+   är separat för motor samt egenskaper som är relevant till motorn. På detta sätt blir det mindre volym och komplexitet i filerna. </p>
 
 <h3> Code coverage </h3>
 <p> Detta handlar om hur mycket som ens unit testing behandlar, testar man alla metoder? Testar man alla klasser? Nedan syns ett exempel
 där php units används för att fastställa hur mycket av en klass och metod testas: </p>
-<img src="{{ asset('img/coverage.png') }}" alt="Background Image">
+<img src="{{ asset('img/coverage.png') }}" alt="Background Image" class="metrics-img">
 <p> Här kan man se att 94.4 procent av klasser och metoder testas och nedan finns det även en guide på hur många procent som anses bra att testas. </p>
 <p> På nästa exempelbild så kan man se att jag inte har gjort några tester alls för controller filerna, här ser man hur allting är rött och detta är inte rekommenderat om man vill 
 ha bra kod kvalitet.  </p>
 
-<img src="{{ asset('img/controllercover.png') }}" alt="Background Image">
+<img src="{{ asset('img/controllercover.png') }}" alt="Background Image" class="metrics-img">
 
 <h3> Cyclomatic complexity </h3>
 <p>Ju högre värde man får på detta desto svårare kan det bli att "underhålla" koden, hur får man ett högt värde på detta?
-Detta är kopplat till bland annat hur många testar som man har på filen. Även storleken på filen samt hur många många linjer kod som man har kan påverka poängen. Nedan syns exempel på en fil där jag inte har några tester alls:</p> 
+Detta är kopplat till bland annat hur många testar som man har på filen. Även storleken på filen samt hur många många linjer kod som man har kan påverka poängen. Om jag har för många if satser samt andra operatorer 
+så kan det också påvekra scoren som man får på detta, man kan försöka använda sig av arv inom objektorientering, Nedan syns exempel på en fil där jag inte har några tester alls:</p> 
 <img src="{{ asset('img/complex.png') }}" alt="Background Image">
 
 
@@ -56,25 +57,25 @@ vinklar. Gör jag detta då kan CRAP värdet gå ner på koden och då blir kodk
 <h3> Phpmetrics </h3>
 <p> Jag fick följande värden på min Phpmetrics analys: </p>
 
-<img src="{{ asset('img/metrics.png') }}" alt="Background Image">
+<img src="{{ asset('img/metrics.png') }}" alt="Background Image" class="metrics-img">
 
 
-<p> Om jag använder mig av de olika "sex C:na" så kan jag använda mig av dessa för att förbätrra min kod. LibraryController klassen har inte några tester här kommer:
+<p> Om jag använder mig av de olika "sex C:na" så kan jag använda mig av dessa för att förbättra min kod. LibraryController klassen har inte några tester här kommer:
 Cyclomatic complexity och Coverage  </p>
 <p> Nedan följer alla "violations" på min kod:</p>
 
-<img src="{{ asset('img/improve.png') }}" alt="Background Image">
+<img src="{{ asset('img/improve.png') }}" alt="Background Image" class="metrics-img">
 
 
 <p> Nedan visar min api contoller fil som behandlar api responsen i klassen, här finns potential att genom att dela upp filen och göra den mindre till att 
 få bättre score på Code and volume.  </p>
-<img src="{{ asset('img/apicontroller.png') }}" alt="Background Image">
+<img src="{{ asset('img/apicontroller.png') }}" alt="Background Image" class="metrics-img">
 
 <h3> Scrutinizer </h3>
 <p> Jag fick väldigt bra betyg och värden på min analys som man kan se nedan, det enda som jag fick lite dåligt på var "code coverage". Här kan jag förbättra genom
-att skriva fler unit tester för min kod. Jag använder mig av "Code coverage" för att förbätrra min score på coverage delen. </p>
+att skriva fler unit tester för min kod. Jag använder mig av "Code coverage" för att förbättra min score på coverage delen. </p>
 
-<img src="{{ asset('img/scrut.png') }}" alt="Background Image">
+<img src="{{ asset('img/scrut.png') }}" alt="Background Image" class="metrics-img">
 
 <p> Nedan följer mina badges som jag fick för min app: </p>
 
@@ -91,14 +92,55 @@ så kommer jag kunna få bättre värden på code coverage. I metrics så hade j
 är att dela upp filerna så att dom blir mindre samt skriva tester på dessa filer och sedan köra en analys på detta och kolla resultatet efteråt. </p>
 
 <p> <b> Innan förbättrningar: </b> </p>
+<p> Här ser man att jag har 1 error samt 5 varningar och 6 stycken violations i phpmetrics </p>
 
-<img src="{{ asset('img/improve.png') }}" alt="Background Image">
+<img src="{{ asset('img/improve.png') }}" alt="Background Image" class="metrics-img">
 
-
-<img src="{{ asset('img/scrut.png') }}" alt="Background Image">
+<p> Bra score men inte lika bra code coverage, här ser man att den är 23% </p>
+<img src="{{ asset('img/scrut.png') }}" alt="Background Image" class="metrics-img">
 
 <p> <b> Efter förbättrningar: </b> </p>
+<p> Här kan vi se att metricsen inte längre har error och att violations har minskats efter att jag har förbättrat koden. Jag delade upp api filen som har alla routes till två 
+mindre filer vilket minskade komplexiteten och bidrog till att få bort error varningen samt minskade issues. Jag la även till mer unit tester som bidrog till att 
+violations minskade.  </p>
 
+<img src="{{ asset('img/metricsimproved.png') }}" alt="Background Image" class="metrics-img">
+
+<p> Jag lade till mycket fler unit tester på mina controller filer, och här kan man se att jag har betlydigt bättre score på min coverage. Under tiden som jag försökte fixa till mina unit tester
+så kom det upp en "minor bug", detta fixade jag till också vilket man kan se på informationen längst upp när jag har pushat koden. </p>
+
+
+<img src="{{ asset('img/improvedsc.png') }}" alt="Background Image" class="metrics-img">
+
+<p> <b> Sammanfattningen av analysen </b> </p>
+<p> Jag är nöjd med min förbättring av kod, jag lyckades att gå ifrån 23% upp till 37%. Sedan lyckades jag att fixa 2 violations och 1 error i Phpmetrics, samt även en minor bug
+i scrutinizer som uppkom senare. Här lyckades jag förbättra: Code size & Volume, Code coverage, och en del av Cyclomatic complexity. Mitt största brist var code coveragen och att jag 
+inte hade så många unit tester, resterande tyckte jag såg bra ut och även scrutinizer gav mig högsta möjliga poäng på 100% och "very good". </p>
+
+
+<h3> Diskussion </h3>
+
+<p> <b> Kan man aktivt jobba med kodkvalitet och “clean code” på detta sättet? </b> </p>
+<p> Jag tycker att det var många delar att hålla koll på, visst kan man jobba på detta sätt. Men då gäller det att man har koll på hur allting 
+fungerar och hänger ihop. Exemeplvis om man sitter och klurar på unit testing i symfony och allting ser grönt och bra ut och även på phpunit testing samt 
+metrics. Sedan när man pushar koden så får man att något har gått fel i Scrutinizer. Så de gäller att man har koll på alla delar, men det som är riktigt bra
+är att scrutinizer är väldigt detaljerat på vad som går fel så då kan man lösa problemet på ett bra sätt. Man lär sig också otroligt mycket på vad som anses clean code 
+samt hur man ska göra i framtiden. Man kan alltid jobba på detta sätt, men jag tror också att vi kan göra det mycket simplare för oss sjäva och appen om vi 
+följer rätt kod praxis ifrån första början när vi skapar själva applikationen.  </p>
+
+
+<p> <b> Finns det fördelar och kanske nackdelar? </b> </p>
+<p> Jag tycke att det finns både bra och lite mindre bra när man jobbar på detta sätt. Det som var väldigt postivit var att man lär sig hur man ska 
+skriva clean code, man lär sig verkligen att man skall dela upp filerna samt inte ha massa komplicerade kod i metoderna. Utan allting ska vara strukturerat och 
+relevant då får man riktigt bra score, en nackdel var att det tar betlydigt längre tid att skriva clean code samt så måste man förlita sig på mer program paket 
+och det är mycket fler bollar i luften som man får hantera vilket gör risken att något går sönder i koden eller att man introducerar nya bugs när man försöker få bättre score. </p>
+
+<p> <b> Ser du andra möjligheter att jobba mot “clean code”? </b> </p>
+<p> När jag började på tidigare kmom så hade jag alltid i åtankte att vara så strukturerat samt skriva fint kod med bra namngivning och stycke indelning,
+detta bidrog till att jag fick högsta möjliga poäng redan direkt vid analysen med exemplvis scrutinizer. Jag tror att så länge man följer praxis och inte komplicerar
+för sig själv så kommer det att gå bra. Att analysera sin kod på detta sätt är en bra bekräftelse på hur bra man har gjort ifrån sig och på hur bra man har följt praxis,
+detta sätt att arbeta på kräver mer tid men å andra sidan så introduceras mindre "tech debts" och mindre buggar, så även fastän det tar längre tid så tror jag 
+att man tjänar på att jobba som vi har gjort nu. </p>
 
 </div>
 

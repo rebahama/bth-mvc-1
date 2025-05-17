@@ -11,6 +11,7 @@
 <li> <a href="#kmom03">Kmom03</a> </li>
 <li> <a href="#kmom04">Kmom04</a> </li>
 <li> <a href="#kmom05">Kmom05</a> </li>
+<li> <a href="#kmom06">Kmom06</a> </li>
 </ul>
 <h3 id="kmom01"> kmom01 </h3>
 <p><b>Berätta kort om dina förkunskaper och tidigare erfarenheter kring objektorientering. </b></p>
@@ -205,8 +206,35 @@ Däremot för lite mer komplexa och mer personligt anpassade sql kommandon som m
 för databas kommandon, och att beronde på vad för önskemål som man har så kan man även använda sig av rena sql kommandon. Det känns alltid bra att veta om flera olika 
 metoder för att kunna lösa olika problem. Det är alltid bra att kunna ha flera verktyg i sin verktygslåda och att ha vetskapen om att man kan använda sig av flera olika verktyg, kände 
 att denna kmom bidrog till just detta. </p>
-</div>
 
+<h3 id="kmom06"> kmom06 </h3>
+
+<p> <b> Hur uppfattade du verktyget phpmetrics och fann du några särskilda bitar mer värdefulla än andra? Var det några särskilda metrics eller bilder du uppskattade? </b> </p>
+<p>Från början så var det mycket text och bilder så man förstod inte riktigt, men efter att ha läst om "6c:na" så började man förstå lite hur saker och ting hänger ihop.
+Jag tycker att complexiteten bilden med stora ringarna är uppskattande, man får en inblick av hur ens applikation ser ut kvalitetsmässigt samt en bra överblick över vad som behöver förbättras.
+Även violations och error meddelanden är väldigt tydliga på vad man behöver förbättra för att kunna öka sin score. </p>
+
+<p> <b>Berätta hur det gick att integrera med Scrutinizer och vilken är din första känsla av verktyget och dess badges? Vilken kodtäckning och kodkvalitet fick du efter första bygget? </b> </p>
+<p> Det verkade komplicerat ifrån början men det gick bra till slut, jag tycker att scrutinizer var lite lättare att förstå än phpmetrics. Det kändes också bra att kunna få en badge 
+för sin kod, jag tycker att badgen förklarade mycket med sina procenttal. Första gången jag analyserade mitt projekt så fick jag 100% "very good". Men jag fick däremot inte lika bra på kodtäckningen,
+här fick jag endast 23% och mitt mål var att öka den som jag lyckades öka till 37%. Scrutinizer hade väldigt bra Förklaraningar på vad man behöver förbättra samt vad men behöver göra för att uppnå ett högre resultat, jag gillar också att verktyget 
+analyserar automatiskt så fort man pushar upp till Github.  </p>
+
+<p> <b> Hur är din egen syn på kodkvalitet, berätta lite om den? Tror du man kan man påvisa kodkvalitet i någon viss mån med badges eller vad tror du? </b> <p>
+<p> Jag tror så här, när man börjar programmera och skriva sin kod så är det jätteviktigt att man ger rätt namn till klasser och metoder samt delar upp sina filer och inte har massa 
+komplicerade metoder i sina klasser och sedan gör unit tester på dessa klasser och metoder så kommer man komma långt. Har man den vetskapen redan från början så tror jag 
+att man kommer få bra score direkt när man kör första analysen, mitt mål när jag alltid skapar olika kmom så har jag dom sakerna i åtanke för att följa rätt kod praxis.
+Jag fick det bevisat för mig när jag fick 10 av 10 i scrutinizer, men det fanns även något som jag kunde gjort bättre ifrån början och det var att dela upp klasserna 
+i mindre filer. Detta märkte jag i phpmetrics när jag körde analysen där och efter att ha fixat detta så blev det genast bättre. Så jag tror att badgen faktiskt är kvitto 
+på att man gör rätt ifrån sig och detta påstår jag för att man fick uppleva det själv.  </p>
+
+
+<p> <b> Vilken är din TIL för detta kmom? </b> </p>
+
+<p> Att man alltid skall följa kodpraxis som exemplvis, styckeindelning, rätt namngivning och strukturera klasser samt metoder.
+Det kändes bra att få det bekräftat med ett score och siffra som bekräftar och belönar när man gör rätt redan ifrån första början. </p>
+
+</div>
 
 </div>
 {% endblock %}

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1747437790">
-  <project timestamp="1747437790">
+<coverage generated="1747442630">
+  <project timestamp="1747442630">
     <file name="/home/rebas/dbwebb-kurser/mvc/me/report/src/Card/Card.php">
       <class name="App\Card\Card" namespace="global">
         <metrics complexity="25" methods="12" coveredmethods="10" conditionals="0" coveredconditionals="0" statements="49" coveredstatements="45" elements="61" coveredelements="55"/>
@@ -22,10 +22,10 @@
       <line num="53" type="method" name="getPoints" visibility="public" complexity="3" crap="3" count="3"/>
       <line num="55" type="stmt" count="3"/>
       <line num="56" type="stmt" count="3"/>
-      <line num="57" type="stmt" count="2"/>
-      <line num="60" type="stmt" count="2"/>
+      <line num="57" type="stmt" count="1"/>
+      <line num="60" type="stmt" count="3"/>
       <line num="61" type="stmt" count="1"/>
-      <line num="64" type="stmt" count="2"/>
+      <line num="64" type="stmt" count="3"/>
       <line num="67" type="method" name="drawForBank" visibility="public" complexity="2" crap="2" count="1"/>
       <line num="69" type="stmt" count="1"/>
       <line num="70" type="stmt" count="1"/>

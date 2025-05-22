@@ -1,10 +1,21 @@
-{% extends "proj/base.html.twig" %}
+{% extends 'proj/base.html.twig' %}
 
-{% block title %}Home{% endblock %}
+{% block title %}All Posts{% endblock %}
 
 {% block body %}
- <h1> Märken </h1>
- 
-</div>
-</div>
+<h1>All Posts</h1>
+
+{% for post in posts %}
+    <div class="post-card">
+        <h2>{{ post.title }}</h2>
+        <p>{{ post.description }}</p>
+        <p><strong>Category:</strong> {{ post.category.name }}</p>
+        <img src="/{{ post.image }}" alt="Post Image" width="200">
+    </div>
+    <hr>
+{% else %}
+    <p>No posts found.</p>
+    <h1>Posts in {{ currentCategory|capitalize }} Category</h1>
+{% endfor %}
+
 {% endblock %}

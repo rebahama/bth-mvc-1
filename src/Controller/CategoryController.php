@@ -6,6 +6,8 @@ use App\Entity\Category;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Doctrine\Persistence\ManagerRegistry;
+use App\Entity\Post;
 use Symfony\Component\Routing\Annotation\Route;
 
 class CategoryController extends AbstractController
@@ -27,5 +29,29 @@ class CategoryController extends AbstractController
         $em->flush();
 
         return new Response('Categories seeded!');
+    }
+
+     #[Route("/proj/brands/{categoryName}", name: "proj_brands_by_category")]
+    public function projBrandsByCategory(string $categoryName, ManagerRegistry $doctrine): Response
+    {
+        $posts = $doctrine->getRepository(Post::class)->createQueryBuilder('p')
+            ->join('p.category', 'c')
+            ->where('LOWER(c.name) = LOWER(:name)')
+            ->setParameter('name', $categoryName)
+            ->getQuery()
+            ->getResult();
+
+        return $this->render('proj/brands-page.html.twig', [
+            'posts' => $posts,
+            'currentCategory' => $categoryName
+        ]);
+    }
+     
+
+
+    #[Route('/proj/categories', name: 'proj_category_list')]
+    public function categoryList(): Response
+    {
+        return $this->render('proj/category.html.twig');
     }
 }

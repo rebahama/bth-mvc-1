@@ -25,10 +25,16 @@ class ProjController extends AbstractController
     }
 
     #[Route("/proj/brands", name: "proj_brands")]
-    public function projBrands(): Response
+    public function projBrands(ManagerRegistry $doctrine): Response
     {
-        return $this->render('proj/brands-page.html.twig');
+        $posts = $doctrine->getRepository(Post::class)->findAll();
+
+        return $this->render('proj/brands-page.html.twig', [
+            'posts' => $posts,
+        ]);
     }
+
+    
 
 
     #[Route('/proj/create', name: 'post_create')]

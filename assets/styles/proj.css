@@ -1,0 +1,19 @@
+ 
+.body-proj {
+    font-family: "Reddit Mono", monospace;
+    background-color: #f5f5f5;
+    font-optical-sizing: auto;
+    font-style: normal;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+
+.header-back-proj {
+    background-color: #351b7c;
+    color: #ffffff;
+    text-align: center;
+}

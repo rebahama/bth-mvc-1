@@ -16,13 +16,15 @@
     </head>
     <body class="body-proj">
     <div class="header-back-proj">
-    <span class="site-title">Welcome to my personal symfony Site</span>
+    <span class="site-title">Bildels Kvalitets validatorn</span>
     </div>
 </header>
 
 <nav class="navbar">
     <ul class="navbar-list">
-        <li class="navbar-item"><a href="{{ path('home') }}" class="navbar-link">Home</a></li>
+        <li class="navbar-item"><a href="{{ path('proj_main') }}" class="navbar-link">Hem</a></li>
+        <li class="navbar-item"><a href="{{ path('proj_brands') }}" class="navbar-link">Märken</a></li>
+        <li class="navbar-item"><a href="{{ path('proj_about') }}" class="navbar-link">Om</a></li>
     </ul>
 </nav>
         {% block body %}{% endblock %}

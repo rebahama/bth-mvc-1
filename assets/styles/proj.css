@@ -17,3 +17,11 @@
     color: #ffffff;
     text-align: center;
 }
+
+.intro-main-page  {
+    text-align: center;
+    color: #ffffff;
+    background-color: rgb(81, 64, 64);
+    width: 50%;
+    border-radius: 50px;
+}

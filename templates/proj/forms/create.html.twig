@@ -1,27 +1,29 @@
 {% extends 'proj/base.html.twig' %}
 
-{% block title %}Create Post{% endblock %}
+{% block title %}Skapa ett märke{% endblock %}
 
 {% block body %}
-<h1>Create a New Post</h1>
-<form action="{{ path('post_create') }}" method="POST" enctype="multipart/form-data">
-    <label for="title">Title:</label>
-    <input type="text" name="title" id="title" required>
+<h1>Skapa ett märke </h1>
+<form action="{{ path('post_create') }}" method="POST" enctype="multipart/form-data" class="create-post-form">
+    <h1>Skapa ett märke </h1>
 
-    <label for="description">Description:</label>
-    <textarea name="description" id="description" required></textarea>
+    <label for="title" class="create-post-label">Title:</label>
+    <input type="text" name="title" id="title" required class="create-post-input">
 
-    <label for="category">Category:</label>
-    <select name="category" id="category" required>
+    <label for="description" class="create-post-label">Description:</label>
+    <textarea name="description" id="description" required class="create-post-textarea"></textarea>
+
+    <label for="category" class="create-post-label">Category:</label>
+    <select name="category" id="category" required class="create-post-select">
         <option value="" disabled selected>Select a category</option>
         {% for category in categories %}
             <option value="{{ category.id }}">{{ category.name }}</option>
         {% endfor %}
     </select>
 
-    <label for="image">Image:</label>
-    <input type="file" name="image" id="image" accept="image/*">
+    <label for="image" class="create-post-label">Image:</label>
+    <input type="file" name="image" id="image" accept="image/*" class="create-post-file">
 
-    <button type="submit">Create Post</button>
+    <button type="submit" class="create-post-button">Create Post</button>
 </form>
 {% endblock %}

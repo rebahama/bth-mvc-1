@@ -1,0 +1,17 @@
+{% extends 'proj/base.html.twig' %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block body %}
+<div class="post-detail-container">
+    <img src="/{{ post.image }}" alt="Post Image" class="post-detail-image">
+    
+    <h1 class="post-detail-title">{{ post.title }}</h1>
+    
+    <p class="post-detail-category"><strong>Category:</strong> {{ post.category.name }}</p>
+    
+    <p class="post-detail-description">{{ post.description }}</p>
+    
+    <a href="{{ path('proj_brands') }}" class="back-link">Tillbaka till alla märken</a>
+</div>
+{% endblock %}

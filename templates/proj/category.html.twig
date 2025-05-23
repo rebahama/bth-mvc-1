@@ -2,13 +2,16 @@
 
 {% block title %}Categories{% endblock %}
 
-{% block body %}
-<h1>Browse by Category</h1>
 
-<ul>
-    <li><a href="{{ path('proj_brands_by_category', {'categoryName': 'Electronics'}) }}">Electronics</a></li>
-    <li><a href="{{ path('proj_brands_by_category', {'categoryName': 'Suspension'}) }}">Suspension</a></li>
-    <li><a href="{{ path('proj_brands_by_category', {'categoryName': 'Brakes'}) }}">Brakes</a></li>
-    <li><a href="{{ path('proj_brands_by_category', {'categoryName': 'Engine Parts'}) }}">Engine Parts</a></li>
-</ul>
+{% block body %}
+<div class="category-container">
+    <h1>Kategori</h1>
+    <ul class="category-list">
+        <li><a href="{{ path('proj_brands_by_category', {'categoryName': 'Electronics'}) }}">Elektronik och sensorer</a></li>
+        <li><a href="{{ path('proj_brands_by_category', {'categoryName': 'Suspension'}) }}">Framvagn/stötdämpare</a></li>
+        <li><a href="{{ path('proj_brands_by_category', {'categoryName': 'Brakes'}) }}">Bromsar</a></li>
+        <li><a href="{{ path('proj_brands_by_category', {'categoryName': 'Engine Parts'}) }}">Motordelar</a></li>
+    </ul>
+</div>
 {% endblock %}
+

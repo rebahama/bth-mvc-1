@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Category;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use App\Entity\Post;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -14,6 +15,18 @@ class CategoryRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Category::class);
+    }
+
+     public function findPostsByCategoryName(string $categoryName): array
+    {
+    return $this->getEntityManager()->createQueryBuilder()
+        ->select('p')
+        ->from(Post::class, 'p')
+        ->join('p.category', 'c')
+        ->where('LOWER(c.name) = LOWER(:name)')
+        ->setParameter('name', $categoryName)
+        ->getQuery()
+        ->getResult();
     }
 
     //    /**

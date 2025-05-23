@@ -12,7 +12,6 @@ use Symfony\Component\HttpFoundation\Request;
 
 class ProjCreateController extends AbstractController
 {
-  
     #[Route('/proj/create', name: 'post_create')]
     public function createPost(Request $request, ManagerRegistry $doctrine): Response
     {

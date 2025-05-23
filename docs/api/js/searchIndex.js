@@ -231,6 +231,26 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-CardController.html#method_delete"
         },                {
+            "fqsen": "\\App\\Controller\\CategoryController",
+            "name": "CategoryController",
+            "summary": "",
+            "url": "classes/App-Controller-CategoryController.html"
+        },                {
+            "fqsen": "\\App\\Controller\\CategoryController\u003A\u003Aseed\u0028\u0029",
+            "name": "seed",
+            "summary": "",
+            "url": "classes/App-Controller-CategoryController.html#method_seed"
+        },                {
+            "fqsen": "\\App\\Controller\\CategoryController\u003A\u003AprojBrandsByCategory\u0028\u0029",
+            "name": "projBrandsByCategory",
+            "summary": "",
+            "url": "classes/App-Controller-CategoryController.html#method_projBrandsByCategory"
+        },                {
+            "fqsen": "\\App\\Controller\\CategoryController\u003A\u003AcategoryList\u0028\u0029",
+            "name": "categoryList",
+            "summary": "",
+            "url": "classes/App-Controller-CategoryController.html#method_categoryList"
+        },                {
             "fqsen": "\\App\\Controller\\FirstControllerTwig",
             "name": "FirstControllerTwig",
             "summary": "",
@@ -311,6 +331,101 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-LibraryController.html#method_updateLibrary"
         },                {
+            "fqsen": "\\App\\Controller\\ProjController",
+            "name": "ProjController",
+            "summary": "",
+            "url": "classes/App-Controller-ProjController.html"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjController\u003A\u003AprojHome\u0028\u0029",
+            "name": "projHome",
+            "summary": "",
+            "url": "classes/App-Controller-ProjController.html#method_projHome"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjController\u003A\u003AprojAbout\u0028\u0029",
+            "name": "projAbout",
+            "summary": "",
+            "url": "classes/App-Controller-ProjController.html#method_projAbout"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjController\u003A\u003AprojBrands\u0028\u0029",
+            "name": "projBrands",
+            "summary": "",
+            "url": "classes/App-Controller-ProjController.html#method_projBrands"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjCreateController",
+            "name": "ProjCreateController",
+            "summary": "",
+            "url": "classes/App-Controller-ProjCreateController.html"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjCreateController\u003A\u003AcreatePost\u0028\u0029",
+            "name": "createPost",
+            "summary": "",
+            "url": "classes/App-Controller-ProjCreateController.html#method_createPost"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjCreateController\u003A\u003Ashow\u0028\u0029",
+            "name": "show",
+            "summary": "",
+            "url": "classes/App-Controller-ProjCreateController.html#method_show"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjCreateController\u003A\u003AdeletePost\u0028\u0029",
+            "name": "deletePost",
+            "summary": "",
+            "url": "classes/App-Controller-ProjCreateController.html#method_deletePost"
+        },                {
+            "fqsen": "\\App\\Entity\\Category",
+            "name": "Category",
+            "summary": "",
+            "url": "classes/App-Entity-Category.html"
+        },                {
+            "fqsen": "\\App\\Entity\\Category\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/App-Entity-Category.html#method___construct"
+        },                {
+            "fqsen": "\\App\\Entity\\Category\u003A\u003AgetId\u0028\u0029",
+            "name": "getId",
+            "summary": "",
+            "url": "classes/App-Entity-Category.html#method_getId"
+        },                {
+            "fqsen": "\\App\\Entity\\Category\u003A\u003AgetName\u0028\u0029",
+            "name": "getName",
+            "summary": "",
+            "url": "classes/App-Entity-Category.html#method_getName"
+        },                {
+            "fqsen": "\\App\\Entity\\Category\u003A\u003AsetName\u0028\u0029",
+            "name": "setName",
+            "summary": "",
+            "url": "classes/App-Entity-Category.html#method_setName"
+        },                {
+            "fqsen": "\\App\\Entity\\Category\u003A\u003AgetPosts\u0028\u0029",
+            "name": "getPosts",
+            "summary": "",
+            "url": "classes/App-Entity-Category.html#method_getPosts"
+        },                {
+            "fqsen": "\\App\\Entity\\Category\u003A\u003AaddPost\u0028\u0029",
+            "name": "addPost",
+            "summary": "",
+            "url": "classes/App-Entity-Category.html#method_addPost"
+        },                {
+            "fqsen": "\\App\\Entity\\Category\u003A\u003AremovePost\u0028\u0029",
+            "name": "removePost",
+            "summary": "",
+            "url": "classes/App-Entity-Category.html#method_removePost"
+        },                {
+            "fqsen": "\\App\\Entity\\Category\u003A\u003A\u0024id",
+            "name": "id",
+            "summary": "",
+            "url": "classes/App-Entity-Category.html#property_id"
+        },                {
+            "fqsen": "\\App\\Entity\\Category\u003A\u003A\u0024name",
+            "name": "name",
+            "summary": "",
+            "url": "classes/App-Entity-Category.html#property_name"
+        },                {
+            "fqsen": "\\App\\Entity\\Category\u003A\u003A\u0024posts",
+            "name": "posts",
+            "summary": "",
+            "url": "classes/App-Entity-Category.html#property_posts"
+        },                {
             "fqsen": "\\App\\Entity\\Library",
             "name": "Library",
             "summary": "",
@@ -386,10 +501,100 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Entity-Library.html#property_imagePath"
         },                {
+            "fqsen": "\\App\\Entity\\Post",
+            "name": "Post",
+            "summary": "",
+            "url": "classes/App-Entity-Post.html"
+        },                {
+            "fqsen": "\\App\\Entity\\Post\u003A\u003AgetId\u0028\u0029",
+            "name": "getId",
+            "summary": "",
+            "url": "classes/App-Entity-Post.html#method_getId"
+        },                {
+            "fqsen": "\\App\\Entity\\Post\u003A\u003AgetTitle\u0028\u0029",
+            "name": "getTitle",
+            "summary": "",
+            "url": "classes/App-Entity-Post.html#method_getTitle"
+        },                {
+            "fqsen": "\\App\\Entity\\Post\u003A\u003AsetTitle\u0028\u0029",
+            "name": "setTitle",
+            "summary": "",
+            "url": "classes/App-Entity-Post.html#method_setTitle"
+        },                {
+            "fqsen": "\\App\\Entity\\Post\u003A\u003AgetDescription\u0028\u0029",
+            "name": "getDescription",
+            "summary": "",
+            "url": "classes/App-Entity-Post.html#method_getDescription"
+        },                {
+            "fqsen": "\\App\\Entity\\Post\u003A\u003AsetDescription\u0028\u0029",
+            "name": "setDescription",
+            "summary": "",
+            "url": "classes/App-Entity-Post.html#method_setDescription"
+        },                {
+            "fqsen": "\\App\\Entity\\Post\u003A\u003AgetImage\u0028\u0029",
+            "name": "getImage",
+            "summary": "",
+            "url": "classes/App-Entity-Post.html#method_getImage"
+        },                {
+            "fqsen": "\\App\\Entity\\Post\u003A\u003AsetImage\u0028\u0029",
+            "name": "setImage",
+            "summary": "",
+            "url": "classes/App-Entity-Post.html#method_setImage"
+        },                {
+            "fqsen": "\\App\\Entity\\Post\u003A\u003AgetCategory\u0028\u0029",
+            "name": "getCategory",
+            "summary": "",
+            "url": "classes/App-Entity-Post.html#method_getCategory"
+        },                {
+            "fqsen": "\\App\\Entity\\Post\u003A\u003AsetCategory\u0028\u0029",
+            "name": "setCategory",
+            "summary": "",
+            "url": "classes/App-Entity-Post.html#method_setCategory"
+        },                {
+            "fqsen": "\\App\\Entity\\Post\u003A\u003A\u0024id",
+            "name": "id",
+            "summary": "",
+            "url": "classes/App-Entity-Post.html#property_id"
+        },                {
+            "fqsen": "\\App\\Entity\\Post\u003A\u003A\u0024title",
+            "name": "title",
+            "summary": "",
+            "url": "classes/App-Entity-Post.html#property_title"
+        },                {
+            "fqsen": "\\App\\Entity\\Post\u003A\u003A\u0024description",
+            "name": "description",
+            "summary": "",
+            "url": "classes/App-Entity-Post.html#property_description"
+        },                {
+            "fqsen": "\\App\\Entity\\Post\u003A\u003A\u0024image",
+            "name": "image",
+            "summary": "",
+            "url": "classes/App-Entity-Post.html#property_image"
+        },                {
+            "fqsen": "\\App\\Entity\\Post\u003A\u003A\u0024category",
+            "name": "category",
+            "summary": "",
+            "url": "classes/App-Entity-Post.html#property_category"
+        },                {
             "fqsen": "\\App\\Kernel",
             "name": "Kernel",
             "summary": "",
             "url": "classes/App-Kernel.html"
+        },                {
+            "fqsen": "\\App\\Repository\\CategoryRepository",
+            "name": "CategoryRepository",
+            "summary": "",
+            "url": "classes/App-Repository-CategoryRepository.html"
+        },                {
+            "fqsen": "\\App\\Repository\\CategoryRepository\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/App-Repository-CategoryRepository.html#method___construct"
+        },                {
+            "fqsen": "\\App\\Repository\\CategoryRepository\u003A\u003AfindPostsByCategoryName\u0028\u0029",
+            "name": "findPostsByCategoryName",
+            "summary": "",
+            "url": "classes/App-Repository-CategoryRepository.html#method_findPostsByCategoryName"
         },                {
             "fqsen": "\\App\\Repository\\LibraryRepository",
             "name": "LibraryRepository",
@@ -410,6 +615,16 @@ Search.appendIndex(
             "name": "findOneByIsbn",
             "summary": "",
             "url": "classes/App-Repository-LibraryRepository.html#method_findOneByIsbn"
+        },                {
+            "fqsen": "\\App\\Repository\\PostRepository",
+            "name": "PostRepository",
+            "summary": "",
+            "url": "classes/App-Repository-PostRepository.html"
+        },                {
+            "fqsen": "\\App\\Repository\\PostRepository\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/App-Repository-PostRepository.html#method___construct"
         },                {
             "fqsen": "\\",
             "name": "\\",

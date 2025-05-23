@@ -17,16 +17,16 @@ class CategoryRepository extends ServiceEntityRepository
         parent::__construct($registry, Category::class);
     }
 
-     public function findPostsByCategoryName(string $categoryName): array
+    public function findPostsByCategoryName(string $categoryName): array
     {
-    return $this->getEntityManager()->createQueryBuilder()
-        ->select('p')
-        ->from(Post::class, 'p')
-        ->join('p.category', 'c')
-        ->where('LOWER(c.name) = LOWER(:name)')
-        ->setParameter('name', $categoryName)
-        ->getQuery()
-        ->getResult();
+        return $this->getEntityManager()->createQueryBuilder()
+            ->select('p')
+            ->from(Post::class, 'p')
+            ->join('p.category', 'c')
+            ->where('LOWER(c.name) = LOWER(:name)')
+            ->setParameter('name', $categoryName)
+            ->getQuery()
+            ->getResult();
     }
 
     //    /**

@@ -15,93 +15,96 @@ use PHPUnit\Framework\TestCase;
 class ProjControllerTest extends TestCase
 {
     public function testFindAllPosts()
+    /**
+     * Test so that the post is shown
+     */
     {
         $post = new Post();
-        $post->setTitle('Test Post');
-        $post->setDescription('Some description');
+        $post->setTitle("Test Post");
+        $post->setDescription("Some description");
 
         $postRepository = $this->createMock(PostRepository::class);
-        $postRepository->method('findAll')->willReturn([$post]);
+        $postRepository->method("findAll")->willReturn([$post]);
 
         $result = $postRepository->findAll();
         $this->assertCount(1, $result);
-        $this->assertEquals('Test Post', $result[0]->getTitle());
+        $this->assertEquals("Test Post", $result[0]->getTitle());
     }
 
     public function testFindAllCategories()
     {
         $category = new Category();
-        $category->setName('Engine Parts');
+        $category->setName("Engine Parts");
 
         $categoryRepository = $this->createMock(CategoryRepository::class);
-        $categoryRepository->method('findAll')->willReturn([$category]);
+        $categoryRepository->method("findAll")->willReturn([$category]);
 
         $result = $categoryRepository->findAll();
 
         $this->assertCount(1, $result);
-        $this->assertEquals('Engine Parts', $result[0]->getName());
+        $this->assertEquals("Engine Parts", $result[0]->getName());
     }
 
-      public function testSetAndGetCategory()
+    public function testSetAndGetCategory()
     {
         $category = new Category();
-        $category->setName('Brakes');
+        $category->setName("Brakes");
 
         $post = new Post();
         $post->setCategory($category);
 
         $this->assertInstanceOf(Category::class, $post->getCategory());
-        $this->assertEquals('Brakes', $post->getCategory()->getName());
+        $this->assertEquals("Brakes", $post->getCategory()->getName());
     }
 
-     public function testSetAndGetImage()
+    public function testSetAndGetImage()
     {
         $post = new Post();
-        $imagePath = 'uploads/images/example.jpg';
+        $imagePath = "uploads/images/example.jpg";
 
         $post->setImage($imagePath);
         $this->assertEquals($imagePath, $post->getImage());
     }
 
-     public function testGetId()
-    {
-    $category = new Category();
-
-     $reflection = new ReflectionClass(Category::class);
-    $property = $reflection->getProperty('id');
-    $property->setAccessible(true);
-    $property->setValue($category, 123);
-
-    $this->assertEquals(123, $category->getId());
-    }
-
-     public function testGetPosts()
-    {
-    $category = new Category();
-
-    $post1 = $this->createMock(Post::class);
-    $post2 = $this->createMock(Post::class);
-
-    $category->addPost($post1);
-    $category->addPost($post2);
-
-    $posts = $category->getPosts();
-
-    $this->assertInstanceOf(Collection::class, $posts);
-
-    $this->assertCount(2, $posts);
-
-    $this->assertTrue($posts->contains($post1));
-    $this->assertTrue($posts->contains($post2));
-    }
-
-      public function testRemovePost()
+    public function testGetId()
     {
         $category = new Category();
-        $category->setName('Engine Parts');
+
+        $reflection = new ReflectionClass(Category::class);
+        $property = $reflection->getProperty("id");
+        $property->setAccessible(true);
+        $property->setValue($category, 123);
+
+        $this->assertEquals(123, $category->getId());
+    }
+
+    public function testGetPosts()
+    {
+        $category = new Category();
+
+        $post1 = $this->createMock(Post::class);
+        $post2 = $this->createMock(Post::class);
+
+        $category->addPost($post1);
+        $category->addPost($post2);
+
+        $posts = $category->getPosts();
+
+        $this->assertInstanceOf(Collection::class, $posts);
+
+        $this->assertCount(2, $posts);
+
+        $this->assertTrue($posts->contains($post1));
+        $this->assertTrue($posts->contains($post2));
+    }
+
+    public function testRemovePost()
+    {
+        $category = new Category();
+        $category->setName("Engine Parts");
 
         $post = new Post();
-        $post->setTitle('Test Post');
+        $post->setTitle("Test Post");
         $post->setCategory($category);
 
         $category->addPost($post);
@@ -115,6 +118,14 @@ class ProjControllerTest extends TestCase
 
         $this->assertNull($post->getCategory());
     }
+    public function testGetDescription(): void
+    {
+        $post = new Post();
+        $post->setDescription("This is a test description.");
 
-
+        $this->assertEquals(
+            "This is a test description.",
+            $post->getDescription()
+        );
+    }
 }

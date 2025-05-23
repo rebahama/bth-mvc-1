@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1748039988">
-  <project timestamp="1748039988">
+<coverage generated="1748040823">
+  <project timestamp="1748040823">
     <file name="/home/rebas/dbwebb-kurser/mvc/me/report/src/Card/Card.php">
       <class name="App\Card\Card" namespace="global">
-        <metrics complexity="25" methods="12" coveredmethods="10" conditionals="0" coveredconditionals="0" statements="49" coveredstatements="45" elements="61" coveredelements="55"/>
+        <metrics complexity="25" methods="12" coveredmethods="11" conditionals="0" coveredconditionals="0" statements="49" coveredstatements="47" elements="61" coveredelements="58"/>
       </class>
       <line num="15" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="21"/>
       <line num="17" type="stmt" count="21"/>
@@ -22,10 +22,10 @@
       <line num="53" type="method" name="getPoints" visibility="public" complexity="3" crap="3" count="3"/>
       <line num="55" type="stmt" count="3"/>
       <line num="56" type="stmt" count="3"/>
-      <line num="57" type="stmt" count="2"/>
-      <line num="60" type="stmt" count="2"/>
+      <line num="57" type="stmt" count="1"/>
+      <line num="60" type="stmt" count="3"/>
       <line num="61" type="stmt" count="1"/>
-      <line num="64" type="stmt" count="2"/>
+      <line num="64" type="stmt" count="3"/>
       <line num="67" type="method" name="drawForBank" visibility="public" complexity="2" crap="2" count="1"/>
       <line num="69" type="stmt" count="1"/>
       <line num="70" type="stmt" count="1"/>
@@ -39,18 +39,18 @@
       <line num="92" type="stmt" count="2"/>
       <line num="93" type="stmt" count="1"/>
       <line num="96" type="stmt" count="1"/>
-      <line num="102" type="method" name="calculateTotalPoints" visibility="public" complexity="5" crap="5.12" count="2"/>
+      <line num="102" type="method" name="calculateTotalPoints" visibility="public" complexity="5" crap="5" count="2"/>
       <line num="104" type="stmt" count="2"/>
       <line num="105" type="stmt" count="2"/>
       <line num="107" type="stmt" count="2"/>
       <line num="108" type="stmt" count="2"/>
-      <line num="109" type="stmt" count="1"/>
-      <line num="110" type="stmt" count="1"/>
-      <line num="111" type="stmt" count="1"/>
+      <line num="109" type="stmt" count="2"/>
+      <line num="110" type="stmt" count="2"/>
+      <line num="111" type="stmt" count="2"/>
       <line num="114" type="stmt" count="2"/>
       <line num="117" type="stmt" count="2"/>
-      <line num="118" type="stmt" count="0"/>
-      <line num="119" type="stmt" count="0"/>
+      <line num="118" type="stmt" count="1"/>
+      <line num="119" type="stmt" count="1"/>
       <line num="122" type="stmt" count="2"/>
       <line num="128" type="method" name="getRemainingCards" visibility="public" complexity="1" crap="1" count="1"/>
       <line num="130" type="stmt" count="1"/>
@@ -66,7 +66,7 @@
       <line num="157" type="stmt" count="1"/>
       <line num="158" type="stmt" count="1"/>
       <line num="162" type="stmt" count="1"/>
-      <metrics loc="165" ncloc="126" classes="1" methods="12" coveredmethods="10" conditionals="0" coveredconditionals="0" statements="49" coveredstatements="45" elements="61" coveredelements="55"/>
+      <metrics loc="165" ncloc="126" classes="1" methods="12" coveredmethods="11" conditionals="0" coveredconditionals="0" statements="49" coveredstatements="47" elements="61" coveredelements="58"/>
     </file>
     <file name="/home/rebas/dbwebb-kurser/mvc/me/report/src/Card/CardGraphic.php">
       <class name="App\Card\CardGraphic" namespace="global">
@@ -608,7 +608,7 @@
     </file>
     <file name="/home/rebas/dbwebb-kurser/mvc/me/report/src/Entity/Post.php">
       <class name="App\Entity\Post" namespace="global">
-        <metrics complexity="9" methods="9" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="11" elements="22" coveredelements="18"/>
+        <metrics complexity="9" methods="9" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="12" elements="22" coveredelements="20"/>
       </class>
       <line num="30" type="method" name="getId" visibility="public" complexity="1" crap="2" count="0"/>
       <line num="32" type="stmt" count="0"/>
@@ -617,11 +617,11 @@
       <line num="40" type="method" name="setTitle" visibility="public" complexity="1" crap="1" count="2"/>
       <line num="42" type="stmt" count="2"/>
       <line num="43" type="stmt" count="2"/>
-      <line num="46" type="method" name="getDescription" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="48" type="stmt" count="0"/>
-      <line num="51" type="method" name="setDescription" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="53" type="stmt" count="1"/>
-      <line num="54" type="stmt" count="1"/>
+      <line num="46" type="method" name="getDescription" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="48" type="stmt" count="1"/>
+      <line num="51" type="method" name="setDescription" visibility="public" complexity="1" crap="1" count="2"/>
+      <line num="53" type="stmt" count="2"/>
+      <line num="54" type="stmt" count="2"/>
       <line num="57" type="method" name="getImage" visibility="public" complexity="1" crap="1" count="1"/>
       <line num="59" type="stmt" count="1"/>
       <line num="62" type="method" name="setImage" visibility="public" complexity="1" crap="1" count="1"/>
@@ -632,7 +632,7 @@
       <line num="73" type="method" name="setCategory" visibility="public" complexity="1" crap="1" count="2"/>
       <line num="75" type="stmt" count="2"/>
       <line num="76" type="stmt" count="2"/>
-      <metrics loc="79" ncloc="79" classes="1" methods="9" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="11" elements="22" coveredelements="18"/>
+      <metrics loc="79" ncloc="79" classes="1" methods="9" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="12" elements="22" coveredelements="20"/>
     </file>
     <file name="/home/rebas/dbwebb-kurser/mvc/me/report/src/Kernel.php">
       <class name="App\Kernel" namespace="global">
@@ -685,6 +685,6 @@
       <line num="16" type="stmt" count="0"/>
       <metrics loc="44" ncloc="18" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
     </file>
-    <metrics files="18" loc="1522" ncloc="1369" classes="17" methods="91" coveredmethods="38" conditionals="0" coveredconditionals="0" statements="485" coveredstatements="163" elements="576" coveredelements="201"/>
+    <metrics files="18" loc="1522" ncloc="1369" classes="17" methods="91" coveredmethods="40" conditionals="0" coveredconditionals="0" statements="485" coveredstatements="166" elements="576" coveredelements="206"/>
   </project>
 </coverage>

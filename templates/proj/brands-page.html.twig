@@ -20,7 +20,8 @@
                 <h2 class="post-title">{{ post.title }}</h2>
                 <p class="post-category"><strong>Kategori:</strong> {{ post.category.name }}</p>
                 <p>{{ post.description|slice(0, 100) ~ '...' }}</p>
-                <img src="/{{ post.image }}" alt="Post Image">
+                <img src="{{ asset(post.image) }}" alt="Post Image">
+                
 
                 <a href="{{ path('post_show', {'id': post.id}) }}" class="view-more-btn">Visa mer</a>
                 <form action="{{ path('post_delete', {'id': post.id}) }}" method="POST" onsubmit="return confirm('Är du säker på att du vill radera detta?');">

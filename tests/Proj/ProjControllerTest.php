@@ -58,7 +58,6 @@ class ProjControllerTest extends TestCase
         $imagePath = 'uploads/images/example.jpg';
 
         $post->setImage($imagePath);
-
         $this->assertEquals($imagePath, $post->getImage());
     }
 

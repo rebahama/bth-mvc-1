@@ -3,12 +3,18 @@
 {% block title %}Home{% endblock %}
 
 {% block body %}
- <h1>Välkommen till märkes kvalitet informations sidan</h1>
+ <h1>Välkommen till bildelskontrollen informations sidan</h1>
  <div class="grid-container-dynamic">
 <div class="intro-main-page">
+<img src="{{ asset('img/main.jpg') }}" alt="Background Image" class="intro-image">
  <p> Trött på att alltid beställa bil delar av lågt kvalitet? Inte nu längre! Vi hjälper och lär dig vilka märken som har bra kvalitet och som håller länge. </p>
    
-<p> Klicka här för att komma till ett exempel </p>
+<p> Klicka på knappen för att komma till ett exempel </p>
+<a href="{{ path('post_show', {'id': 8}) }}" class="view-more-btn">Visa exempel</a>
+
+<p> Eller kika på alla våra märken </p>
+
+ <li class="navbar-item"><a href="{{ path('proj_brands') }}" class="navbar-link">Visa all märken</a></li>
 </div>
 </div>
 {% endblock %}

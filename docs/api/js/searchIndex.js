@@ -338,17 +338,17 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Controller\\ProjController\u003A\u003AprojHome\u0028\u0029",
             "name": "projHome",
-            "summary": "",
+            "summary": "Rendering\u0020template\u0020to\u0020display\u0020the\u0020main\u0020page",
             "url": "classes/App-Controller-ProjController.html#method_projHome"
         },                {
             "fqsen": "\\App\\Controller\\ProjController\u003A\u003AprojAbout\u0028\u0029",
             "name": "projAbout",
-            "summary": "",
+            "summary": "Rendering\u0020template\u0020to\u0020display\u0020about\u0020the\u0020project",
             "url": "classes/App-Controller-ProjController.html#method_projAbout"
         },                {
             "fqsen": "\\App\\Controller\\ProjController\u003A\u003AprojBrands\u0028\u0029",
             "name": "projBrands",
-            "summary": "",
+            "summary": "Rendering\u0020template\u0020to\u0020display\u0020all\u0020the\u0020objects\u0020inside\u0020the\u0020post\u0020table",
             "url": "classes/App-Controller-ProjController.html#method_projBrands"
         },                {
             "fqsen": "\\App\\Controller\\ProjCreateController",
@@ -358,17 +358,17 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Controller\\ProjCreateController\u003A\u003AcreatePost\u0028\u0029",
             "name": "createPost",
-            "summary": "",
+            "summary": "Creates\u0020a\u0020post\u0020and\u0020uploads\u0020image\u0020to\u0020a\u0020folder\u0020called\u0020uploads,\u0020category\u0020is\u0020imported\nfrom\u0020repository\u0020and\u0020fined\u0020by\u0020id\u0020to\u0020be\u0020included\u0020in\u0020the\u0020post\u0020to\u0020show\u0020the\u0020dropdown\nwith\u0020diffrent\u0020categories",
             "url": "classes/App-Controller-ProjCreateController.html#method_createPost"
         },                {
             "fqsen": "\\App\\Controller\\ProjCreateController\u003A\u003Ashow\u0028\u0029",
             "name": "show",
-            "summary": "",
+            "summary": "Renders\u0020and\u0020shows\u0020the\u0020relevant\u0020brand\u0020post\u0020with\u0020the\u0020correct\u0020id\u0020in\u0020a\u0020detalied\u0020template\u0020view",
             "url": "classes/App-Controller-ProjCreateController.html#method_show"
         },                {
             "fqsen": "\\App\\Controller\\ProjCreateController\u003A\u003AdeletePost\u0028\u0029",
             "name": "deletePost",
-            "summary": "",
+            "summary": "Deletes\u0020the\u0020relevant\u0020post,\u0020used\u0020with\u0020doctrine\u0020orm\u0020methods.",
             "url": "classes/App-Controller-ProjCreateController.html#method_deletePost"
         },                {
             "fqsen": "\\App\\Entity\\Category",

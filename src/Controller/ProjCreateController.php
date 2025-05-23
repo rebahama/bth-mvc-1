@@ -2,6 +2,10 @@
 
 namespace App\Controller;
 
+/**
+ * Class for the crud operations
+ */
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -12,6 +16,12 @@ use Symfony\Component\HttpFoundation\Request;
 
 class ProjCreateController extends AbstractController
 {
+    /**
+     * Creates a post and uploads image to a folder called uploads, category is imported
+     * from repository and fined by id to be included in the post to show the dropdown
+     * with diffrent categories
+     *
+     */
     #[Route('/proj/create', name: 'post_create')]
     public function createPost(Request $request, ManagerRegistry $doctrine): Response
     {
@@ -62,6 +72,9 @@ class ProjCreateController extends AbstractController
             'categories' => $categories,
         ]);
     }
+    /**
+     * Renders and shows the relevant brand post with the correct id in a detalied template view
+     */
 
     #[Route('/proj/brand/{id}', name: 'post_show', requirements: ['id' => '\d+'])]
     public function show(int $id, ManagerRegistry $doctrine): Response
@@ -76,6 +89,9 @@ class ProjCreateController extends AbstractController
             'post' => $post,
         ]);
     }
+    /**
+     * Deletes the relevant post, used with doctrine orm methods.
+     */
 
     #[Route('/proj/delete/{id}', name: 'post_delete', methods: ['POST'])]
     public function deletePost(int $id, ManagerRegistry $doctrine): Response

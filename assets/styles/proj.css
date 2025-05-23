@@ -35,6 +35,16 @@
      bottom: 0;
  }
 
+ .footer-content-brand {
+     background-color: #351b7c;
+     text-align: center;
+     color: white;
+     padding: 20px 0;
+     width: 100%;
+     position: relative;
+ }
+
+
  .posts-grid {
      display: grid;
      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
